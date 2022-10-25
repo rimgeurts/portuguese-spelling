@@ -1,19 +1,22 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    sans: [
-      'Inter',
-      'Arial',
-      'Courier New',
-      'Georgia',
-      'Times New',
-      'Trebuchet MS',
-      'Verdana',
-    ],
+    fontFamily: {
+      sans: [
+        'Inter',
+        'Arial',
+        'Courier New',
+        'Georgia',
+        'Times New',
+        'Trebuchet MS',
+        'Verdana',
+      ],
+    },
     extend: {},
   },
+
   plugins: [require('@tailwindcss/forms')],
-}
+};
