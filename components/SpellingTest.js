@@ -59,7 +59,7 @@ function SpellingTest(props) {
         <>
             <ResultModal title={'Correct Answer'} isCorrect={isCorrect} answer={answer} loadNextQuestion={handleLoadNextQuestion} openResultsModal={openResultsModal} correctAnswer={words[currentWordIndex].portguese}/>
             <div className={'pb-10'}>
-                <div className={"flex justify-between p-4 mb-[100px] "}>
+                <div className={"flex justify-between p-4 "}>
                     <div className={`text-xl font-medium px-6 py-3 rounded-md font-medium bg-pink-600 shadow-lg text-white`}>Score {score} out of {totalQuestionsNo}</div>
                     <button
                         onClick={handleSkipWord}

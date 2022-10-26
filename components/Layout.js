@@ -150,7 +150,7 @@ export default function Layout({children}) {
 
 
             <main className={'relative'}>
-                <div className="py-6 mx-auto max-w-4xl sm:px-6 lg:px-8 h-full ">
+                <div className="py-6 mx-auto max-w-4xl sm:px-6 lg:px-8  ">
                     {/* Replace with your content */}
                     <div className="h-full px-4 py-4 sm:px-0 ">
                         <div className="w-full p-4  rounded-lg bg-gray-50 shadow-2xl border-4 border-gray-200">
