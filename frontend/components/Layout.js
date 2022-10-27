@@ -149,7 +149,7 @@ export default function Layout({children}) {
             </Disclosure>
 
 
-            <main className={'relative'}>
+            <main className={'relative h-[80%] flex items-center'}>
                 <div className="py-6 mx-auto max-w-4xl sm:px-6 lg:px-8  ">
                     {/* Replace with your content */}
                     <div className="h-full px-4 py-4 sm:px-0 ">

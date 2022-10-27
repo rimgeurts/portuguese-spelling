@@ -3,7 +3,9 @@ import SpellingTest from "../../components/SpellingTest";
 
 function Quiz(props) {
     return (
-        <SpellingTest/>
+        <>
+            <SpellingTest/>
+        </>
     );
 }
 
