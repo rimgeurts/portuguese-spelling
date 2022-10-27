@@ -67,13 +67,13 @@ function SpellingTest(props) {
             <div className={'pb-10'}>
                 <div className={"flex justify-between p-4 "}>
                     <div className={`font-medium px-6 py-3 rounded-md font-bold text-2xl bg-pink-100 text-pink-600 border-2 border-pink-600`}>Score: {score}  / {totalQuestionsNo}</div>
-                    <button
-                        onClick={handleSkipWord}
-                        type="button"
-                        className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                    >
-                        Skip Word
-                    </button>
+                    {/*<button*/}
+                    {/*    onClick={handleSkipWord}*/}
+                    {/*    type="button"*/}
+                    {/*    className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"*/}
+                    {/*>*/}
+                    {/*    Skip Word*/}
+                    {/*</button>*/}
                 </div>
                 <div className="flex flex-col items-center justify-center">
 
