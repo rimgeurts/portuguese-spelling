@@ -12,5 +12,5 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 }
-
+console.log(process.env)
 module.exports = nextConfig

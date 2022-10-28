@@ -2,8 +2,11 @@ import React, {useEffect, useState} from "react";
 import {wordList} from "./WordList";
 import {CheckCircleIcon} from "@heroicons/react/24/outline";
 import ResultModal from "./ResultModal";
+import {useGetPokemonByNameQuery} from "../redux/apis/strapi";
 
 function SpellingTest(props) {
+    const { data: quizzes, error, isLoading } = useGetPokemonByNameQuery();
+    console.log({quizzes})
     const [specialCharacters, setSpecialCharacters] = useState(['á','â','ã','à','ç','é','ê','í','ó','ô','õ','ú']);
     const [words, setWords] = useState(wordList);
     const [openResultsModal, setOpenResultsModal] = useState(false)
