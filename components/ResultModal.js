@@ -34,7 +34,6 @@ export default function ResultModal({title, loadNextQuestion, openResultsModal, 
                         <Dialog.Panel
                             className="relative transform overflow-hidden rounded-lg bg-white px-14 pb-4 pt-10  text-left shadow-xl transition-all">
                             <form onSubmit={() => {
-                                console.log('submitted')
                             }}>
                                 <div>
 
