@@ -81,12 +81,12 @@ export default function Layout({ children }) {
                     <div className="flex flex-shrink-0 items-center">
                       <img
                         className="block h-8 w-auto lg:hidden"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600"
+                        src="./feather-blue.svg"
                         alt="Your Company"
                       />
                       <img
-                        className="hidden h-8 w-auto lg:block"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600"
+                        className="hidden h-10 w-auto lg:block"
+                        src="./feather-blue.svg"
                         alt="Your Company"
                       />
                     </div>
@@ -184,10 +184,10 @@ export default function Layout({ children }) {
         </Disclosure>
 
         <main className={"relative h-full"}>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-4xl h-full">
             {/* Replace with your content */}
             <div className="h-full">
-              <div className="w-full  rounded-lg bg-gray-50 sm:mt-10 border-4 border-gray-200">
+              <div className="w-full h-full rounded-lg bg-gray-50 sm:mt-10 border-4 border-gray-200">
                 {children}
               </div>
             </div>

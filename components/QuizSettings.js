@@ -21,7 +21,6 @@ export function QuizSettings() {
     if (!quiz) {
       return;
     }
-    console.log('quiz title: ', quiz.title )
     quiz.attributes.title &&
       dispatch(updateQuizTitle({ quizTitle: quiz.attributes.title }));
   }, [quiz]);

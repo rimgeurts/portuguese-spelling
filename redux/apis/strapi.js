@@ -2,6 +2,19 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import qs from "qs";
 
+const queryGetQuizById = qs.stringify(
+  {
+    populate: {
+      questions: {
+        populate: ["answers"],
+      },
+    },
+  },
+  {
+    encodeValuesOnly: true, // prettify URL
+  }
+);
+
 // Define a service using a base URL and expected endpoints
 export const pokemonApi = createApi({
   reducerPath: "pokemonApi",
@@ -15,21 +28,23 @@ export const pokemonApi = createApi({
     }),
     getQuizById: builder.query({
       query: ({ selectedQuizId }) => {
-        const query = qs.stringify(
-          {
-            populate: {
-              questions: {
-                populate: ["answers"],
-              },
-            },
-          },
-          {
-            encodeValuesOnly: true, // prettify URL
-          }
-        );
-        return `api/quizzes/${selectedQuizId}?${query}`;
+        return `api/quizzes/${selectedQuizId}?${queryGetQuizById}`;
       },
       transformResponse: (response, meta, arg) => {
+        const questions = response.data.attributes.questions.data;
+        const sortedQuestions = questions.sort( (a, b) => {
+          let x = a.id
+          let y = b.id
+          if (x > y) {
+            return 1;
+          }
+          if (x < y) {
+            return -1;
+          }
+          return 0;
+        });
+        response.data.attributes.questions.data = sortedQuestions;
+        
         return {
           ...response.data,
         };
@@ -52,17 +67,25 @@ export const pokemonApi = createApi({
       }),
       invalidatesTags: ["quizCache"],
     }),
-    AddAnswer: builder.mutation({
+    AddQuestion: builder.mutation({
       query: (body) => ({
-        url: `api/answers`,
+        url: `api/questions`,
         method: "POST",
         body,
       }),
       invalidatesTags: ["quizCache"],
     }),
-    AddQuestion: builder.mutation({
+    AddBlankQuestion: builder.mutation({
       query: (body) => ({
-        url: `api/questions`,
+        url: `api/addquestion`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["quizCache"],
+    }),
+    AddAnswer: builder.mutation({
+      query: (body) => ({
+        url: `api/answers`,
         method: "POST",
         body,
       }),
@@ -74,6 +97,7 @@ export const pokemonApi = createApi({
         method: "PUT",
         body,
       }),
+      invalidatesTags: ["quizCache"],
     }),
     UpdateAnswer: builder.mutation({
       query: (body) => ({
@@ -81,6 +105,7 @@ export const pokemonApi = createApi({
         method: "PUT",
         body,
       }),
+      invalidatesTags: ["quizCache"],
     }),
   }),
 });
@@ -96,4 +121,5 @@ export const {
   useAddQuestionMutation,
   useUpdateQuestionMutation,
   useUpdateAnswerMutation,
+  useAddBlankQuestionMutation,
 } = pokemonApi;

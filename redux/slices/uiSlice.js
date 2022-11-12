@@ -3,12 +3,13 @@ import { createSlice, current } from "@reduxjs/toolkit";
 const initialState = {
   selectedQuizId: "",
   activeQuestionId: "",
-  activeQuestionIndex: "",
+  activeQuestionIndex: 0,
   activeAnswerId: "",
-  questions: [],
+  activeAnswerIndex: 0,
+  hasActiveQuestionChanged: false,
+  question: "",
   answers: [],
   quizTitle: "",
-  currentQuestionIndexOpened: "",
 };
 
 export const uiSlice = createSlice({
@@ -34,16 +35,23 @@ export const uiSlice = createSlice({
       state.quizTitle = action.payload.quizTitle;
     },
     addQuestions: (state, action) => {
-      console.log({ action });
       state.questions = action.payload.questions;
     },
     updateQuestion: (state, action) => {
-      const { questionIndex, questionTitle } = action.payload;
-      state.questions.data[questionIndex].attributes.title = questionTitle;
+      state.question = action.payload.questionTitle;
     },
     updateAnswer: (state, action) => {
-      const { questionIndex, answerIndex, answerTitle } = action.payload;
-      state.questions.data[questionIndex].attributes.answers.data[answerIndex].attributes.title = answerTitle;
+      state.answers = action.payload.updatedAnswers;
+    },
+    updateHasActiveQuestionChanged: (state, action) => {
+      state.hasActiveQuestionChanged = action.payload.hasActiveQuestionChanged;
+    },
+
+    updateUIState: (state, action) => {
+      const keys = Object.keys(action.payload);
+      keys.map((key) => {
+        state[key] = action.payload[key];
+      });
     },
   },
 });
@@ -59,7 +67,9 @@ export const {
   updateActiveQuestionIndex,
   updateQuestion,
   updateAnswer,
-  updateActiveAnswerIndex
+  updateActiveAnswerIndex,
+  updateHasActiveQuestionChanged,
+  updateUIState,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;
