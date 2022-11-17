@@ -1,37 +1,77 @@
-import {PlusIcon} from "@heroicons/react/24/outline";
-import React from "react";
+import { useState } from "react";
+import { RadioGroup } from "@headlessui/react";
+import {CheckCircleIcon} from "@heroicons/react/24/outline";
 
-const notificationMethods = [
-    { id: 'multi', title: 'Multiple Choice' },
-    { id: 'single', title: 'Single Choice' },
-    { id: 'essay', title: 'Open Question' },
-    { id: 'true / false', title: 'True / False' },
-]
+const plans = [
+  { name: "Open Answer", ram: "" },
+  { name: "Multiple Choice", ram: "" },
+  { name: "Single Choice", ram: "" },
+  { name: "True / False", ram: "" },
+];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export default function QuestionTypes() {
-    return (
-        <div className={'select-none'}>
-            <label className="text-base font-medium text-gray-900">Question Type</label>
-            <p className="text-sm leading-5 text-gray-500">Select your preferred question type?</p>
-            <fieldset className="mt-4">
-                <legend className="sr-only">Notification method</legend>
-                <div className="sm:my-1 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                    {notificationMethods.map((notificationMethod) => (
-                        <div key={notificationMethod.id} className="py-2 sm:py-0 flex items-center cursor-pointer">
-                            <input
-                                id={notificationMethod.id}
-                                name="notification-method"
-                                type="radio"
-                                defaultChecked={notificationMethod.id === 'email'}
-                                className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                            />
-                            <label htmlFor={notificationMethod.id} className="ml-3 block text-sm font-medium text-gray-700 cursor-pointer">
-                                {notificationMethod.title}
-                            </label>
-                        </div>
-                    ))}
-                </div>
-            </fieldset>
-        </div>
-    );
+  const [selected, setSelected] = useState(plans[0]);
+
+  return (
+    <RadioGroup value={selected} onChange={setSelected}>
+      <div className="grid grid-cols-4 gap-4 my-1 select-none">
+        {plans.map((plan) => (
+          <RadioGroup.Option
+            key={plan.name}
+            value={plan}
+            className={({ checked, active }) =>
+              classNames(
+                checked ? "border-transparent" : "border-gray-300",
+                active ? "bg-blue-50 border-blue-500 ring-1 ring-blue-500" : "",
+                "relative block cursor-pointer rounded-lg border bg-white px-6 py-4 shadow-sm focus:outline-none sm:flex sm:justify-between"
+              )
+            }
+          >
+            {({ active, checked }) => (
+              <>
+                <span className="flex items-center">
+                  <span className="flex flex-col text-sm">
+                    <RadioGroup.Label
+                      as="span"
+                      className="font-medium text-gray-900"
+                    >
+                      <div className={"flex items-center justify-start"}>
+                      {checked && (<CheckCircleIcon
+                          className={classNames(
+                              !checked ? "invisible" : "",
+                              "h-5 w-5 text-white bg-blue-500 rounded-full"
+                          )}
+                          aria-hidden="true"
+                      />)}
+                        { !checked && (<div className={'h-5 w-5  border border-gray-300  rounded-full'}></div>)}
+                        <label className="ml-3 block text-sm font-medium text-gray-700">
+                          {plan.name}
+                        </label>
+                      </div>
+                    </RadioGroup.Label>
+                    <RadioGroup.Description as="span" className="text-gray-500">
+                      <span className="block sm:inline">{plan.ram}</span>
+                    </RadioGroup.Description>
+                  </span>
+                </span>
+
+                <span
+                  className={classNames(
+                    active ? "border" : "border-2",
+                    checked ? "border-blue-500" : "border-transparent",
+                    "pointer-events-none absolute -inset-px rounded-lg"
+                  )}
+                  aria-hidden="true"
+                />
+              </>
+            )}
+          </RadioGroup.Option>
+        ))}
+      </div>
+    </RadioGroup>
+  );
 }

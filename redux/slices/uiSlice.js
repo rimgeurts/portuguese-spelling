@@ -6,10 +6,7 @@ const initialState = {
   activeQuestionIndex: 0,
   activeAnswerId: "",
   activeAnswerIndex: 0,
-  hasActiveQuestionChanged: false,
-  question: "",
-  answers: [],
-  quizTitle: "",
+  activeQuizResultsId: "",
 };
 
 export const uiSlice = createSlice({
@@ -53,6 +50,12 @@ export const uiSlice = createSlice({
         state[key] = action.payload[key];
       });
     },
+    resetUIState: (state, action) => {
+      const stateKeysArray = Object.keys(initialState);
+      stateKeysArray.map((stateKey, index) => {
+        state[stateKey] = initialState[stateKey];
+      })
+    },
   },
 });
 
@@ -70,6 +73,7 @@ export const {
   updateActiveAnswerIndex,
   updateHasActiveQuestionChanged,
   updateUIState,
+  resetUIState,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

@@ -1,3 +1,4 @@
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -6,7 +7,9 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: [
-        "Inter",
+        // "Inter",
+        // "-apple-system",
+        // "Inter",
         "Poppins",
         "Arial",
         "Courier New",
@@ -19,5 +22,10 @@ module.exports = {
     extend: {},
   },
 
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    plugin(function ({ addVariant }) {
+      addVariant("not-last", "&:not(:last-child)");
+    }),
+  ],
 };

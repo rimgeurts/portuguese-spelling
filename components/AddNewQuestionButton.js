@@ -10,7 +10,7 @@ import { selectUI, updateUIState } from "../redux/slices/uiSlice";
 
 function AddNewQuestionButton(props) {
   const dispatch = useDispatch();
-  const [addNewQuiz, setAddNewQuiz] = useState(false);
+  const [addNewQuestion, setAddNewQuestion] = useState(false);
   const [response, setResponse] = useState(null);
   const [addNewBlankQuestion, addNewBlankQuestionResponse] =
     useAddBlankQuestionMutation();
@@ -22,7 +22,7 @@ function AddNewQuestionButton(props) {
 
   // Wait for the quiz to be updated with the recently added blank Question before updating the state
   useEffect(() => {
-    if (!addNewQuiz) {
+    if (!addNewQuestion) {
       return;
     }
     dispatch(
@@ -33,7 +33,7 @@ function AddNewQuestionButton(props) {
         activeAnswerIndex: 0,
       })
     );
-    setAddNewQuiz(false);
+    setAddNewQuestion(false);
   }, [quiz]);
 
   const handleClick = async () => {
@@ -42,7 +42,7 @@ function AddNewQuestionButton(props) {
         quizId: selectedQuizId,
       },
     };
-    setAddNewQuiz(true);
+    setAddNewQuestion(true);
     const response = await addNewBlankQuestion(payloadQuestion);
     setResponse(response);
     console.log({ response });

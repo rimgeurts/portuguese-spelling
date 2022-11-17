@@ -1,13 +1,14 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectUI,
   updateSelectedQuizId,
   updateQuestionId,
+  updateUIState,
 } from "../redux/slices/uiSlice";
 import {
-  useAddAnswerMutation,
+  useAddAnswerMutation, useAddBlankQuestionMutation,
   useAddQuestionMutation,
   useAddQuizMutation,
   useGetQuizByIdQuery,
@@ -17,34 +18,58 @@ import Link from "next/link";
 export function CreateQuizButton() {
   const { selectedQuizId, quizTitle } = useSelector(selectUI);
   const [addNewQuiz, addNewQuizResponse] = useAddQuizMutation();
-  const [addNewAnswer, addNewAnswerResponse] = useAddAnswerMutation();
-  const [addNewQuestion, addNewQuestionResponse] = useAddQuestionMutation();
+  const [addNewQuestion, setAddNewQuestion] = useState(false);
+  const [newQuizId, setNewQuizId] = useState(null);
+  const [response, setResponse] = useState(null);
+  const [addNewBlankQuestion, addNewBlankQuestionResponse] =
+      useAddBlankQuestionMutation();
   const dispatch = useDispatch();
-
+  const { data: quiz } = useGetQuizByIdQuery(
+      { selectedQuizId },
+      { skip: !selectedQuizId }
+  );
 
   useEffect(() => {
-    if (addNewQuizResponse?.isSuccess) {
-      dispatch(
-        updateSelectedQuizId({
-          selectedQuizId: addNewQuizResponse.data.data.id,
-        })
-      );
+    if (!addNewQuestion) {
+      return;
     }
-  }, [addNewQuizResponse]);
+    dispatch(
+        updateUIState({
+          activeQuestionId: response.data.data?.questionId,
+          activeQuestionIndex: response.data.data?.questionArrayIndex,
+          activeAnswerId: response.data.data?.answerId,
+          activeAnswerIndex: 0,
+        })
+    );
+    setAddNewQuestion(false);
+  }, [quiz]);
 
   const handleCreateNewQuiz = async () => {
     const addQuizResponse = await addNewQuiz({ data: {} });
-    const addQuestionResponse = await addNewQuestion({
+    // const addQuestionResponse = await addNewQuestion({
+    //   data: {
+    //     quiz: [addQuizResponse.data.data.id],
+    //   },
+    // });
+    // await addNewAnswer({
+    //   data: {
+    //     quiz: [addQuizResponse.data.data.id],
+    //     question: [addQuestionResponse.data.data.id],
+    //   },
+    // });
+
+    const payloadQuestion = {
       data: {
-        quiz: [addQuizResponse.data.data.id],
+        quizId: addQuizResponse.data.data.id,
       },
-    });
-    await addNewAnswer({
-      data: {
-        quiz: [addQuizResponse.data.data.id],
-        question: [addQuestionResponse.data.data.id]
-      },
-    });
+    };
+    setAddNewQuestion(true);
+    const response = await addNewBlankQuestion(payloadQuestion);
+    setResponse(response);
+    console.log({ response });
+    dispatch(
+        updateSelectedQuizId({selectedQuizId: addQuizResponse.data.data.id})
+    );
     // dispatch(updateQuestionId({questionId: addQuestionResponse.data.data.id}))
   };
 

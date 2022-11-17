@@ -21,35 +21,27 @@ export const pokemonApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_STRAPI_BASE_URL,
   }),
-  tagTypes: ["quizCache"],
+  tagTypes: [
+    "questionCache",
+    "quizListCache",
+    "AllQuestionsForQuizCache",
+    "resultCache",
+  ],
   endpoints: (builder) => ({
     getAllQuizzes: builder.query({
       query: (name) => `api/quizzes`,
+      providesTags: ["quizListCache"],
     }),
     getQuizById: builder.query({
       query: ({ selectedQuizId }) => {
         return `api/quizzes/${selectedQuizId}?${queryGetQuizById}`;
       },
       transformResponse: (response, meta, arg) => {
-        const questions = response.data.attributes.questions.data;
-        const sortedQuestions = questions.sort( (a, b) => {
-          let x = a.id
-          let y = b.id
-          if (x > y) {
-            return 1;
-          }
-          if (x < y) {
-            return -1;
-          }
-          return 0;
-        });
-        response.data.attributes.questions.data = sortedQuestions;
-        
         return {
           ...response.data,
         };
       },
-      providesTags: ["quizCache"],
+      providesTags: ["questionCache"],
     }),
     AddQuiz: builder.mutation({
       query: (body) => ({
@@ -57,7 +49,7 @@ export const pokemonApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["quizCache"],
+      invalidatesTags: ["questionCache", "quizListCache"],
     }),
     UpdateQuiz: builder.mutation({
       query: (payload) => ({
@@ -65,7 +57,14 @@ export const pokemonApi = createApi({
         method: "PUT",
         body: payload,
       }),
-      invalidatesTags: ["quizCache"],
+      invalidatesTags: ["questionCache", "quizListCache"],
+    }),
+    DeleteQuiz: builder.mutation({
+      query: (payload) => ({
+        url: `api/quizzes/${payload.id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["questionCache", "quizListCache"],
     }),
     AddQuestion: builder.mutation({
       query: (body) => ({
@@ -73,7 +72,17 @@ export const pokemonApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["quizCache"],
+      invalidatesTags: ["questionCache", "quizListCache"],
+    }),
+    GetAllQuestionsForQuiz: builder.query({
+      query: (payload) => ({
+        url: `api/questions?${payload.query}`,
+        method: "GET",
+      }),
+      transformResponse: (response, meta, arg) => {
+        return response;
+      },
+      providesTags: ["AllQuestionsForQuizCache"],
     }),
     AddBlankQuestion: builder.mutation({
       query: (body) => ({
@@ -81,7 +90,7 @@ export const pokemonApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["quizCache"],
+      invalidatesTags: ["questionCache", "quizListCache"],
     }),
     AddAnswer: builder.mutation({
       query: (body) => ({
@@ -89,7 +98,7 @@ export const pokemonApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["quizCache"],
+      invalidatesTags: ["questionCache", "quizListCache"],
     }),
     UpdateQuestion: builder.mutation({
       query: (body) => ({
@@ -97,7 +106,23 @@ export const pokemonApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["quizCache"],
+      invalidatesTags: ["questionCache", "quizListCache"],
+    }),
+    DeleteQuestion: builder.mutation({
+      query: (body) => ({
+        url: `api/questions/${body.id}`,
+        method: "DELETE",
+        body,
+      }),
+      invalidatesTags: ["questionCache", "quizListCache"],
+    }),
+    DeleteAnswer: builder.mutation({
+      query: (body) => ({
+        url: `api/answers/${body.id}`,
+        method: "DELETE",
+        body,
+      }),
+      invalidatesTags: ["questionCache", "quizListCache"],
     }),
     UpdateAnswer: builder.mutation({
       query: (body) => ({
@@ -105,7 +130,32 @@ export const pokemonApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["quizCache"],
+      invalidatesTags: ["questionCache", "quizListCache"],
+    }),
+    AddResults: builder.mutation({
+      query: (body) => ({
+        url: `api/results`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["resultCache"],
+    }),
+    UpdateResultsById: builder.mutation({
+      query: (body) => ({
+        url: `api/results/${body.id}`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["resultCache"],
+    }),
+    getResultsById: builder.query({
+      query: ({ id }) => {
+        return `api/results/${id}?populate=*`;
+      },
+      transformResponse: (response, meta, arg) => {
+        return response;
+      },
+      providesTags: ["resultCache"],
     }),
   }),
 });
@@ -122,4 +172,11 @@ export const {
   useUpdateQuestionMutation,
   useUpdateAnswerMutation,
   useAddBlankQuestionMutation,
+  useDeleteQuestionMutation,
+  useDeleteAnswerMutation,
+  useDeleteQuizMutation,
+  useGetAllQuestionsForQuizQuery,
+  useAddResultsMutation,
+  useGetResultsByIdQuery,
+  useUpdateResultsByIdMutation,
 } = pokemonApi;

@@ -23,6 +23,7 @@ import {
   TrashIcon,
 } from "@heroicons/react/24/outline";
 import AddNewQuestionButton from "./AddNewQuestionButton";
+import DeleteQuestionButton from "./DeleteQuestionButton";
 
 export function FormControlButtons() {
   const dispatch = useDispatch();
@@ -49,11 +50,20 @@ export function FormControlButtons() {
     isLoading,
   } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
   const question = quiz?.attributes.questions.data[activeQuestionIndex];
+  const totalQuestions = quiz?.attributes.questions.data.length - 1;
   const answers = question?.attributes.answers.data;
   const { handleSubmit } = useFormContext();
 
   useEffect(() => {
-    const totalQuestions = quiz?.attributes.questions.data.length - 1;
+    if (!quiz) {
+      return;
+    }
+
+    if (totalQuestions === 0) {
+      setLastIndexWarning(true);
+      setFirstIndexWarning(true);
+      return;
+    }
 
     setLastIndexWarning(false);
     setFirstIndexWarning(false);
@@ -65,7 +75,8 @@ export function FormControlButtons() {
     if (activeQuestionIndex - 1 < 0) {
       setFirstIndexWarning(true);
     }
-  }, [activeQuestionIndex]);
+    console.log({ activeQuestionIndex, totalQuestions });
+  }, [activeQuestionIndex, selectedQuizId, quiz]);
 
   const loadQuestion = (questionIndex) => {
     if (!quiz) {
@@ -121,11 +132,11 @@ export function FormControlButtons() {
     <>
       <span className="isolate inline-flex rounded-md shadow-sm">
         <button
-          onClick={handleOnClickNext}
+          onClick={() => loadQuestion(0)}
           type="button"
           className={`${
-            lastIndexWarning
-              ? "bg-gray-200 cursor-not-allowed"
+            firstIndexWarning
+              ? "bg-gray-100 cursor-not-allowed"
               : "bg-white hover:bg-gray-50 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           } relative -ml-px inline-flex items-center rounded-l-md border-l border-t border-b border-gray-300 px-4 py-4 text-sm font-medium text-gray-500`}
         >
@@ -137,29 +148,21 @@ export function FormControlButtons() {
           type="button"
           className={`${
             firstIndexWarning
-              ? "bg-gray-200 cursor-not-allowed"
+              ? "bg-gray-100 cursor-not-allowed"
               : "bg-white hover:bg-gray-50 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           } relative inline-flex items-center  border border-gray-300 px-4 py-4 text-sm font-medium text-gray-500`}
         >
           <span className="sr-only">Previous</span>
           <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
         </button>
-        <button
-          onClick={handleOnClickNext}
-          type="button"
-          className={`bg-white hover:bg-gray-50 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-          } relative -ml-px inline-flex items-center border border-gray-300 px-4 py-4 text-sm font-medium text-gray-500`}
-        >
-          <span className="sr-only">Next</span>
-          <TrashIcon className="h-5 w-5" aria-hidden="true" />
-        </button>
+        <DeleteQuestionButton />
         <AddNewQuestionButton />
         <button
           onClick={handleOnClickNext}
           type="button"
           className={`${
             lastIndexWarning
-              ? "bg-gray-200 cursor-not-allowed"
+              ? "bg-gray-100 cursor-not-allowed"
               : "bg-white hover:bg-gray-50 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           } relative -ml-px inline-flex items-center border border-gray-300 px-4 py-4 text-sm font-medium text-gray-500`}
         >
@@ -167,11 +170,11 @@ export function FormControlButtons() {
           <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
         </button>
         <button
-          onClick={handleOnClickNext}
+          onClick={() => loadQuestion(totalQuestions)}
           type="button"
           className={`${
             lastIndexWarning
-              ? "bg-gray-200 cursor-not-allowed"
+              ? "bg-gray-100 cursor-not-allowed"
               : "bg-white hover:bg-gray-50 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           } relative -ml-px inline-flex items-center rounded-r-md border border-gray-300 px-4 py-4 text-sm font-medium text-gray-500`}
         >

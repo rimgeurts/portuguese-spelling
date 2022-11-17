@@ -1,4 +1,9 @@
-import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowDownTrayIcon,
+  BackwardIcon,
+  XCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,6 +12,7 @@ import {
   useUpdateQuestionMutation,
 } from "../redux/apis/strapi";
 import {
+  resetUIState,
   selectUI,
   updateHasActiveQuestionChanged,
 } from "../redux/slices/uiSlice";
@@ -35,51 +41,21 @@ export function CloseQuizButton() {
   } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
   const question = quiz?.attributes.questions.data[activeQuestionIndex];
 
-  const uploadQuestionToStrapi = () => {
-    const payload = {
-      id: activeQuestionId,
-      data: {
-        title: inputQuestion,
-        quiz: [selectedQuizId],
-      },
-    };
-    updateQuestionStrapi(payload);
-  };
-  const uploadAnswerToStrapi = () => {
-    const payload = {
-      id: activeAnswerId,
-      data: {
-        title: inputAnswer[activeAnswerIndex].attributes.title,
-        quiz: [selectedQuizId],
-        question: [activeQuestionId],
-      },
-    };
-    updateAnswerStrapi(payload);
-  };
-
-  const handleOnClickSave = () => {
-    if (!hasActiveQuestionChanged) {
-      return;
-    }
-    uploadQuestionToStrapi();
-    uploadAnswerToStrapi();
-    dispatch(
-      updateHasActiveQuestionChanged({ hasActiveQuestionChanged: false })
-    );
+  const handleClick = () => {
+    dispatch(resetUIState());
   };
 
   return (
-      <>
-    <Link href={"./quizlist"} >
-      <button
-        onClick={handleOnClickSave}
-        type="submit"
-        className="inline-flex items-center justify-center sm:px-4 px-3 sm:py-2 py-2  sm:text-lg sm:font-medium text-white bg-pink-600 border border-transparent rounded-md shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
-      >
-        <ArrowDownTrayIcon className="block h-6 w-6 mr-1" aria-hidden="true" />
-        <div className={''}>Close</div>
-      </button>
-    </Link>
-      </>
+    <>
+      <Link href={"./quizlist"}>
+        <button
+          onClick={handleClick}
+          type="button"
+          className=" inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Save & Exit
+        </button>
+      </Link>
+    </>
   );
 }

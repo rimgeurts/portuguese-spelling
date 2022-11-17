@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -15,15 +15,7 @@ const user = {
   imageUrl:
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
-const navigation = [
-  { name: "Quiz", href: "/quiz", current: true },
-  {
-    name: "Stats",
-    href: "/dictionary",
-    current: false,
-    icon: <PlusIcon className="block h-4 w-4 mr-1" aria-hidden="true" />,
-  },
-];
+
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
@@ -38,17 +30,37 @@ function classNames(...classes) {
 }
 
 export default function Layout({ children }) {
+  const [navigation, setNavigation] = useState([
+    // { name: "Quiz", href: "/quiz", current: true },
+    {
+      name: "My Quizzes",
+      href: "/quizlist",
+      current: false,
+    },
+    // {
+    //   name: "Progress",
+    //   href: "/dictionary",
+    //   current: false,
+    // },
+  ]);
+
+  const onClickNavigation = (selectedNavIndex) => {
+    const newNavigation = [...navigation];
+    newNavigation.map((nav, navIndex) => {
+      console.log({ nav });
+      if (selectedNavIndex === navIndex) {
+        nav.current = true;
+      }
+      if (selectedNavIndex !== navIndex) {
+        nav.current = false;
+      }
+    });
+    setNavigation((prevState) => (prevState = newNavigation));
+  };
+
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
-      <div className="relative min-h-full bg-gradient-to-r from-sky-400 to-blue-500 w-full ">
+      <div className="relative min-h-full bg-gradient-to-r from-sky-400 to-blue-500 w-full select-none ">
         <div className={"absolute top-[60px] left-0 z-0 w-full  z-0"}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 320">
             <path
@@ -81,7 +93,7 @@ export default function Layout({ children }) {
                     <div className="flex flex-shrink-0 items-center">
                       <img
                         className="block h-8 w-auto lg:hidden"
-                        src="./feather-blue.svg"
+                        src="/feather-blue.svg"
                         alt="Your Company"
                       />
                       <img
@@ -91,21 +103,24 @@ export default function Layout({ children }) {
                       />
                     </div>
                     <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-                      {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? "border-blue-500 text-gray-900"
-                              : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                            "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium"
-                          )}
-                          aria-current={item.current ? "page" : undefined}
-                        >
-                          {item.name}
-                        </a>
-                      ))}
+                      {navigation.map((item, navIndex) => {
+                        return (
+                          <Link href={item.href} key={item.name}>
+                            <a
+                              onClick={() => onClickNavigation(navIndex)}
+                              className={classNames(
+                                item.current
+                                  ? "border-blue-500 text-gray-900"
+                                  : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                                "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium cursor-pointer"
+                              )}
+                              aria-current={item.current ? "page" : undefined}
+                            >
+                              {item.name}
+                            </a>
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                   <div className="hidden sm:ml-6 sm:flex sm:items-center">

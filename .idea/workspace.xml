@@ -2,21 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/components/AddNewQuestionButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/CloseQuizButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/feather-blue.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/feather-gray.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/DeleteQuestionButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/DeleteQuizButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/DeleteQuizConfirmationModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/util/generateGetAllQuestionsQuery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/util/getSpecialCharacters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/quiz/[id].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/AddNewQuestionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/AddNewQuestionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CloseQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CloseQuizButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CreateQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CreateQuizButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/FormControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/FormControlButtons.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/QuestionContentWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/QuestionContentWrapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/QuestionTypeTranslation.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/QuestionTypeTranslation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/QuestionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/QuestionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/QuizSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/QuizSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ResultModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SpellingTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Title.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Title.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/Divider.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Divider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/create/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/create/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/quiz/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/quizlist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/quizlist/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux/apis/strapi.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/apis/strapi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux/slices/uiSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/slices/uiSlice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
@@ -53,7 +60,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rim/WebstormProjects/quiz-frontend&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rim/WebstormProjects/quiz-frontend/components&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
@@ -71,29 +78,27 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\public" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components" />
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\public" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\redux\slices" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\public" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\ui" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components" />
       <recent name="C:\Users\Rim\WebstormProjects\portuguese-spelling" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\deleteQuizButton.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\CloseQuizButton.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\CreateQuizButton.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\formControlButtons.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\QuizTitle.js" />
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\QuizSettings.js" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.Debug">
     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000">
-      <method v="2" />
-    </configuration>
-    <configuration name="scratch_20.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_20.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="scratch_21.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_21.js" working-dir="$PROJECT_DIR$">
@@ -103,6 +108,9 @@
       <method v="2" />
     </configuration>
     <configuration name="scratch_24.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_24.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch_26.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_26.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -117,19 +125,19 @@
     </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Debug" />
+      <item itemvalue="Node.js.scratch_26.js" />
       <item itemvalue="Node.js.scratch_24.js" />
       <item itemvalue="Node.js.scratch_23.js" />
       <item itemvalue="Node.js.scratch_21.js" />
-      <item itemvalue="Node.js.scratch_20.js" />
       <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.scratch_26.js" />
         <item itemvalue="Node.js.scratch_24.js" />
         <item itemvalue="Node.js.scratch_23.js" />
         <item itemvalue="Node.js.scratch_21.js" />
-        <item itemvalue="Node.js.scratch_20.js" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +175,12 @@
       <workItem from="1667981371769" duration="27807000" />
       <workItem from="1668085244334" duration="5036000" />
       <workItem from="1668164945328" duration="17584000" />
-      <workItem from="1668250310796" duration="6928000" />
+      <workItem from="1668250310796" duration="11897000" />
+      <workItem from="1668350180967" duration="7608000" />
+      <workItem from="1668422583398" duration="20486000" />
+      <workItem from="1668512278160" duration="10396000" />
+      <workItem from="1668584028969" duration="7722000" />
+      <workItem from="1668670702996" duration="30892000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>
@@ -183,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666870499962</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=".">
+      <created>1668283372716</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668283372716</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

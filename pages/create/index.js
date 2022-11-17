@@ -10,6 +10,7 @@ import {
   useGetQuizByIdQuery,
   useUpdateAnswerMutation,
   useUpdateQuestionMutation,
+  useUpdateQuizMutation,
 } from "../../redux/apis/strapi";
 import { useSelector } from "react-redux";
 import { selectUI } from "../../redux/slices/uiSlice";
@@ -28,6 +29,8 @@ function Index(props) {
     useUpdateQuestionMutation();
   const [updateAnswerStrapi, updateAnswerStrapiStatus] =
     useUpdateAnswerMutation();
+  const [updateQuiz, updateQuizResults] = useUpdateQuizMutation();
+
   const form = useForm();
   const {
     control,
@@ -41,6 +44,11 @@ function Index(props) {
   });
   const inputAnswer = useWatch({
     name: "inputAnswer",
+    control,
+  });
+
+  const inputTitle = useWatch({
+    name: "inputTitle",
     control,
   });
   const {
@@ -57,10 +65,6 @@ function Index(props) {
 
   const uploadQuestionToStrapi = () => {
     if (!dirtyFields.hasOwnProperty("inputQuestion")) {
-      console.log(
-          "not submitting Question, no dirty fields detected: ",
-          Object.keys(dirtyFields)
-      );
       return;
     }
     const payload = {
@@ -76,13 +80,8 @@ function Index(props) {
     updateQuestionStrapi(payload);
   };
 
-
   const uploadAnswerToStrapi = async () => {
     if (!dirtyFields.hasOwnProperty("inputAnswer")) {
-      console.log(
-        "not submitting Answer, no dirty fields detected: ",
-        Object.keys(dirtyFields)
-      );
       return;
     }
     const payload = {
@@ -94,30 +93,36 @@ function Index(props) {
       },
     };
     const response = await updateAnswerStrapi(payload);
-    console.log("submitting answer id: ", activeAnswerId);
-    console.log("--- value: ", inputAnswer);
-    console.log("--- server response: ", response);
-    console.log("--- server response: ", dirtyFields);
+  };
 
+  const uploadTitleToStrapi = async () => {
+    if (!dirtyFields.hasOwnProperty("inputTitle")) {
+      return;
+    }
+    const payload = {
+      id: selectedQuizId,
+      data: {
+        title: inputTitle,
+      },
+    };
+    updateQuiz(payload);
   };
 
   const handleClick = async () => {
     await uploadAnswerToStrapi();
-    await uploadQuestionToStrapi()
-    reset({}, {keepValues: true, });
-  }
+    await uploadQuestionToStrapi();
+    await uploadTitleToStrapi();
+    reset({}, { keepValues: true });
+  };
 
   return (
     <FormProvider {...form}>
-      <div
-        className={""}
-        onClick={handleClick}
-      >
+      <div className={"relative select-none"} onClick={handleClick}>
         <div className={"bg-white border-b border-gray-300"}>
           <div className={"p-4"}>
-            <div className={"flex justify-between items-center mb-2"}>
+            <div className={"flex justify-between items-center mb-2 "}>
               <div className={"mr-8"}>
-                <Title title={"Create New Quiz"} />
+                <Title title={quiz?.attributes?.title ? 'Edit ' + quiz.attributes.title : "Create New Quiz"} />
               </div>
               <CloseQuizButton />
             </div>
@@ -129,8 +134,8 @@ function Index(props) {
           <div className={"p-4"}>
             <div className={"sm:flex items-center justify-between"}>
               <SubTitle
-                title={`Question ${(activeQuestionIndex + 1) | 0}/${
-                  quiz?.attributes.questions.data.length
+                title={`Question ${(activeQuestionIndex + 1) | 0} / ${
+                  quiz?.attributes?.questions.data.length
                 }`}
               />
               <div className={"flex justify-between items-center gap-2 py-1"}>
