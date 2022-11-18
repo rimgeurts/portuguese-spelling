@@ -142,7 +142,7 @@ export const pokemonApi = createApi({
     }),
     UpdateResultsById: builder.mutation({
       query: (body) => ({
-        url: `api/results/${body.id}`,
+        url: `api/results/${body.id}?populate=*`,
         method: "PUT",
         body,
       }),
