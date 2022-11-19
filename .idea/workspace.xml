@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/apis/strapi.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/apis/strapi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SpellingTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/quizlist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/quizlist/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +38,12 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rim/WebstormProjects/quiz-frontend/components&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rim/WebstormProjects/quiz-frontend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -158,7 +159,10 @@
       <workItem from="1668512278160" duration="10396000" />
       <workItem from="1668584028969" duration="7722000" />
       <workItem from="1668670702996" duration="30892000" />
-      <workItem from="1668761208378" duration="1242000" />
+      <workItem from="1668761208378" duration="1482000" />
+      <workItem from="1668764823239" duration="3772000" />
+      <workItem from="1668771731367" duration="27030000" />
+      <workItem from="1668850571033" duration="1090000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>
@@ -204,5 +208,8 @@
     </ignored-roots>
     <MESSAGE value="." />
     <option name="LAST_COMMIT_MESSAGE" value="." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/quiz_frontend$Debug.dat" NAME="Debug Coverage Results" MODIFIED="1668804714101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="WipCoverageRunner" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

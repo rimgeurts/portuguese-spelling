@@ -41,7 +41,7 @@ function Index(props) {
           return (
             <Fragment key={quiz.id}>
               <div
-                className={`flex justify-between items-center not-last:border-b border-gray-200 py-4 px-4 select-none`}
+                className={`flex justify-between items-center not-last:border-b border-gray-200 py-4 px-4 select-none hover:bg-gray-100`}
               >
                 <div
                   className={
@@ -55,7 +55,7 @@ function Index(props) {
                   </Link>
                 </div>
                 <div className={"flex gap-4 items-center"}>
-                  <Link href={`/create/`}>
+                  <Link href={`/create/`} >
                     <button
                       onClick={() => {
                         dispatch(
