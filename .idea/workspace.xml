@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SpellingTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/quizlist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/quizlist/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +73,7 @@
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\QuizTitle.js" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Debug">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -162,7 +160,7 @@
       <workItem from="1668761208378" duration="1482000" />
       <workItem from="1668764823239" duration="3772000" />
       <workItem from="1668771731367" duration="27030000" />
-      <workItem from="1668850571033" duration="1090000" />
+      <workItem from="1668850571033" duration="1722000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>
