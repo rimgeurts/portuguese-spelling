@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/Issue List.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/viewer/ViewerControlButtons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/viewer/ViewerHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/viewer/ViewerInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/viewer/ViewerResults.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/SpellingTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/quiz/[id].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/quiz/[id].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/SpellingTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerControlButtons.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +164,7 @@
       <workItem from="1668771731367" duration="27030000" />
       <workItem from="1668850571033" duration="4887000" />
       <workItem from="1668864840431" duration="10244000" />
-      <workItem from="1668936445218" duration="2769000" />
+      <workItem from="1668936445218" duration="6267000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>

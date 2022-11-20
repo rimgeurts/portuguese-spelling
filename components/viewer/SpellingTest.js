@@ -23,6 +23,7 @@ function SpellingTest() {
   const quizId = router.query.id;
   const [openFinishScreen, setOpenFinishScreen] = useState(false);
   const [submittedAnswer, setSubmittedAnswer] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const query = generateGetAllQuestionsQuery(quizId, pageNumber);
   const specialCharacters = getSpecialCharacters();
@@ -55,6 +56,7 @@ function SpellingTest() {
   } = useForm();
 
   const onSubmit = async (data) => {
+    setIsSubmitting(true);
     console.log("SUBMITTING QUESTION");
     const payload = {
       id: activeQuizResultsId,
@@ -65,6 +67,7 @@ function SpellingTest() {
       },
     };
     await updateResults(payload);
+    setIsSubmitting(false);
     setSubmittedAnswer(data.answerInput);
     nextButtonRef.current.focus();
   };
@@ -143,10 +146,11 @@ function SpellingTest() {
             )}
           </div>
           <ViewerControlButtons
+            isSubmitting={isSubmitting}
             updateResultStatus={updateResultStatus}
             ref={nextButtonRef}
-            onClick={onLoadNextQuestion}
-            onClick1={handleSubmit(onSubmit)}
+            onClickNextButton={onLoadNextQuestion}
+            onClickSubmitButton={handleSubmit(onSubmit)}
           />
         </div>
       </div>
