@@ -10,24 +10,35 @@ import { getSpecialCharacters } from "../util/getSpecialCharacters";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { selectUI } from "../../redux/slices/uiSlice";
-import * as PropTypes from "prop-types";
 import { ViewerHeader } from "./ViewerHeader";
 import { ViewerResults } from "./ViewerResults";
 import { ViewerInput } from "./ViewerInput";
 import ViewerControlButtons from "./ViewerControlButtons";
 import ViewerFinishScreen from "./ViewerFinishScreen";
+import { ViewerCloseButton } from "./ViewerCloseButton";
+import useOnClickOutside from "../hooks/useClickOutside";
+import ConfirmationModal from "../ui/ConfirmationModal";
 
 function SpellingTest() {
   const nextButtonRef = useRef();
+  const quizViewerRef = useRef();
   const router = useRouter();
   const quizId = router.query.id;
   const [openFinishScreen, setOpenFinishScreen] = useState(false);
   const [submittedAnswer, setSubmittedAnswer] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
+  const [openLeaveQuizDialog, setOpenLeaveQuizDialog] = useState(false);
   const query = generateGetAllQuestionsQuery(quizId, pageNumber);
   const specialCharacters = getSpecialCharacters();
   const { activeQuizResultsId } = useSelector(selectUI);
+
+  useOnClickOutside(quizViewerRef, (e) => {
+    const HtmlHeader = document.getElementById("quiz-viewer-header");
+    if (HtmlHeader.contains(e.target)) {
+      setOpenLeaveQuizDialog(true);
+    }
+    console.log("sdsddsdsds", e.target);
+  });
 
   const {
     data: questions,
@@ -56,8 +67,6 @@ function SpellingTest() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    console.log("SUBMITTING QUESTION");
     const payload = {
       id: activeQuizResultsId,
       data: {
@@ -67,7 +76,6 @@ function SpellingTest() {
       },
     };
     await updateResults(payload);
-    setIsSubmitting(false);
     setSubmittedAnswer(data.answerInput);
     nextButtonRef.current.focus();
   };
@@ -99,7 +107,16 @@ function SpellingTest() {
   };
 
   return (
-    <>
+    <div ref={quizViewerRef} className={"relative"}>
+      <ConfirmationModal
+        title={"Leave Quiz?"}
+        action={() => router.push("/quizlist")}
+        open={openLeaveQuizDialog}
+        setOpen={setOpenLeaveQuizDialog}
+        confirmationButtonName={"Leave"}
+      >
+        Are you sure you want to leave this quiz?
+      </ConfirmationModal>
       <ViewerFinishScreen
         results={results}
         questions={questions}
@@ -107,7 +124,8 @@ function SpellingTest() {
         setOpen={setOpenFinishScreen}
       />
       <div className={"p-4"}>
-        <div className={"mx-auto max-w-7xl sm:px-6 lg:px-8"}>
+        <div className={"mx-auto max-w-7xl sm:px-6 lg:px-8 "}>
+          <ViewerCloseButton />
           <ViewerHeader
             currentQuestionNo={currentQuestionNo}
             totalQuestions={totalQuestions}
@@ -146,7 +164,6 @@ function SpellingTest() {
             )}
           </div>
           <ViewerControlButtons
-            isSubmitting={isSubmitting}
             updateResultStatus={updateResultStatus}
             ref={nextButtonRef}
             onClickNextButton={onLoadNextQuestion}
@@ -154,7 +171,7 @@ function SpellingTest() {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

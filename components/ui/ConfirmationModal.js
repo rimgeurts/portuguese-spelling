@@ -2,10 +2,13 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
-export default function DeleteQuizConfirmationModal({
+export default function ConfirmationModal({
   open,
   setOpen,
-  deleteQuiz,
+  action,
+  title,
+  children,
+  confirmationButtonName,
 }) {
   const cancelButtonRef = useRef(null);
 
@@ -53,14 +56,10 @@ export default function DeleteQuizConfirmationModal({
                       as="h3"
                       className="text-lg font-medium leading-6 text-gray-900"
                     >
-                      Delete Quiz?
+                      {title}
                     </Dialog.Title>
                     <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        Are you sure you want to delete this quiz? All of your
-                        quiz data will be permanently removed from our servers
-                        forever. This action cannot be undone.
-                      </p>
+                      <p className="text-sm text-gray-500">{children}</p>
                     </div>
                   </div>
                 </div>
@@ -69,11 +68,11 @@ export default function DeleteQuizConfirmationModal({
                     type="button"
                     className="inline-flex items-center justify-center sm:px-4 px-3 sm:py-2 py-2  sm:text-lg sm:font-medium text-white bg-pink-600 border border-transparent rounded-md shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
                     onClick={() => {
-                      deleteQuiz();
+                      action();
                       setOpen(false);
                     }}
                   >
-                    Delete
+                    {confirmationButtonName}
                   </button>
                   <button
                     type="button"

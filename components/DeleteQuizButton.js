@@ -7,12 +7,13 @@ import {
   useGetAllQuizzesQuery,
   useUpdateQuestionMutation,
 } from "../redux/apis/strapi";
-import DeleteQuizConfirmationModal from "./DeleteQuizConfirmationModal";
+import ConfirmationModal from "./ui/ConfirmationModal";
 
 export function DeleteQuizButton({ quiz }) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [deleteQuizStrapi, deleteQuizStrapiStatus] = useDeleteQuizMutation();
+
   const onClick = () => {
     console.log({ quiz });
     deleteQuizStrapi({ id: quiz.id });
@@ -20,7 +21,17 @@ export function DeleteQuizButton({ quiz }) {
 
   return (
     <>
-      <DeleteQuizConfirmationModal deleteQuiz={onClick} open={open} setOpen={setOpen}/>
+      <ConfirmationModal
+        title={"Delete Quiz?"}
+        action={onClick}
+        open={open}
+        setOpen={setOpen}
+        confirmationButtonName={'Delete'}
+      >
+        Are you sure you want to delete this quiz? All of your quiz data will be
+        permanently removed from our servers forever. This action cannot be
+        undone
+      </ConfirmationModal>
       <button
         onClick={() => setOpen(true)}
         type="submit"

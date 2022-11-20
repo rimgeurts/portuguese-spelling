@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/components/ui/ConfirmationModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/DeleteQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/DeleteQuizButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/DeleteQuizConfirmationModal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/viewer/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/SpellingTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerControlButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerHeader.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,31 +37,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rim/WebstormProjects/quiz-frontend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.17.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.2",
+    "last_opened_file_path": "C:/Users/Rim/WebstormProjects/quiz-frontend/components/viewer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;JavaScript&quot;,
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "JavaScript",
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\public" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\redux\slices" />
@@ -68,11 +75,11 @@
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerCloseButton.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerControlButtons.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerInput.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerResults.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerHeader.js" />
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\deleteQuizButton.js" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.Debug">
@@ -164,7 +171,7 @@
       <workItem from="1668771731367" duration="27030000" />
       <workItem from="1668850571033" duration="4887000" />
       <workItem from="1668864840431" duration="10244000" />
-      <workItem from="1668936445218" duration="6267000" />
+      <workItem from="1668936445218" duration="14723000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>
