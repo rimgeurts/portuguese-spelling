@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import qs from "qs";
-import SpellingTest from "../../components/SpellingTest";
+import SpellingTest from "../../components/viewer/SpellingTest";
 import {
   useGetQuizByIdQuery,
   useGetAllQuestionsForQuizQuery,
