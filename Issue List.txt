@@ -2,6 +2,9 @@ Issues:
 - Remove empty spaces before submitting a Question and Answer
 - Make it quicker / easier to insert a new Question
 - Add options to ignore special characters like question marks but also language specific letters
+- Add sound when question is submitted
+- When receiving a 100% score, 0% is displayed in the UI
+- Audio URL is hardcoded
 
 Ideas:
 -   Create a space for language teachers that allows them to create a group and assign homework to each of their students.
@@ -10,6 +13,7 @@ Ideas:
     Teacher will also be able to set their quizzes as private.
 -   Students that pay a small fee (i.e. 10 USD per year) get the following benifits:
         o No Advertisements
+        o Review mistakes after completing quiz
         o Option to play an AI generated audio clip of the word
         o Progress Tracking / Achievements
 

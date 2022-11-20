@@ -24,7 +24,7 @@ const ViewerControlButtons = forwardRef((props, ref) => {
       ) : (
         <button
           onClick={onClickSubmit}
-          className={`${props.updateResultStatus.isLoading ? 'bg-gray-300 cursor-not-allowed ' : 'bg-blue-600 hover:bg-blue-700'} inline-flex items-center sm:px-6 px-3 sm:py-3 py-2 my-2 sm:text-xl sm:font-medium text-white  border border-transparent rounded-md shadow-sm  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+          className={`${props.updateResultStatus.isLoading ? 'cursor-not-allowed' : 'hover:bg-blue-700'} bg-blue-600 inline-flex items-center sm:px-6 px-3 sm:py-3 py-2 my-2 sm:text-xl sm:font-medium text-white  border border-transparent rounded-md shadow-sm  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
         >
           {props.updateResultStatus.isLoading && (
             <div className="w-4 h-4 border-b-2 border-white rounded-full animate-spin mr-3"></div>

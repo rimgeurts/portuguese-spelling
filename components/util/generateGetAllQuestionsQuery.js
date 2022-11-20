@@ -10,6 +10,7 @@ export function generateGetAllQuestionsQuery(quizId, pageNumber) {
           },
         },
       },
+      sort: ['id'],
       populate: {
         answers: true,
         quiz: true,

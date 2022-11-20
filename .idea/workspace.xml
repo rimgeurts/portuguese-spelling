@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/components/ui/ConfirmationModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/correctAnswer.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/wrongAnswer.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/DeleteQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/DeleteQuizButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/DeleteQuizConfirmationModal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Issue List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Issue List.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/util/generateGetAllQuestionsQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/util/generateGetAllQuestionsQuery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/viewer/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/SpellingTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerControlButtons.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,9 +66,9 @@
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\redux\slices" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\public" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\" />
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\public" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\ui" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components" />
     </key>
@@ -171,7 +169,7 @@
       <workItem from="1668771731367" duration="27030000" />
       <workItem from="1668850571033" duration="4887000" />
       <workItem from="1668864840431" duration="10244000" />
-      <workItem from="1668936445218" duration="14723000" />
+      <workItem from="1668936445218" duration="20609000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>

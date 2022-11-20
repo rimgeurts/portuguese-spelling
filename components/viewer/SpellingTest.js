@@ -20,6 +20,7 @@ import useOnClickOutside from "../hooks/useClickOutside";
 import ConfirmationModal from "../ui/ConfirmationModal";
 
 function SpellingTest() {
+  const [audio, setAudio] =  useState(null);
   const nextButtonRef = useRef();
   const quizViewerRef = useRef();
   const router = useRouter();
@@ -77,8 +78,19 @@ function SpellingTest() {
     };
     await updateResults(payload);
     setSubmittedAnswer(data.answerInput);
+
+    // TODO: 'Add Audio support when clicking submit'
+
+    // audio.currentTime = 0;
+    // audio.loop = false;
+    // audio.play();
     nextButtonRef.current.focus();
   };
+
+  // TODO: 'Add Audio support when clicking submit'
+  useEffect(() => {
+ //   setAudio(new Audio('https://protected-plateau-64458.herokuapp.com/uploads/correct_Answer_b037db8b71.mp3'));
+  }, [])
 
   useEffect(() => {
     console.log({ updateResultStatus });
