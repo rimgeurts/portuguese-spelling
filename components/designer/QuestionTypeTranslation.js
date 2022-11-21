@@ -80,8 +80,7 @@ export default function QuestionTypeTranslation() {
 
   return (
     <div className={"flex flex-col gap-4"}>
-      <div className={"flex items-center justify-between"}>
-        value: {inputQuestion}
+      <div className={"flex items-center justify-end"}>
         <AddNewQuestionButton />
       </div>
       <Fragment key={question?.id}>
@@ -90,7 +89,7 @@ export default function QuestionTypeTranslation() {
             htmlFor="comment"
             className="block text-sm font-medium text-gray-700"
           >
-            Question id:{question?.id}
+            Question id: {question?.id}
           </label>
           <div className="mt-1">
             <textarea
@@ -122,7 +121,7 @@ export default function QuestionTypeTranslation() {
                 htmlFor="comment"
                 className="block text-sm font-medium text-gray-700"
               >
-                Answer id:{answer.id}
+                Answer id: {answer.id}
               </label>
               <div className="mt-1 flex items-center gap-2">
                 <textarea
