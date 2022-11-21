@@ -10,9 +10,9 @@ import {
   useDeleteAnswerMutation,
   useDeleteQuestionMutation,
   useGetQuizByIdQuery,
-} from "../redux/apis/strapi";
+} from "../../redux/apis/strapi";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUI, updateUIState } from "../redux/slices/uiSlice";
+import { selectUI, updateUIState } from "../../redux/slices/uiSlice";
 
 function AddNewQuestionButton(props) {
   const dispatch = useDispatch();

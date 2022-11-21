@@ -1,11 +1,11 @@
 import React from "react";
-import QuestionTypes from "../../components/QuestionTypes";
-import QuestionContentWrapper from "../../components/QuestionContentWrapper";
+import QuestionTypes from "../../components/designer/QuestionTypes";
+import QuestionContentWrapper from "../../components/designer/QuestionContentWrapper";
 import { Divider } from "../../components/ui/Divider";
-import { QuizSettings } from "../../components/QuizSettings";
-import { Title } from "../../components/Title";
-import { SubTitle } from "../../components/SubTitle";
-import { FormControlButtons } from "../../components/FormControlButtons";
+import { QuizSettings } from "../../components/designer/QuizSettings";
+import { Title } from "../../components/designer/Title";
+import { SubTitle } from "../../components/designer/SubTitle";
+import { FormControlButtons } from "../../components/designer/FormControlButtons";
 import {
   useGetQuizByIdQuery,
   useUpdateAnswerMutation,
@@ -14,8 +14,8 @@ import {
 } from "../../redux/apis/strapi";
 import { useSelector } from "react-redux";
 import { selectUI } from "../../redux/slices/uiSlice";
-import { CloseQuizButton } from "../../components/CloseQuizButton";
-import AddNewQuestionButton from "../../components/AddNewQuestionButton";
+import { CloseQuizButton } from "../../components/designer/CloseQuizButton";
+import AddNewQuestionButtonPlusIcon from "../../components/designer/AddNewQuestionButtonPlusIcon";
 import {
   useForm,
   FormProvider,

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { PlayCircleIcon } from "@heroicons/react/20/solid";
 import { PlusCircleIcon, PlusIcon } from "@heroicons/react/24/outline";
-import {
-  useAddBlankQuestionMutation,
-  useGetQuizByIdQuery,
-} from "../redux/apis/strapi";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUI, updateUIState } from "../redux/slices/uiSlice";
 
-function AddNewQuestionButton(props) {
+import {useDispatch, useSelector} from "react-redux";
+import {selectUI, updateUIState} from "../../../redux/slices/uiSlice";
+import {useAddBlankQuestionMutation, useGetQuizByIdQuery} from "../../../redux/apis/strapi";
+
+export default function useAddNewQuestion() {
   const dispatch = useDispatch();
   const [addNewQuestion, setAddNewQuestion] = useState(false);
   const [response, setResponse] = useState(null);
@@ -48,16 +46,6 @@ function AddNewQuestionButton(props) {
     console.log({ response });
   };
 
-  return (
-      <button
-          onClick={handleClick}
-          type="button"
-          className={`bg-white hover:bg-gray-50 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 relative -ml-px inline-flex items-center border border-gray-300 px-4 py-4 text-sm font-medium text-gray-500`}
-      >
-        <span className="sr-only">Add New Question</span>
-        <PlusIcon className="h-5 w-5" aria-hidden="true" />
-      </button>
-  );
+  return { handleClick };
 }
 
-export default AddNewQuestionButton;

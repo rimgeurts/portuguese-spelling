@@ -11,14 +11,15 @@ import {
   updateActiveAnswerIndex,
   updateHasActiveQuestionChanged,
   updateUIState,
-} from "../redux/slices/uiSlice";
+} from "../../redux/slices/uiSlice";
 import {
   useGetQuizByIdQuery,
   useUpdateAnswerMutation,
   useUpdateQuestionMutation,
   useUpdateQuizMutation,
-} from "../redux/apis/strapi";
-import useOnClickOutside from "./hooks/useClickOutside";
+} from "../../redux/apis/strapi";
+import useOnClickOutside from "../hooks/useClickOutside";
+import AddNewQuestionButton from "./AddNewQuestionButton";
 
 export default function QuestionTypeTranslation() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export default function QuestionTypeTranslation() {
     register,
     setValue,
     control,
+    setFocus,
     resetField,
     formState: { dirtyFields },
   } = useFormContext();
@@ -60,8 +62,6 @@ export default function QuestionTypeTranslation() {
     control,
   });
 
-
-
   useEffect(() => {
     if (!quiz) {
       return;
@@ -75,11 +75,15 @@ export default function QuestionTypeTranslation() {
       quiz.attributes.questions.data[activeQuestionIndex].attributes.answers
         .data[activeAnswerIndex].attributes.title
     );
+    setFocus("inputQuestion");
   }, [activeQuestionId]);
 
   return (
     <div className={"flex flex-col gap-4"}>
-      value: {inputQuestion}
+      <div className={"flex items-center justify-between"}>
+        value: {inputQuestion}
+        <AddNewQuestionButton />
+      </div>
       <Fragment key={question?.id}>
         <form ref={questionRef}>
           <label
@@ -92,7 +96,7 @@ export default function QuestionTypeTranslation() {
             <textarea
               {...register("inputQuestion")}
               rows={4}
-              className="block w-full rounded-md border-dashed border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+              className="focus:ring-0 block w-full rounded-md border-dashed border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             />
           </div>
         </form>
@@ -124,7 +128,7 @@ export default function QuestionTypeTranslation() {
                 <textarea
                   {...register("inputAnswer")}
                   rows={4}
-                  className="block w-full rounded-md border-dashed border-2 border-gray-300 shadow-sm focus:border-blue-500  sm:text-sm"
+                  className="focus:ring-0  block w-full rounded-md border-dashed border-2 border-gray-300 shadow-sm focus:border-blue-500  sm:text-sm"
                 />
               </div>
             </form>

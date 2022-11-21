@@ -11,7 +11,7 @@ import {
 } from "../../redux/apis/strapi";
 import Link from "next/link";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
-import { DeleteQuizButton } from "../../components/DeleteQuizButton";
+import { DeleteQuizButton } from "../../components/designer/DeleteQuizButton";
 
 function Index(props) {
   const dispatch = useDispatch();

@@ -1,13 +1,13 @@
 import { TrashIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
-import { updateSelectedQuizId } from "../redux/slices/uiSlice";
+import { updateSelectedQuizId } from "../../redux/slices/uiSlice";
 import { useDispatch } from "react-redux";
 import {
   useDeleteQuizMutation,
   useGetAllQuizzesQuery,
   useUpdateQuestionMutation,
-} from "../redux/apis/strapi";
-import ConfirmationModal from "./ui/ConfirmationModal";
+} from "../../redux/apis/strapi";
+import ConfirmationModal from "../ui/ConfirmationModal";
 
 export function DeleteQuizButton({ quiz }) {
   const dispatch = useDispatch();

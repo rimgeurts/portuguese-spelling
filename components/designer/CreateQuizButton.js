@@ -6,13 +6,13 @@ import {
   updateSelectedQuizId,
   updateQuestionId,
   updateUIState,
-} from "../redux/slices/uiSlice";
+} from "../../redux/slices/uiSlice";
 import {
   useAddAnswerMutation, useAddBlankQuestionMutation,
   useAddQuestionMutation,
   useAddQuizMutation,
   useGetQuizByIdQuery,
-} from "../redux/apis/strapi";
+} from "../../redux/apis/strapi";
 import Link from "next/link";
 
 export function CreateQuizButton() {

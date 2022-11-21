@@ -10,12 +10,12 @@ import {
   useGetQuizByIdQuery,
   useUpdateAnswerMutation,
   useUpdateQuestionMutation,
-} from "../redux/apis/strapi";
+} from "../../redux/apis/strapi";
 import {
   resetUIState,
   selectUI,
   updateHasActiveQuestionChanged,
-} from "../redux/slices/uiSlice";
+} from "../../redux/slices/uiSlice";
 import Link from "next/link";
 
 export function CloseQuizButton() {

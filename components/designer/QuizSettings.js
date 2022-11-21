@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUI, updateQuizTitle } from "../redux/slices/uiSlice";
+import { selectUI, updateQuizTitle } from "../../redux/slices/uiSlice";
 import {
   useGetQuizByIdQuery,
   useUpdateQuizMutation,
-} from "../redux/apis/strapi";
+} from "../../redux/apis/strapi";
 import {useFormContext} from "react-hook-form";
 
 export function QuizSettings() {

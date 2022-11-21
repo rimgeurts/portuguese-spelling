@@ -101,7 +101,7 @@ function SpellingTest() {
       setFocus("answerInput");
     }, 200);
     return () => clearTimeout(timer);
-    setFocus("answerInput");
+
   }, [pageNumber]);
 
   const onLoadNextQuestion = () => {

@@ -9,12 +9,12 @@ import {
   updateActiveQuestionIndex,
   updateHasActiveQuestionChanged,
   updateUIState,
-} from "../redux/slices/uiSlice";
+} from "../../redux/slices/uiSlice";
 import {
   useGetQuizByIdQuery,
   useUpdateAnswerMutation,
   useUpdateQuestionMutation,
-} from "../redux/apis/strapi";
+} from "../../redux/apis/strapi";
 import { useFormContext } from "react-hook-form";
 import {
   ChevronDoubleLeftIcon,
@@ -22,7 +22,7 @@ import {
   PlusIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
-import AddNewQuestionButton from "./AddNewQuestionButton";
+import AddNewQuestionButtonPlusIcon from "./AddNewQuestionButtonPlusIcon";
 import DeleteQuestionButton from "./DeleteQuestionButton";
 
 export function FormControlButtons() {
@@ -156,7 +156,7 @@ export function FormControlButtons() {
           <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
         </button>
         <DeleteQuestionButton />
-        <AddNewQuestionButton />
+        <AddNewQuestionButtonPlusIcon  />
         <button
           onClick={handleOnClickNext}
           type="button"
