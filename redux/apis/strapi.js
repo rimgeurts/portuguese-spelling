@@ -8,6 +8,12 @@ const queryGetQuizById = qs.stringify(
       questions: {
         populate: ["answers"],
       },
+      translate_from: {
+        populate: "*",
+      },
+      translate_to: {
+        populate: "*",
+      },
     },
   },
   {
@@ -26,6 +32,7 @@ export const pokemonApi = createApi({
     "quizListCache",
     "AllQuestionsForQuizCache",
     "resultCache",
+    "languageCache",
   ],
   endpoints: (builder) => ({
     getAllQuizzes: builder.query({
@@ -37,6 +44,16 @@ export const pokemonApi = createApi({
         return `api/quizzes/${selectedQuizId}?${queryGetQuizById}`;
       },
       transformResponse: (response, meta, arg) => {
+        // The if statement below is to populate a default value for the combobox in the "QuizSettings" component
+        if (!response.data.attributes.translate_to.data) {
+          response.data.attributes.translate_to.data = {
+            id: "xxxx",
+            attributes: {
+              title: "choose language",
+            },
+          };
+        }
+
         return {
           ...response.data,
         };
@@ -57,7 +74,7 @@ export const pokemonApi = createApi({
         method: "PUT",
         body: payload,
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "quizListCache", "AllQuestionsForQuizCache"],
     }),
     DeleteQuiz: builder.mutation({
       query: (payload) => ({
@@ -157,6 +174,20 @@ export const pokemonApi = createApi({
       },
       providesTags: ["resultCache"],
     }),
+    getAllLanguages: builder.query({
+      query: (name) => `api/languages`,
+      transformResponse(response, meta, arg) {
+        const transformedLanguages = [];
+        response.data.map((language, index) => {
+          transformedLanguages.push({
+            id: language.id,
+            name: language.attributes.title,
+          });
+        });
+        return transformedLanguages;
+      },
+      providesTags: ["languageCache"],
+    }),
   }),
 });
 
@@ -179,4 +210,5 @@ export const {
   useAddResultsMutation,
   useGetResultsByIdQuery,
   useUpdateResultsByIdMutation,
+  useGetAllLanguagesQuery,
 } = pokemonApi;

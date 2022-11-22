@@ -2,7 +2,7 @@ import React from "react";
 import QuestionTypes from "../../components/designer/QuestionTypes";
 import QuestionContentWrapper from "../../components/designer/QuestionContentWrapper";
 import { Divider } from "../../components/ui/Divider";
-import { QuizSettings } from "../../components/designer/QuizSettings";
+import { QuizTitle } from "../../components/designer/QuizTitle";
 import { Title } from "../../components/designer/Title";
 import { SubTitle } from "../../components/designer/SubTitle";
 import { FormControlButtons } from "../../components/designer/FormControlButtons";
@@ -15,14 +15,13 @@ import {
 import { useSelector } from "react-redux";
 import { selectUI } from "../../redux/slices/uiSlice";
 import { CloseQuizButton } from "../../components/designer/CloseQuizButton";
-import AddNewQuestionButtonPlusIcon from "../../components/designer/AddNewQuestionButtonPlusIcon";
 import {
   useForm,
   FormProvider,
   useFormContext,
   useWatch,
 } from "react-hook-form";
-import useOnClickOutside from "../../components/hooks/useClickOutside";
+import QuizSettings from "../../components/designer/QuizSettings";
 
 function Index(props) {
   const [updateQuestionStrapi, updateQuestionStrapiStatus] =
@@ -126,8 +125,9 @@ function Index(props) {
               </div>
               <CloseQuizButton />
             </div>
+            <QuizTitle />
             <Divider title={"Quiz Settings"} />
-            <QuizSettings />
+            <QuizSettings/>
           </div>
         </div>
         <div className={"bg-gray-50"}>

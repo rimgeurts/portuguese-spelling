@@ -19,10 +19,6 @@ function Index(props) {
 
   const [addResultsStrapi, addResultStrapiStatus] = useAddResultsMutation();
 
-  useEffect(() => {
-    console.log({ quizList });
-  }, [quizList]);
-
   const onStartQuiz = async (quizId) => {
     const payload = {
       data: {

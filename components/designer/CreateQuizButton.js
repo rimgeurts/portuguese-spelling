@@ -66,7 +66,6 @@ export function CreateQuizButton() {
     setAddNewQuestion(true);
     const response = await addNewBlankQuestion(payloadQuestion);
     setResponse(response);
-    console.log({ response });
     dispatch(
         updateSelectedQuizId({selectedQuizId: addQuizResponse.data.data.id})
     );

@@ -7,6 +7,7 @@ const initialState = {
   activeAnswerId: "",
   activeAnswerIndex: 0,
   activeQuizResultsId: "",
+  isQuizLanguageSelected: true,
 };
 
 export const uiSlice = createSlice({

@@ -7,7 +7,6 @@ const ViewerControlButtons = forwardRef((props, ref) => {
     if (props.updateResultStatus.isLoading) {
       return;
     }
-    console.log('hello')
     props.onClickSubmitButton();
   };
 

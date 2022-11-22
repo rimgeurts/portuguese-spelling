@@ -46,7 +46,6 @@ function AddNewQuestionButton(props) {
   };
 
   useEffect(() => {
-    console.log({ quiz });
     if (!isQuestionDeleted) {
       return;
     }

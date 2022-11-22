@@ -4,6 +4,10 @@ Issues:
 - Add options to ignore special characters like question marks but also language specific letters
 - Add sound when question is submitted
 - Prevent blank questions and answers being added to the quiz
+- During a test/quiz and clicking refresh page (F5) the quiz will break. It should redirect to the quizlist
+- If holding the enter key during a test the score will display -200%
+- When a quiz is exited before the end, an option to continue the quiz should appear in the quizlist
+- In the quiz viewer, make the close button easier to see
 
 Ideas:
 -   Create a space for language teachers that allows them to create a group and assign homework to each of their students.

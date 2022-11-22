@@ -43,7 +43,6 @@ export default function useAddNewQuestion() {
     setAddNewQuestion(true);
     const response = await addNewBlankQuestion(payloadQuestion);
     setResponse(response);
-    console.log({ response });
   };
 
   return { handleClick };

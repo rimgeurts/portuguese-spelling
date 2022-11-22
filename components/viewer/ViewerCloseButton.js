@@ -9,7 +9,6 @@ export function ViewerCloseButton() {
 
     const onClick = () => {
         setOpen(true)
-        console.log('closing viewer...')
     }
 
     return (

@@ -47,7 +47,6 @@ export default function Layout({ children }) {
   const onClickNavigation = (selectedNavIndex) => {
     const newNavigation = [...navigation];
     newNavigation.map((nav, navIndex) => {
-      console.log({ nav });
       if (selectedNavIndex === navIndex) {
         nav.current = true;
       }

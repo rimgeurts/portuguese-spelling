@@ -30,7 +30,6 @@ function SpellingTest() {
   const [pageNumber, setPageNumber] = useState(1);
   const [openLeaveQuizDialog, setOpenLeaveQuizDialog] = useState(false);
   const query = generateGetAllQuestionsQuery(quizId, pageNumber);
-  const specialCharacters = getSpecialCharacters();
   const { activeQuizResultsId } = useSelector(selectUI);
 
   useOnClickOutside(quizViewerRef, (e) => {
@@ -38,7 +37,6 @@ function SpellingTest() {
     if (HtmlHeader.contains(e.target)) {
       setOpenLeaveQuizDialog(true);
     }
-    console.log("sdsddsdsds", e.target);
   });
 
   const {
@@ -56,7 +54,7 @@ function SpellingTest() {
   const totalQuestions = questions?.meta.pagination.total;
   const question = questions?.data[0];
   const answer = question?.attributes.answers.data[0];
-  console.log({ questions });
+  const specialCharacters = questions?.data[0].attributes.quiz.data.attributes.translate_to.data.attributes.accentCodes.data;
 
   const {
     register,
@@ -66,6 +64,10 @@ function SpellingTest() {
     watch,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    console.log({questions})
+  }, [questions])
 
   const onSubmit = async (data) => {
     const payload = {
@@ -91,10 +93,6 @@ function SpellingTest() {
   useEffect(() => {
  //   setAudio(new Audio('https://protected-plateau-64458.herokuapp.com/uploads/correct_Answer_b037db8b71.mp3'));
   }, [])
-
-  useEffect(() => {
-    console.log({ updateResultStatus });
-  }, [updateResultStatus]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -159,7 +157,7 @@ function SpellingTest() {
               "sm:text-4xl text-2xl flex sm:gap-2 gap-1 justify-center mt-4 flex-wrap"
             }
           >
-            {specialCharacters.map(
+            {specialCharacters && specialCharacters.map(
               (specialCharacter, specialCharacterIndex) => {
                 return (
                   <div

@@ -75,7 +75,6 @@ export function FormControlButtons() {
     if (activeQuestionIndex - 1 < 0) {
       setFirstIndexWarning(true);
     }
-    console.log({ activeQuestionIndex, totalQuestions });
   }, [activeQuestionIndex, selectedQuizId, quiz]);
 
   const loadQuestion = (questionIndex) => {

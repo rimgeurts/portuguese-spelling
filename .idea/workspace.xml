@@ -2,28 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/components/designer/AddNewQuestionButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/designer/AddNewQuestionButtonPlusIcon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/designer/hooks/useAddNewQuestion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/designer/QuizTitle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/ComboBox.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Issue List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Issue List.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/AddNewQuestionButton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CloseQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CloseQuizButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CreateQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CreateQuizButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/DeleteQuestionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/DeleteQuestionButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/DeleteQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/DeleteQuizButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/FormControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/FormControlButtons.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/QuestionContentToolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuestionContentToolbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/QuestionContentWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuestionContentWrapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/QuestionTypeTranslation.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuestionTypeTranslation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/QuestionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuestionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/QuizSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuizSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SubTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/SubTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Title.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/Title.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/CloseQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CloseQuizButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/CreateQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CreateQuizButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/DeleteQuestionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/DeleteQuestionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/DeleteQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/DeleteQuizButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/FormControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/FormControlButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/QuizSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuizSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/hooks/useAddNewQuestion.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/hooks/useAddNewQuestion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/util/generateGetAllQuestionsQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/util/generateGetAllQuestionsQuery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/viewer/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/SpellingTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerControlButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/create/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/create/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/quizlist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/quizlist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/apis/strapi.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/apis/strapi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/slices/uiSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/slices/uiSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,33 +45,34 @@
   <component name="ProjectId" id="2GhzitLH5cinhcn9ozhQ6C4NIp2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "16.17.0",
-    "javascript.nodejs.core.library.typings.version": "16.18.2",
-    "last_opened_file_path": "C:/Users/Rim/WebstormProjects/quiz-frontend/components/designer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rim/WebstormProjects/quiz-frontend/components/designer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JavaScript",
-      "PLAIN_TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JavaScript&quot;,
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\designer" />
@@ -96,11 +96,8 @@
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerHeader.js" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Debug">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000">
-      <method v="2" />
-    </configuration>
-    <configuration name="scratch_21.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_21.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="scratch_23.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_23.js" working-dir="$PROJECT_DIR$">
@@ -110,6 +107,9 @@
       <method v="2" />
     </configuration>
     <configuration name="scratch_26.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_26.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch_30.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_30.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -124,19 +124,19 @@
     </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Debug" />
+      <item itemvalue="Node.js.scratch_30.js" />
       <item itemvalue="Node.js.scratch_26.js" />
       <item itemvalue="Node.js.scratch_24.js" />
       <item itemvalue="Node.js.scratch_23.js" />
-      <item itemvalue="Node.js.scratch_21.js" />
       <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.scratch_30.js" />
         <item itemvalue="Node.js.scratch_26.js" />
         <item itemvalue="Node.js.scratch_24.js" />
         <item itemvalue="Node.js.scratch_23.js" />
-        <item itemvalue="Node.js.scratch_21.js" />
       </list>
     </recent_temporary>
   </component>
@@ -186,7 +186,8 @@
       <workItem from="1668850571033" duration="4887000" />
       <workItem from="1668864840431" duration="10244000" />
       <workItem from="1668936445218" duration="21857000" />
-      <workItem from="1669020507708" duration="7043000" />
+      <workItem from="1669020507708" duration="31140000" />
+      <workItem from="1669100668651" duration="10176000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>

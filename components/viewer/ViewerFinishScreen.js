@@ -30,7 +30,6 @@ export default function ViewerFinishScreen({
   const incorrectAnswers = results?.data?.attributes.incorrectCount;
   const totalQuestions = results?.data?.attributes.totalQuestionsCount;
   const score = results?.data?.attributes.score;
-  console.log({ results, questions, incorrectAnswers });
 
   return (
     <Transition.Root show={open} as={Fragment}>

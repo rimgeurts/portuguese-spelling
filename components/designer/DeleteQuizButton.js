@@ -15,7 +15,6 @@ export function DeleteQuizButton({ quiz }) {
   const [deleteQuizStrapi, deleteQuizStrapiStatus] = useDeleteQuizMutation();
 
   const onClick = () => {
-    console.log({ quiz });
     deleteQuizStrapi({ id: quiz.id });
   };
 

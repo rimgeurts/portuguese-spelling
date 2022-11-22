@@ -14,11 +14,13 @@ import {
 import {
   resetUIState,
   selectUI,
-  updateHasActiveQuestionChanged,
+  updateHasActiveQuestionChanged, updateUIState,
 } from "../../redux/slices/uiSlice";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export function CloseQuizButton() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const [updateQuestionStrapi, updateQuestionStrapiStatus] =
     useUpdateQuestionMutation();
@@ -41,21 +43,24 @@ export function CloseQuizButton() {
   } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
   const question = quiz?.attributes.questions.data[activeQuestionIndex];
 
-  const handleClick = () => {
+  const onCloseQuiz = async () => {
+    if(quiz?.attributes.translate_to.data.id === 'xxxx') {
+      dispatch(updateUIState({isQuizLanguageSelected: false}))
+      return;
+    }
     dispatch(resetUIState());
+    await router.push("/quizlist");
   };
 
   return (
     <>
-      <Link href={"./quizlist"}>
-        <button
-          onClick={handleClick}
-          type="button"
-          className=" inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          Save & Exit
-        </button>
-      </Link>
+      <button
+        onClick={onCloseQuiz}
+        type="button"
+        className=" inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Save & Exit
+      </button>
     </>
   );
 }
