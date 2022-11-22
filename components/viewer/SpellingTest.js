@@ -20,13 +20,12 @@ import useOnClickOutside from "../hooks/useClickOutside";
 import ConfirmationModal from "../ui/ConfirmationModal";
 
 function SpellingTest() {
-  const [audio, setAudio] =  useState(null);
+  const [audio, setAudio] = useState(null);
   const nextButtonRef = useRef();
   const quizViewerRef = useRef();
   const router = useRouter();
   const quizId = router.query.id;
   const [openFinishScreen, setOpenFinishScreen] = useState(false);
-  const [submittedAnswer, setSubmittedAnswer] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [openLeaveQuizDialog, setOpenLeaveQuizDialog] = useState(false);
   const query = generateGetAllQuestionsQuery(quizId, pageNumber);
@@ -54,20 +53,25 @@ function SpellingTest() {
   const totalQuestions = questions?.meta.pagination.total;
   const question = questions?.data[0];
   const answer = question?.attributes.answers.data[0];
-  const specialCharacters = questions?.data[0].attributes.quiz.data.attributes.translate_to.data.attributes.accentCodes.data;
+  const specialCharacters =
+    questions?.data[0].attributes.quiz.data.attributes.translate_to.data
+      .attributes.accentCodes.data;
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     setFocus,
     watch,
     formState: { errors },
   } = useForm();
 
+  const answerInput = watch("answerInput");
+
   useEffect(() => {
-    console.log({questions})
-  }, [questions])
+    console.log({ questions });
+  }, [questions]);
 
   const onSubmit = async (data) => {
     const payload = {
@@ -79,7 +83,6 @@ function SpellingTest() {
       },
     };
     await updateResults(payload);
-    setSubmittedAnswer(data.answerInput);
 
     // TODO: 'Add Audio support when clicking submit'
 
@@ -91,15 +94,14 @@ function SpellingTest() {
 
   // TODO: 'Add Audio support when clicking submit'
   useEffect(() => {
- //   setAudio(new Audio('https://protected-plateau-64458.herokuapp.com/uploads/correct_Answer_b037db8b71.mp3'));
-  }, [])
+    //   setAudio(new Audio('https://protected-plateau-64458.herokuapp.com/uploads/correct_Answer_b037db8b71.mp3'));
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setFocus("answerInput");
     }, 200);
     return () => clearTimeout(timer);
-
   }, [pageNumber]);
 
   const onLoadNextQuestion = () => {
@@ -113,7 +115,8 @@ function SpellingTest() {
   };
 
   const handleAddSpecialCharacter = (specialCharacter) => {
-    setAnswer((prevAnswer) => prevAnswer.concat(specialCharacter));
+    setValue('answerInput', answerInput.concat(specialCharacter));
+    setFocus("answerInput");
   };
 
   return (
@@ -150,28 +153,31 @@ function SpellingTest() {
             onSubmit={handleSubmit(onSubmit)}
             updateResultStatus={updateResultStatus}
             register={register("answerInput")}
-            submittedAnswer={submittedAnswer}
+            submittedAnswer={answerInput}
           />
           <div
             className={
               "sm:text-4xl text-2xl flex sm:gap-2 gap-1 justify-center mt-4 flex-wrap"
             }
           >
-            {specialCharacters && specialCharacters.map(
-              (specialCharacter, specialCharacterIndex) => {
-                return (
-                  <div
-                    onClick={() => handleAddSpecialCharacter(specialCharacter)}
-                    className={
-                      "sm:w-[50px] sm:p-2 p-1 w-[30px] border-2 border-blue-500 rounded-md bg-blue-100 text-blue-500 text-center hover:bg-blue-200 cursor-pointer select-none"
-                    }
-                    key={specialCharacter}
-                  >
-                    {specialCharacter}
-                  </div>
-                );
-              }
-            )}
+            {specialCharacters &&
+              specialCharacters.map(
+                (specialCharacter, specialCharacterIndex) => {
+                  return (
+                    <div
+                      onClick={() =>
+                        handleAddSpecialCharacter(specialCharacter)
+                      }
+                      className={
+                        "sm:w-[50px] sm:p-2 p-1 w-[30px] border-2 border-blue-500 rounded-md bg-blue-100 text-blue-500 text-center hover:bg-blue-200 cursor-pointer select-none"
+                      }
+                      key={specialCharacter}
+                    >
+                      {specialCharacter}
+                    </div>
+                  );
+                }
+              )}
           </div>
           <ViewerControlButtons
             updateResultStatus={updateResultStatus}
