@@ -60,7 +60,7 @@ export default function Layout({ children }) {
   return (
     <>
       <div className="relative min-h-full bg-gradient-to-r from-sky-400 to-blue-500 w-full select-none ">
-        <div className={"absolute top-[60px] left-0 z-0 w-full  z-0"}>
+        <div className={"absolute top-[60px] left-0 z-0 w-full  z-0 "}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 320">
             <path
               fill="#f9fafb"
@@ -198,10 +198,10 @@ export default function Layout({ children }) {
         </Disclosure>
 
         <main className={"relative h-full"}>
-          <div className="mx-auto max-w-4xl h-full">
+          <div className="mx-auto max-w-4xl h-full mb-12">
             {/* Replace with your content */}
             <div className="h-full">
-              <div className="w-full h-full rounded-lg bg-gray-50 sm:mt-10 border-4 border-gray-200">
+              <div className="w-full h-full rounded-lg bg-gray-50 sm:mt-10 border-4 border-gray-200 ">
                 {children}
               </div>
             </div>

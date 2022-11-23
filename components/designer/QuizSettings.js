@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {selectUI, updateQuizTitle, updateUIState} from "../../redux/slices/uiSlice";
+import {
+  selectUI,
+  updateQuizTitle,
+  updateUIState,
+} from "../../redux/slices/uiSlice";
 import {
   useGetAllLanguagesQuery,
   useGetQuizByIdQuery,
@@ -9,6 +13,8 @@ import {
 import { useFormContext } from "react-hook-form";
 import ComboBox from "../ui/ComboBox";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import ToggleButton from "../ui/ToggleButton";
+import IgnoreSpecialCharactersButton from "./IgnoreSpecialCharactersButton";
 
 export default function QuizSettings() {
   const dispatch = useDispatch();
@@ -21,15 +27,17 @@ export default function QuizSettings() {
   } = useFormContext();
   const { selectedQuizId, quizTitle, activeQuestionId } = useSelector(selectUI);
   const [showSubmitButton, setShowSubmitButton] = useState(false);
-  const {isQuizLanguageSelected} = useSelector(selectUI)
+  const { isQuizLanguageSelected } = useSelector(selectUI);
   const [updateQuiz, updateQuizResults] = useUpdateQuizMutation();
   const {
     data: quiz,
     error,
     isLoading,
   } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
-  const selectedTranslateFromValue = quiz?.attributes?.translate_from.data?.attributes.title
-  const selectedTranslateToValue = quiz?.attributes?.translate_to.data?.attributes.title
+  const selectedTranslateFromValue =
+    quiz?.attributes?.translate_from.data?.attributes.title;
+  const selectedTranslateToValue =
+    quiz?.attributes?.translate_to.data?.attributes.title;
   const {
     data: languages,
     error: languageError,
@@ -42,13 +50,11 @@ export default function QuizSettings() {
     }
   }, [quiz]);
 
-
   const onChangeToLanguage = (selectedLanguage) => {
-
-    if(selectedLanguage.id === 'xxxx') {
+    if (selectedLanguage.id === "xxxx") {
       return;
     }
-    dispatch(updateUIState({isQuizLanguageSelected: true}))
+    dispatch(updateUIState({ isQuizLanguageSelected: true }));
     const payload = {
       id: selectedQuizId,
       data: {
@@ -58,23 +64,28 @@ export default function QuizSettings() {
     updateQuiz(payload);
   };
 
-  return selectedTranslateToValue && (
-    <div className={"grid grid-cols-2 gap-4"}>
-      <div className={"flex flex-col justify-center items-start"}>
-        <div className={"block text-sm font-medium text-gray-700"}>
-          Translate to:
+
+  return (
+    selectedTranslateToValue && (
+      <div className={"grid grid-cols-2 gap-4 items-center"}>
+        <div className={"flex flex-col justify-center items-start"}>
+          <div className={"block text-sm font-medium text-gray-700"}>
+            Translate to:
+          </div>
+          <div className={"flex items-center gap-1"}>
+            <ComboBox
+              label={""}
+              defaultValue={selectedTranslateToValue}
+              data={languages}
+              onChangeAction={onChangeToLanguage}
+              isError={!isQuizLanguageSelected}
+            />
+          </div>
         </div>
-        <div className={"flex items-center gap-1"}>
-          <ComboBox
-            label={""}
-            defaultValue={selectedTranslateToValue}
-            data={languages}
-            onChangeAction={onChangeToLanguage}
-            isError={!isQuizLanguageSelected}
-          />
+        <div>
+         <IgnoreSpecialCharactersButton/>
         </div>
       </div>
-      <div></div>
-    </div>
+    )
   );
 }

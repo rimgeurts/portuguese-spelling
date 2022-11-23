@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import QuestionTypes from "../../components/designer/QuestionTypes";
 import QuestionContentWrapper from "../../components/designer/QuestionContentWrapper";
 import { Divider } from "../../components/ui/Divider";
@@ -6,50 +6,24 @@ import { QuizTitle } from "../../components/designer/QuizTitle";
 import { Title } from "../../components/designer/Title";
 import { SubTitle } from "../../components/designer/SubTitle";
 import { FormControlButtons } from "../../components/designer/FormControlButtons";
-import {
-  useGetQuizByIdQuery,
-  useUpdateAnswerMutation,
-  useUpdateQuestionMutation,
-  useUpdateQuizMutation,
-} from "../../redux/apis/strapi";
+import { useGetQuizByIdQuery } from "../../redux/apis/strapi";
 import { useSelector } from "react-redux";
 import { selectUI } from "../../redux/slices/uiSlice";
 import { CloseQuizButton } from "../../components/designer/CloseQuizButton";
-import {
-  useForm,
-  FormProvider,
-  useFormContext,
-  useWatch,
-} from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import QuizSettings from "../../components/designer/QuizSettings";
+import useSaveQuizData from "../../components/designer/hooks/useSaveQuizData";
 
-function Index(props) {
-  const [updateQuestionStrapi, updateQuestionStrapiStatus] =
-    useUpdateQuestionMutation();
-  const [updateAnswerStrapi, updateAnswerStrapiStatus] =
-    useUpdateAnswerMutation();
-  const [updateQuiz, updateQuizResults] = useUpdateQuizMutation();
-
+export default function Index() {
   const form = useForm();
   const {
-    control,
-    reset,
+    watch,
     formState: { dirtyFields },
   } = form;
+  const watchAllInputFields = watch();
+  const { saveQuizData } = useSaveQuizData({ form });
 
-  const inputQuestion = useWatch({
-    name: "inputQuestion",
-    control,
-  });
-  const inputAnswer = useWatch({
-    name: "inputAnswer",
-    control,
-  });
 
-  const inputTitle = useWatch({
-    name: "inputTitle",
-    control,
-  });
   const {
     selectedQuizId,
     activeQuestionId,
@@ -62,72 +36,27 @@ function Index(props) {
     isLoading,
   } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
 
-  const uploadQuestionToStrapi = () => {
-    if (!dirtyFields.hasOwnProperty("inputQuestion")) {
-      return;
-    }
-    const payload = {
-      id: activeQuestionId,
-      data: {
-        title: inputQuestion,
-        quiz: [selectedQuizId],
-      },
-      cache: {
-        id: selectedQuizId,
-      },
-    };
-    updateQuestionStrapi(payload);
-  };
-
-  const uploadAnswerToStrapi = async () => {
-    if (!dirtyFields.hasOwnProperty("inputAnswer")) {
-      return;
-    }
-    const payload = {
-      id: activeAnswerId,
-      data: {
-        title: inputAnswer,
-        quiz: [selectedQuizId],
-        question: [activeQuestionId],
-      },
-    };
-    const response = await updateAnswerStrapi(payload);
-  };
-
-  const uploadTitleToStrapi = async () => {
-    if (!dirtyFields.hasOwnProperty("inputTitle")) {
-      return;
-    }
-    const payload = {
-      id: selectedQuizId,
-      data: {
-        title: inputTitle,
-      },
-    };
-    updateQuiz(payload);
-  };
-
-  const handleClick = async () => {
-    await uploadAnswerToStrapi();
-    await uploadQuestionToStrapi();
-    await uploadTitleToStrapi();
-    reset({}, { keepValues: true });
-  };
 
   return (
     <FormProvider {...form}>
-      <div className={"relative select-none"} onClick={handleClick}>
+      <div className={"relative select-none"}>
         <div className={"bg-white border-b border-gray-300"}>
           <div className={"p-4"}>
-            <div className={"flex justify-between items-center mb-2 "}>
+            <div className={"flex justify-between items-center mb-8 "}>
               <div className={"mr-8"}>
-                <Title title={quiz?.attributes?.title ? 'Edit ' + quiz.attributes.title : "Create New Quiz"} />
+                <Title
+                  title={
+                    quiz?.attributes?.title
+                      ? "Edit " + quiz.attributes.title
+                      : "Create New Quiz"
+                  }
+                />
               </div>
               <CloseQuizButton />
             </div>
             <QuizTitle />
             <Divider title={"Quiz Settings"} />
-            <QuizSettings/>
+            <QuizSettings />
           </div>
         </div>
         <div className={"bg-gray-50"}>
@@ -152,5 +81,3 @@ function Index(props) {
     </FormProvider>
   );
 }
-
-export default Index;

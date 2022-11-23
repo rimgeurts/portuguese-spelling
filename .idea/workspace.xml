@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/components/designer/IgnoreSpecialCharactersButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/designer/hooks/useSaveQuizData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/ToggleButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/viewer/AccentKeyboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Issue List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Issue List.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/AddNewQuestionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/AddNewQuestionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/FormControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/FormControlButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/QuestionTypeTranslation.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuestionTypeTranslation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/QuizSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuizSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/ConfirmationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/ConfirmationModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/viewer/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/SpellingTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/create/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/create/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +89,8 @@
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerHeader.js" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
-    <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000">
+  <component name="RunManager" selected="JavaScript Debug.Debug">
+    <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000/quizlist">
       <method v="2" />
     </configuration>
     <configuration name="scratch_23.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_23.js" working-dir="$PROJECT_DIR$">
@@ -169,7 +180,8 @@
       <workItem from="1668864840431" duration="10244000" />
       <workItem from="1668936445218" duration="21857000" />
       <workItem from="1669020507708" duration="31140000" />
-      <workItem from="1669100668651" duration="12261000" />
+      <workItem from="1669100668651" duration="36576000" />
+      <workItem from="1669192989056" duration="29818000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>

@@ -1,6 +1,6 @@
 Issues:
 - Remove empty spaces before submitting a Question and Answer
-- Add options to ignore special characters like question marks but also language specific letters
+- Add options to ignore Capital Letters special characters like question marks but also language specific letters
 - Add sound when question is submitted
 - Prevent blank questions and answers being added to the quiz
 - During a test/quiz and clicking refresh page (F5) the quiz will break. It should redirect to the quizlist
@@ -10,17 +10,20 @@ Issues:
 - Sort Quizlist table by ID
 - In the quizviewer, after the answer has been submitted it is still possible to add special characters (they should be disabled)
 - In the quizviewer a long word exceeds the limit of the input div
+- Option to add optional hint text
 
 
 Ideas:
+-   Create different difficulty levels that already display part of the word
 -   Create a space for language teachers that allows them to create a group and assign homework to each of their students.
     The teacher has the ability to see the quiz results of the students.
     Only the teachers will have to pay a small monthly subsbription. The students are free.
     Teacher will also be able to set their quizzes as private.
 -   Students that pay a small fee (i.e. 10 USD per year) get the following benifits:
         o No Advertisements
-        o Review mistakes after completing quiz
+        o Review mistakes after completing quiz (a new quiz with only the mistakes is generated)
         o Option to play an AI generated audio clip of the word
+        o Pick different difficulty levels
         o Progress Tracking / Achievements
 
 

@@ -18,6 +18,7 @@ import ViewerFinishScreen from "./ViewerFinishScreen";
 import { ViewerCloseButton } from "./ViewerCloseButton";
 import useOnClickOutside from "../hooks/useClickOutside";
 import ConfirmationModal from "../ui/ConfirmationModal";
+import AccentKeyboard from "./AccentKeyboard";
 
 function SpellingTest() {
   const [audio, setAudio] = useState(null);
@@ -69,10 +70,6 @@ function SpellingTest() {
 
   const answerInput = watch("answerInput");
 
-  useEffect(() => {
-    console.log({ questions });
-  }, [questions]);
-
   const onSubmit = async (data) => {
     const payload = {
       id: activeQuizResultsId,
@@ -89,7 +86,7 @@ function SpellingTest() {
     // audio.currentTime = 0;
     // audio.loop = false;
     // audio.play();
-    nextButtonRef.current.focus();
+    nextButtonRef.current?.focus();
   };
 
   // TODO: 'Add Audio support when clicking submit'
@@ -114,8 +111,8 @@ function SpellingTest() {
     reset();
   };
 
-  const handleAddSpecialCharacter = (specialCharacter) => {
-    setValue('answerInput', answerInput.concat(specialCharacter));
+  const handleAddAccent = (specialCharacter) => {
+    setValue("answerInput", answerInput.concat(specialCharacter));
     setFocus("answerInput");
   };
 
@@ -160,24 +157,33 @@ function SpellingTest() {
               "sm:text-4xl text-2xl flex sm:gap-2 gap-1 justify-center mt-4 flex-wrap"
             }
           >
-            {specialCharacters &&
-              specialCharacters.map(
-                (specialCharacter, specialCharacterIndex) => {
-                  return (
-                    <div
-                      onClick={() =>
-                        handleAddSpecialCharacter(specialCharacter)
-                      }
-                      className={
-                        "sm:w-[50px] sm:p-2 p-1 w-[30px] border-2 border-blue-500 rounded-md bg-blue-100 text-blue-500 text-center hover:bg-blue-200 cursor-pointer select-none"
-                      }
-                      key={specialCharacter}
-                    >
-                      {specialCharacter}
-                    </div>
-                  );
-                }
-              )}
+            {specialCharacters && (
+              // specialCharacters.map(
+              //   (specialCharacter, specialCharacterIndex) => {
+              //     return (
+              //       <div
+              //         onClick={() =>
+              //           handleAddSpecialCharacter(specialCharacter)
+              //         }
+              //         className={
+              //           "sm:w-[50px] sm:p-2 p-1 w-[30px] border-2 border-blue-500 rounded-md bg-blue-100 text-blue-500 text-center hover:bg-blue-200 cursor-pointer select-none"
+              //         }
+              //         key={specialCharacter}
+              //       >
+              //         {specialCharacter}
+              //       </div>
+              //     );
+              //   }
+              // )
+              <AccentKeyboard
+                alwaysShow={true}
+                showSubmitButton={false}
+                ref={quizViewerRef}
+                triggerElementName={"answerInput"}
+                accentList={specialCharacters}
+                action={handleAddAccent}
+              />
+            )}
           </div>
           <ViewerControlButtons
             updateResultStatus={updateResultStatus}

@@ -44,7 +44,7 @@ export default function ConfirmationModal({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6 border-4 border-gray-200">
-                <div className="sm:flex sm:items-start">
+                <div className="sm:flex sm:items-start mt-4">
                   <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-pink-100 sm:mx-0 sm:h-10 sm:w-10">
                     <ExclamationTriangleIcon
                       className="h-6 w-6 text-pink-600"
@@ -63,7 +63,7 @@ export default function ConfirmationModal({
                     </div>
                   </div>
                 </div>
-                <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse gap-4">
+                <div className="mt-5 sm:mt-8 sm:flex sm:flex-row-reverse gap-4">
                   <button
                     type="button"
                     className="inline-flex items-center justify-center sm:px-4 px-3 sm:py-2 py-2  sm:text-lg sm:font-medium text-white bg-pink-600 border border-transparent rounded-md shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"

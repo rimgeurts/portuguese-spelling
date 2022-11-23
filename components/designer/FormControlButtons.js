@@ -128,7 +128,7 @@ export function FormControlButtons() {
   };
 
   return (
-    <>
+    <div id={'form-control-buttons'}>
       <span className="isolate inline-flex rounded-md shadow-sm">
         <button
           onClick={() => loadQuestion(0)}
@@ -181,6 +181,6 @@ export function FormControlButtons() {
           <ChevronDoubleRightIcon className="h-5 w-5" aria-hidden="true" />
         </button>
       </span>
-    </>
+    </div>
   );
 }
