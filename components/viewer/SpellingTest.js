@@ -94,6 +94,22 @@ function SpellingTest() {
     //   setAudio(new Audio('https://protected-plateau-64458.herokuapp.com/uploads/correct_Answer_b037db8b71.mp3'));
   }, []);
 
+  const test = useState(true)
+  useEffect(() => {
+    const alertUser = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.returnValue = 'ddddd';
+      console.log('hello')
+
+    };
+    window.addEventListener("beforeunload", alertUser);
+    return () => {
+      window.removeEventListener("beforeunload", alertUser);
+    };
+  }, [test]);
+
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setFocus("answerInput");

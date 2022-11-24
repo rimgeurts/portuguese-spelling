@@ -60,7 +60,7 @@ export default function QuestionTypeTranslation() {
   const question = quiz?.attributes.questions.data[activeQuestionIndex];
   const answers = question?.attributes.answers.data;
   const accentCodes =
-    quiz?.attributes.translate_to.data.attributes.accentCodes.data;
+    quiz?.attributes.translate_to.data?.attributes.accentCodes?.data;
   const inputQuestion = watch("inputQuestion");
   const inputAnswer = watch("inputAnswer");
 

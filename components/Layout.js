@@ -7,7 +7,9 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import feather from "../public/feather-blue.svg";
 import { CreateQuizButton } from "./designer/CreateQuizButton";
+import Image from "next/image";
 
 const user = {
   name: "Tom Cook",
@@ -36,8 +38,7 @@ export default function Layout({ children }) {
       name: "My Quizzes",
       href: "/quizlist",
       current: false,
-    },
-    // {
+    }, // {
     //   name: "Progress",
     //   href: "/dictionary",
     //   current: false,
@@ -86,20 +87,25 @@ export default function Layout({ children }) {
         >
           {({ open }) => (
             <>
-              <div id={'quiz-viewer-header'} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div
+                id={"quiz-viewer-header"}
+                className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+              >
                 <div className="flex h-16 justify-between">
                   <div className="flex">
                     <div className="flex flex-shrink-0 items-center">
-                      <img
-                        className="block h-8 w-auto lg:hidden"
-                        src="/feather-blue.svg"
-                        alt="Your Company"
-                      />
-                      <img
-                        className="hidden h-10 w-auto lg:block"
-                        src="./feather-blue.svg"
-                        alt="Your Company"
-                      />
+                      <div className={`block h-3 w-auto lg:hidden`}>
+                        <Image
+                          className=""
+                          width={40}
+                          height={40}
+                          src={feather}
+                          alt=""
+                        />
+                      </div>
+                      <div className={"hidden h-10 w-auto lg:block"}>
+                        <Image src={feather} width={40} height={40} alt="" />
+                      </div>
                     </div>
                     <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                       {navigation.map((item, navIndex) => {

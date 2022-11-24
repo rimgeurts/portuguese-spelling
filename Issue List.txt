@@ -1,6 +1,5 @@
 Issues:
 - Remove empty spaces before submitting a Question and Answer
-- Add options to ignore Capital Letters special characters like question marks but also language specific letters
 - Add sound when question is submitted
 - Prevent blank questions and answers being added to the quiz
 - During a test/quiz and clicking refresh page (F5) the quiz will break. It should redirect to the quizlist
