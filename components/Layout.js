@@ -207,7 +207,7 @@ export default function Layout({ children }) {
           <div className="mx-auto max-w-4xl h-full mb-12 h-full ">
             {/* Replace with your content */}
             <div className="h-full">
-              <div className="w-full h-full rounded-lg backdrop-blur-xl bg-gray-50/70  shadow-2xl border-2 border-gray-300 sm:mt-10  border-gray-200  max-h-[800px]  ">
+              <div className="w-full h-full rounded-lg backdrop-blur-xl bg-gray-50/90  shadow-2xl border-2 border-gray-300 sm:mt-10  border-gray-200  ">
                 {children}
               </div>
             </div>

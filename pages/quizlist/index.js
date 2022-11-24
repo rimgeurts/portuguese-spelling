@@ -32,7 +32,7 @@ function Index(props) {
 
   if (!isLoading) {
     return (
-      <>
+      <div className={'max-h-[70vh]  overflow-y-scroll pr-2'}>
         {quizList.data.map((quiz) => {
           return (
             <Fragment key={quiz.id}>
@@ -74,7 +74,7 @@ function Index(props) {
             </Fragment>
           );
         })}
-      </>
+      </div>
     );
   }
 }
