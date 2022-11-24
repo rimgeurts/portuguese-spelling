@@ -131,9 +131,8 @@ function SpellingTest() {
     setValue("answerInput", answerInput.concat(specialCharacter));
     setFocus("answerInput");
   };
-
   return (
-    <div ref={quizViewerRef} className={"relative"}>
+    <div ref={quizViewerRef} className={"relative bg-white/80 border"}>
       <ConfirmationModal
         title={"Leave Quiz?"}
         action={() => router.push("/quizlist")}

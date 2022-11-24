@@ -37,11 +37,11 @@ function Index(props) {
           return (
             <Fragment key={quiz.id}>
               <div
-                className={`flex justify-between items-center not-last:border-b border-gray-200 py-4 px-4 select-none hover:bg-gray-100`}
+                className={`flex justify-between items-center not-last:border-b border-gray-200 py-4 px-4 select-none `}
               >
                 <div
                   className={
-                    "cursor-pointer text-lg font-medium text-gray-900 text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    "cursor-pointer text-lg font-medium text-gray-900 text-gray-500 hover:border-gray-300 hover:text-gray-700 hover:text-xl"
                   }
                 >
                   <Link href={`/quiz/${quiz.id}`}>

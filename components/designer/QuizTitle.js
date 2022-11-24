@@ -6,16 +6,21 @@ import {
   useUpdateQuizMutation,
 } from "../../redux/apis/strapi";
 import { useFormContext } from "react-hook-form";
+import useSaveQuizData from "./hooks/useSaveQuizData";
 
 export function QuizTitle() {
   const dispatch = useDispatch();
   const {
     register,
     setValue,
+    handleSubmit,
+    watch,
     control,
     resetField,
     formState: { dirtyFields },
   } = useFormContext();
+  const form = useFormContext();
+  const { saveQuizData } = useSaveQuizData({ form });
   const { selectedQuizId, quizTitle, activeQuestionId } = useSelector(selectUI);
   const [showSubmitButton, setShowSubmitButton] = useState(false);
 
@@ -33,7 +38,7 @@ export function QuizTitle() {
   }, [quiz]);
 
   return (
-    <form className={""}>
+    <form className={"mb-1"} onSubmit={handleSubmit(()=> {saveQuizData(); setShowSubmitButton(false)})}>
       <label
         htmlFor="email"
         className="block text-sm font-medium text-gray-700"
@@ -48,6 +53,14 @@ export function QuizTitle() {
           {...register("inputTitle")}
           className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
         />
+        {showSubmitButton && (
+          <button
+            type="submit"
+            className="max-h-11 inline-flex items-center rounded border border-transparent bg-blue-600 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            Submit
+          </button>
+        )}
       </div>
     </form>
   );

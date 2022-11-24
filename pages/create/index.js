@@ -23,7 +23,6 @@ export default function Index() {
   const watchAllInputFields = watch();
   const { saveQuizData } = useSaveQuizData({ form });
 
-
   const {
     selectedQuizId,
     activeQuestionId,
@@ -36,48 +35,49 @@ export default function Index() {
     isLoading,
   } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
 
-
   return (
-    <FormProvider {...form}>
-      <div className={"relative select-none"}>
-        <div className={"bg-white border-b border-gray-300"}>
-          <div className={"p-4"}>
-            <div className={"flex justify-between items-center mb-8 "}>
-              <div className={"mr-8"}>
-                <Title
-                  title={
-                    quiz?.attributes?.title
-                      ? "Edit " + quiz.attributes.title
-                      : "Create New Quiz"
-                  }
+    <div className={"h-full"}>
+      <FormProvider {...form}>
+        <div className={"relative select-none"}>
+          <div className={"bg-white border-b border-gray-300"}>
+            <div className={"p-4"}>
+              <div className={"flex justify-between items-center mb-8 "}>
+                <div className={"mr-8"}>
+                  <Title
+                    title={
+                      quiz?.attributes?.title
+                        ? "Edit " + quiz.attributes.title
+                        : "Create New Quiz"
+                    }
+                  />
+                </div>
+                <CloseQuizButton />
+              </div>
+              <QuizTitle />
+              <Divider title={"Quiz Settings"} />
+              <QuizSettings />
+            </div>
+          </div>
+          <div className={"bg-gray-50 h-[50vh]"}>
+            <div className={"p-4  h-full overflow-y-scroll"}>
+              <div className={"sm:flex items-center justify-between"}>
+                <SubTitle
+                  title={`Question ${(activeQuestionIndex + 1) | 0} / ${
+                    quiz?.attributes?.questions.data.length
+                  }`}
                 />
+                <div className={"flex justify-between items-center gap-2 py-1"}>
+                  <FormControlButtons />
+                </div>
               </div>
-              <CloseQuizButton />
+              <Divider title={"Question Type"} backgroundColor={"bg-gray-50"} />
+              <QuestionTypes />
+              <Divider backgroundColor={"bg-gray-50"} />
+              <QuestionContentWrapper />
             </div>
-            <QuizTitle />
-            <Divider title={"Quiz Settings"} />
-            <QuizSettings />
           </div>
         </div>
-        <div className={"bg-gray-50"}>
-          <div className={"p-4"}>
-            <div className={"sm:flex items-center justify-between"}>
-              <SubTitle
-                title={`Question ${(activeQuestionIndex + 1) | 0} / ${
-                  quiz?.attributes?.questions.data.length
-                }`}
-              />
-              <div className={"flex justify-between items-center gap-2 py-1"}>
-                <FormControlButtons />
-              </div>
-            </div>
-            <Divider title={"Question Type"} backgroundColor={"bg-gray-50"} />
-            <QuestionTypes />
-            <Divider backgroundColor={"bg-gray-50"} />
-            <QuestionContentWrapper />
-          </div>
-        </div>
-      </div>
-    </FormProvider>
+      </FormProvider>
+    </div>
   );
 }

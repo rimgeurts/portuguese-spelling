@@ -10,6 +10,7 @@ Issues:
 - In the quizviewer, after the answer has been submitted it is still possible to add special characters (they should be disabled)
 - In the quizviewer a long word exceeds the limit of the input div
 - Option to add optional hint text
+- When a translation language is selected in the quizdesigner, the Accent keyboard should automatically appear in the Question input.
 
 
 Ideas:

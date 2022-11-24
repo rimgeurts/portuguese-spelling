@@ -10,7 +10,7 @@ export function ViewerHeader(props) {
       }
     >
       <div
-        className={`sm:px-0 sm:py-3 px-3 py-1 rounded-md  sm:text-2xl text-lg  text-gray-400  `}
+        className={`sm:px-0 sm:py-3 px-3 py-1 rounded-md  sm:text-2xl text-lg  text-gray-800  `}
       >
         {/*Score:{" 100%"}*/}
         Question: {props.currentQuestionNo} / {props.totalQuestions}
