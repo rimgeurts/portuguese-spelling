@@ -27,12 +27,11 @@ function Index(props) {
     };
     const response = await addResultsStrapi(payload);
     dispatch(updateUIState({ activeQuizResultsId: response?.data.data.id }));
-
   };
 
   if (!isLoading) {
     return (
-      <div className={'max-h-[70vh]  overflow-y-scroll pr-2'}>
+      <div className={"max-h-[70vh]  overflow-y-scroll pr-2"}>
         {quizList.data.map((quiz) => {
           return (
             <Fragment key={quiz.id}>
@@ -51,7 +50,7 @@ function Index(props) {
                   </Link>
                 </div>
                 <div className={"flex gap-4 items-center"}>
-                  <Link href={`/create/`} >
+                  <Link href={`/create/`}>
                     <button
                       onClick={() => {
                         dispatch(
@@ -59,10 +58,10 @@ function Index(props) {
                         );
                       }}
                       type="submit"
-                      className="inline-flex items-center justify-center sm:px-4 px-3 sm:py-2 py-2  sm:text-lg sm:font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      className=" inline-flex items-center rounded-md border border-transparent bg-blue-600 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
                       <PencilSquareIcon
-                        className="block h-6 w-6 mr-2"
+                        className="block h-4 w-4 mr-1"
                         aria-hidden="true"
                       />
                       <div className={""}>Edit</div>

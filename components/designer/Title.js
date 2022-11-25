@@ -7,7 +7,7 @@ export function Title({ title }) {
 
       <div
         className={
-          "text-2xl text-gray-900 font-semibold flex justify-center rounded-md"
+          "text-2xl text-gray-800  flex justify-center rounded-md"
         }
       >
         {title}

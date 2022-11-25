@@ -23,6 +23,7 @@ export default function QuizSettings() {
     setValue,
     control,
     resetField,
+    setFocus,
     formState: { dirtyFields },
   } = useFormContext();
   const { selectedQuizId, quizTitle, activeQuestionId } = useSelector(selectUI);
@@ -62,8 +63,9 @@ export default function QuizSettings() {
       },
     };
     updateQuiz(payload);
-  };
+    setFocus("inputQuestion")
 
+  };
 
   return (
     selectedTranslateToValue && (
@@ -83,7 +85,7 @@ export default function QuizSettings() {
           </div>
         </div>
         <div>
-         <IgnoreSpecialCharactersButton/>
+          <IgnoreSpecialCharactersButton />
         </div>
       </div>
     )

@@ -34,9 +34,9 @@ export function DeleteQuizButton({ quiz }) {
       <button
         onClick={() => setOpen(true)}
         type="submit"
-        className="inline-flex items-center justify-center sm:px-4 px-3 sm:py-2 py-2  sm:text-lg sm:font-medium text-white bg-pink-600 border border-transparent rounded-md shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+        className=" inline-flex items-center rounded-md border border-transparent bg-pink-600 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
       >
-        <TrashIcon className="block h-6 w-6 mr-2" aria-hidden="true" />
+        <TrashIcon className="block h-4 w-4 mr-1" aria-hidden="true" />
         <div className={""}>Delete</div>
       </button>
     </>

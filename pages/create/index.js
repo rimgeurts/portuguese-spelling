@@ -59,7 +59,7 @@ export default function Index() {
             </div>
           </div>
           <div className={"bg-gray-50 h-[50vh]"}>
-            <div className={"p-4  h-full overflow-y-scroll"}>
+            <div className={"p-6  h-full overflow-y-scroll"}>
               <div className={"sm:flex items-center justify-between"}>
                 <SubTitle
                   title={`Question ${(activeQuestionIndex + 1) | 0} / ${
