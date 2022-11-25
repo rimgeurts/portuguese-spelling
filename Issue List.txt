@@ -6,10 +6,10 @@ Issues:
 - If holding the enter key during a test the score will display -200%
 - When a quiz is exited before the end, an option to continue the quiz should appear in the quizlist
 - In the quiz viewer, make the close button easier to see
-- Sort Quizlist table by ID
 - In the quizviewer, after the answer has been submitted it is still possible to add special characters (they should be disabled)
 - In the quizviewer a long word exceeds the limit of the input div
 - Option to add optional hint text
+
 
 
 Ideas:

@@ -40,7 +40,7 @@ function Index(props) {
       <div className={""}>
         <div
           className={
-            "px-4 py-4 rounded-t-md mb-2 text-xl text-gray-800 flex items-center justify-start border-b-2 border-gray-200"
+            "px-4 py-4 rounded-t-md mb-2 text-xl text-gray-800 flex items-center justify-start  border-gray-200"
           }
         >
           <div className={'w-full'}>
@@ -60,7 +60,7 @@ function Index(props) {
                 name="search"
                 value={search}
                 onChange={(e)=>{setSearch(e.target.value)}}
-                className="block w-full rounded-md border border-gray-300 bg-white py-4 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-blue-500 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm"
+                className="block w-full rounded-md border border-gray-100 bg-white/80 py-4 pl-10 pr-3 text-sm placeholder-gray-500 focus:border-blue-500 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm"
                 placeholder="Search"
                 type="search"
               />
