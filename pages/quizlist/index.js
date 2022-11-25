@@ -19,7 +19,7 @@ import {generateGetAllQuizzesQuery} from "../../components/util/generateGetAllQu
 
 function Index(props) {
   const dispatch = useDispatch();
-  const [search, setSearch] = useState('en')
+  const [search, setSearch] = useState('')
   const query = generateGetAllQuizzesQuery(search)
   const { data: quizList, error, isLoading } = useGetAllQuizzesQuery({query});
 
