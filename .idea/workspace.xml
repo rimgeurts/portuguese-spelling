@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/login/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Issue List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Issue List.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/hello.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/quizlist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/quizlist/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,11 +76,8 @@
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerHeader.js" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Node.js.scratch_32.js">
     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000/quizlist">
-      <method v="2" />
-    </configuration>
-    <configuration name="scratch_23.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_23.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="scratch_24.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_24.js" working-dir="$PROJECT_DIR$">
@@ -98,6 +87,9 @@
       <method v="2" />
     </configuration>
     <configuration name="scratch_30.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_30.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch_32.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_32.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -112,19 +104,19 @@
     </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Debug" />
+      <item itemvalue="Node.js.scratch_32.js" />
       <item itemvalue="Node.js.scratch_30.js" />
       <item itemvalue="Node.js.scratch_26.js" />
       <item itemvalue="Node.js.scratch_24.js" />
-      <item itemvalue="Node.js.scratch_23.js" />
       <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.scratch_32.js" />
         <item itemvalue="npm.dev" />
         <item itemvalue="Node.js.scratch_30.js" />
         <item itemvalue="Node.js.scratch_26.js" />
         <item itemvalue="Node.js.scratch_24.js" />
-        <item itemvalue="Node.js.scratch_23.js" />
       </list>
     </recent_temporary>
   </component>
@@ -178,7 +170,7 @@
       <workItem from="1669100668651" duration="36576000" />
       <workItem from="1669192989056" duration="30438000" />
       <workItem from="1669274276488" duration="20795000" />
-      <workItem from="1669361131532" duration="15105000" />
+      <workItem from="1669361131532" duration="20189000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>

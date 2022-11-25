@@ -56,12 +56,12 @@ const options = {
 
       if (obj.account?.provider === "google") {
         if (isSignIn) {
-          console.log("HELLO", obj);
           const response = await fetch(
             `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
           );
 
           const data = await response.json();
+          console.log('DEBUG: Response data', {data})
 
           token.jwt = data.jwt;
           token.id = data.user.id;
