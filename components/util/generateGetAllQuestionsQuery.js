@@ -14,14 +14,42 @@ export function generateGetAllQuestionsQuery(quizId, pageNumber) {
       populate: {
         answers: true,
         quiz: {
-            populate: {
-                translate_to: true
-            },
+          populate: {
+            translate_to: true,
+          },
         },
       },
       pagination: {
         page: pageNumber,
         pageSize: 1,
+      },
+    },
+    {
+      encodeValuesOnly: true, // prettify URL
+    }
+  );
+}
+
+export function generateGetAllQuizzesQuery(title, pageNumber) {
+  return qs.stringify(
+    {
+      filters: {
+        title: {
+          $containsi: title,
+        },
+      },
+      sort: ["id"],
+      populate: {
+        answers: true,
+        quiz: {
+          populate: {
+            translate_to: true,
+          },
+        },
+      },
+      pagination: {
+        page: pageNumber | 1,
+        pageSize: 50,
       },
     },
     {

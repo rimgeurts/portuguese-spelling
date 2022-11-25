@@ -36,7 +36,7 @@ export const pokemonApi = createApi({
   ],
   endpoints: (builder) => ({
     getAllQuizzes: builder.query({
-      query: (name) => `api/quizzes`,
+      query: (payload) => `api/quizzes?${payload?.query ? payload.query : ''}`,
       providesTags: ["quizListCache"],
     }),
     getQuizById: builder.query({

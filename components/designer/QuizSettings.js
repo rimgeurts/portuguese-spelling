@@ -52,6 +52,7 @@ export default function QuizSettings() {
   }, [quiz]);
 
   const onChangeToLanguage = (selectedLanguage) => {
+    setFocus("inputQuestion")
     if (selectedLanguage.id === "xxxx") {
       return;
     }
@@ -63,7 +64,6 @@ export default function QuizSettings() {
       },
     };
     updateQuiz(payload);
-    setFocus("inputQuestion")
 
   };
 
