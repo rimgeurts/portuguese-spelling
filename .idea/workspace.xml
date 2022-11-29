@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/LayoutAuthentication.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/dashboard/LinkSharingOptions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/dashboard/ManageGroupAccess.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/dashboard/QuizLink.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/dashboard/ShareQuizModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/LoadingSpinner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Issue List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Issue List.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/designer/CloseQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CloseQuizButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/designer/CreateQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CreateQuizButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/designer/FormControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/FormControlButtons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/designer/IgnoreSpecialCharactersButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/IgnoreSpecialCharactersButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/designer/QuestionTypeTranslation.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuestionTypeTranslation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/designer/QuizSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuizSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/designer/QuizTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuizTitle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/viewer/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/SpellingTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/create/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/create/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/quizlist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myquizzes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/apis/strapi.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/apis/strapi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/slices/uiSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/slices/uiSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +192,7 @@
       <workItem from="1669557239740" duration="14137000" />
       <workItem from="1669621811753" duration="7660000" />
       <workItem from="1669648351624" duration="18439000" />
-      <workItem from="1669707764823" duration="12307000" />
+      <workItem from="1669707764823" duration="12945000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>
