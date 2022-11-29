@@ -1,7 +1,7 @@
+import axios from "axios";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import axios from "axios";
 
 const options = {
   debug: true,
@@ -32,8 +32,6 @@ const options = {
             return null;
           }
         } catch (e) {
-          console.log("error", e);
-          // console.log('caught error');
           // const errorMessage = e.response.data.message
           // Redirecting to the login page with error message          in the URL
           // throw new Error(errorMessage + '&email=' + credentials.email)
@@ -61,7 +59,6 @@ const options = {
           );
 
           const data = await response.json();
-          console.log('DEBUG: Response data', {data})
 
           token.jwt = data.jwt;
           token.id = data.user.id;
@@ -87,4 +84,6 @@ const options = {
   },
 };
 
-export default (req, res) => NextAuth(req, res, options);
+export default (req, res) => {
+  return NextAuth(req, res, options);
+};

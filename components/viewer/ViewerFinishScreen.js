@@ -90,7 +90,7 @@ export default function ViewerFinishScreen({
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6">
-                  <Link href={"/quizlist"}>
+                  <Link href={"/myquizzes"}>
                     <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-2xl"

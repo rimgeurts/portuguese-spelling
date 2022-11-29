@@ -24,7 +24,6 @@ function IgnoreSpecialCharactersButton(props) {
   }, []);
 
   useEffect(() => {
-    console.log(enabled);
     const payload = {
       id: selectedQuizId,
       data: {

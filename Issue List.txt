@@ -8,7 +8,8 @@ Issues:
 - In the quiz viewer, make the close button easier to see
 - In the quizviewer, after the answer has been submitted it is still possible to add special characters (they should be disabled)
 - In the quizviewer a long word exceeds the limit of the input div
-- Option to add optional hint text
+- Option to add hint text to question
+- Automatically submit when clicking outside question / answer / title inputs
 
 
 

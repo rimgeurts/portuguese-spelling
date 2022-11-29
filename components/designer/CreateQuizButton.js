@@ -14,16 +14,19 @@ import {
   useGetQuizByIdQuery,
 } from "../../redux/apis/strapi";
 import Link from "next/link";
+import {useSession} from "next-auth/react";
 
 export function CreateQuizButton() {
+  const { data: session, status } = useSession();
   const { selectedQuizId, quizTitle } = useSelector(selectUI);
-  const [addNewQuiz, addNewQuizResponse] = useAddQuizMutation();
+  const [addNewQuiz, addNewQuizStatus] = useAddQuizMutation();
   const [addNewQuestion, setAddNewQuestion] = useState(false);
   const [newQuizId, setNewQuizId] = useState(null);
   const [response, setResponse] = useState(null);
-  const [addNewBlankQuestion, addNewBlankQuestionResponse] =
+  const [addNewBlankQuestion, addNewBlankQuestionStatus] =
       useAddBlankQuestionMutation();
   const dispatch = useDispatch();
+
   const { data: quiz } = useGetQuizByIdQuery(
       { selectedQuizId },
       { skip: !selectedQuizId }
@@ -45,6 +48,9 @@ export function CreateQuizButton() {
   }, [quiz]);
 
   const handleCreateNewQuiz = async () => {
+    if(!session) {
+      return;
+    }
     const addQuizResponse = await addNewQuiz({ data: {} });
     // const addQuestionResponse = await addNewQuestion({
     //   data: {
@@ -58,16 +64,17 @@ export function CreateQuizButton() {
     //   },
     // });
 
+
     const payloadQuestion = {
       data: {
-        quizId: addQuizResponse.data.data.id,
+        quizId: addQuizResponse.data.id,
       },
     };
     setAddNewQuestion(true);
     const response = await addNewBlankQuestion(payloadQuestion);
     setResponse(response);
     dispatch(
-        updateSelectedQuizId({selectedQuizId: addQuizResponse.data.data.id})
+        updateSelectedQuizId({selectedQuizId: addQuizResponse.data.id})
     );
     // dispatch(updateQuestionId({questionId: addQuestionResponse.data.data.id}))
   };

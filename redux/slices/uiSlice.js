@@ -1,6 +1,8 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
+  user: "",
+  token: "",
   selectedQuizId: "",
   activeQuestionId: "",
   activeQuestionIndex: 0,
@@ -14,6 +16,10 @@ export const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
+    setCredentials: (state, { payload: { user, token } }) => {
+      state.user = user;
+      state.token = token;
+    },
     updateSelectedQuizId: (state, action) => {
       state.selectedQuizId = action.payload.selectedQuizId;
     },
@@ -55,7 +61,7 @@ export const uiSlice = createSlice({
       const stateKeysArray = Object.keys(initialState);
       stateKeysArray.map((stateKey, index) => {
         state[stateKey] = initialState[stateKey];
-      })
+      });
     },
   },
 });
@@ -75,6 +81,7 @@ export const {
   updateHasActiveQuestionChanged,
   updateUIState,
   resetUIState,
+  setCredentials,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;

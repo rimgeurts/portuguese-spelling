@@ -49,6 +49,7 @@ export function FormControlButtons() {
     error,
     isLoading,
   } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
+
   const question = quiz?.attributes.questions.data[activeQuestionIndex];
   const totalQuestions = quiz?.attributes.questions.data.length - 1;
   const answers = question?.attributes.answers.data;

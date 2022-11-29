@@ -100,8 +100,6 @@ function SpellingTest() {
       e.preventDefault();
       e.stopPropagation();
       e.returnValue = 'ddddd';
-      console.log('hello')
-
     };
     window.addEventListener("beforeunload", alertUser);
     return () => {
@@ -135,7 +133,7 @@ function SpellingTest() {
     <div ref={quizViewerRef} className={"relative bg-white/80 border"}>
       <ConfirmationModal
         title={"Leave Quiz?"}
-        action={() => router.push("/quizlist")}
+        action={() => router.push("/myquizzes")}
         open={openLeaveQuizDialog}
         setOpen={setOpenLeaveQuizDialog}
         confirmationButtonName={"Leave"}

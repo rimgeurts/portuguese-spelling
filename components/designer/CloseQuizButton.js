@@ -49,7 +49,7 @@ export function CloseQuizButton() {
       return;
     }
     dispatch(resetUIState());
-    await router.push("/quizlist");
+    await router.push("/myquizzes");
   };
 
   return (

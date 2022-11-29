@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 
-import { getSession, signIn, signOut } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Login() {
   const router = useRouter();
+
   const [authResult, setAuthResult] = useState(null);
 
   const {
@@ -21,23 +22,21 @@ export default function Login() {
       email,
       password,
     });
-    console.log({ loginResults });
     setAuthResult(loginResults);
-    // if (loginResults.ok) {
-    //   router.push(`/${router.query.origin}`);
-    // }
+    if (loginResults.ok) {
+      await router.push(`/${router.query.origin}`);
+    }
   };
 
   const onSignInWithGoogle = async (e) => {
     e.preventDefault();
-    const result = signIn("google", {
+    const result = await signIn("google", {
       redirect: false,
-      callbackUrl: "/quizlist",
+      callbackUrl: "/myquizzes",
     });
-    console.log("login result: ", await result);
-    // if (result.ok) {
-    //   router.push(`/${router.query.origin}`);
-    // }
+    if (result?.ok) {
+      await router.push(`/${router.query.origin}`);
+    }
   };
 
   return (
@@ -46,7 +45,7 @@ export default function Login() {
         <div className="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="w-full max-w-sm mx-auto lg:w-96">
             <div>
-              <h2 className="text-3xl font-extrabold text-gray-900 ">
+              <h2 className="text-3xl font-extrabold text-gray-800 ">
                 Sign in to your account
               </h2>
               <p className="mt-2 text-sm text-gray-600">

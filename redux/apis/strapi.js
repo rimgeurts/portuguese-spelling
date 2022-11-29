@@ -1,5 +1,6 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { useSession } from "next-auth/react"
 import qs from "qs";
 
 const queryGetQuizById = qs.stringify(
@@ -26,18 +27,29 @@ export const pokemonApi = createApi({
   reducerPath: "pokemonApi",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_STRAPI_BASE_URL,
+    prepareHeaders: (headers, { getState }) => {
+      // By default, if we have a token in the store, let's use that for authenticated requests
+   const state = getState();
+      const token = getState().ui.token;
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    }
   }),
   tagTypes: [
     "questionCache",
-    "quizListCache",
+    "myQuizListCache",
     "AllQuestionsForQuizCache",
     "resultCache",
     "languageCache",
   ],
   endpoints: (builder) => ({
     getAllQuizzes: builder.query({
-      query: (payload) => `api/quizzes?${payload?.query ? payload.query : ''}`,
-      providesTags: ["quizListCache"],
+      query: (payload) => {
+        return `api/myquizzes?${payload?.query ? payload.query : ""}`;
+      },
+      providesTags: ["myQuizListCache"],
     }),
     getQuizById: builder.query({
       query: ({ selectedQuizId }) => {
@@ -66,7 +78,7 @@ export const pokemonApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "myQuizListCache"],
     }),
     UpdateQuiz: builder.mutation({
       query: (payload) => ({
@@ -74,14 +86,18 @@ export const pokemonApi = createApi({
         method: "PUT",
         body: payload,
       }),
-      invalidatesTags: ["questionCache", "quizListCache", "AllQuestionsForQuizCache"],
+      invalidatesTags: [
+        "questionCache",
+        "myQuizListCache",
+        "AllQuestionsForQuizCache",
+      ],
     }),
     DeleteQuiz: builder.mutation({
       query: (payload) => ({
         url: `api/quizzes/${payload.id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "myQuizListCache"],
     }),
     AddQuestion: builder.mutation({
       query: (body) => ({
@@ -89,7 +105,7 @@ export const pokemonApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "myQuizListCache"],
     }),
     GetAllQuestionsForQuiz: builder.query({
       query: (payload) => ({
@@ -107,7 +123,7 @@ export const pokemonApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "myQuizListCache"],
     }),
     AddAnswer: builder.mutation({
       query: (body) => ({
@@ -115,7 +131,7 @@ export const pokemonApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "myQuizListCache"],
     }),
     UpdateQuestion: builder.mutation({
       query: (body) => ({
@@ -123,7 +139,7 @@ export const pokemonApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "myQuizListCache"],
     }),
     DeleteQuestion: builder.mutation({
       query: (body) => ({
@@ -131,7 +147,7 @@ export const pokemonApi = createApi({
         method: "DELETE",
         body,
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "myQuizListCache"],
     }),
     DeleteAnswer: builder.mutation({
       query: (body) => ({
@@ -139,7 +155,7 @@ export const pokemonApi = createApi({
         method: "DELETE",
         body,
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "myQuizListCache"],
     }),
     UpdateAnswer: builder.mutation({
       query: (body) => ({
@@ -147,7 +163,7 @@ export const pokemonApi = createApi({
         method: "PUT",
         body,
       }),
-      invalidatesTags: ["questionCache", "quizListCache"],
+      invalidatesTags: ["questionCache", "myQuizListCache"],
     }),
     AddResults: builder.mutation({
       query: (body) => ({

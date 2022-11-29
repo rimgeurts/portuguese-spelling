@@ -2,7 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/LayoutAuthentication.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/LinkSharingOptions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/ManageGroupAccess.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/QuizLink.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/ShareQuizModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/LoadingSpinner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Issue List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Issue List.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/CloseQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CloseQuizButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/CreateQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CreateQuizButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/FormControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/FormControlButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/IgnoreSpecialCharactersButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/IgnoreSpecialCharactersButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/QuestionTypeTranslation.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuestionTypeTranslation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/QuizSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuizSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/QuizTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuizTitle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/SpellingTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/create/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/create/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/quizlist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myquizzes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/apis/strapi.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/apis/strapi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/slices/uiSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/slices/uiSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,11 +45,20 @@
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2GhzitLH5cinhcn9ozhQ6C4NIp2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -35,14 +73,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "code.cleanup.on.save": "true",
     "javascript.nodejs.core.library.configured.version": "16.17.0",
     "javascript.nodejs.core.library.typings.version": "16.18.2",
-    "last_opened_file_path": "C:/Users/Rim/WebstormProjects/quiz-frontend/pages",
+    "last_opened_file_path": "C:/Users/Rim/WebstormProjects/quiz-frontend",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "nodejs_package_manager_path": "yarn",
     "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "rearrange.code.on.save": "true",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "Console",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   },
@@ -69,18 +112,15 @@
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\dashboard\QuizLink.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerCloseButton.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerControlButtons.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerInput.js" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerResults.js" />
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\viewer\ViewerHeader.js" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.scratch_32.js">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="Debug" type="JavascriptDebugType" uri="http://localhost:3000/quizlist">
-      <method v="2" />
-    </configuration>
-    <configuration name="scratch_24.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_24.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="scratch_26.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_26.js" working-dir="$PROJECT_DIR$">
@@ -90,6 +130,9 @@
       <method v="2" />
     </configuration>
     <configuration name="scratch_32.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_32.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch_33.es6" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_33.es6" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -104,19 +147,19 @@
     </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Debug" />
+      <item itemvalue="Node.js.scratch_33.es6" />
       <item itemvalue="Node.js.scratch_32.js" />
       <item itemvalue="Node.js.scratch_30.js" />
       <item itemvalue="Node.js.scratch_26.js" />
-      <item itemvalue="Node.js.scratch_24.js" />
       <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.scratch_32.js" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.scratch_33.es6" />
+        <item itemvalue="Node.js.scratch_32.js" />
         <item itemvalue="Node.js.scratch_30.js" />
         <item itemvalue="Node.js.scratch_26.js" />
-        <item itemvalue="Node.js.scratch_24.js" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +213,15 @@
       <workItem from="1669100668651" duration="36576000" />
       <workItem from="1669192989056" duration="30438000" />
       <workItem from="1669274276488" duration="20795000" />
-      <workItem from="1669361131532" duration="20189000" />
+      <workItem from="1669361131532" duration="22421000" />
+      <workItem from="1669454991664" duration="9579000" />
+      <workItem from="1669535666729" duration="5754000" />
+      <workItem from="1669557171239" duration="19000" />
+      <workItem from="1669557202142" duration="20000" />
+      <workItem from="1669557239740" duration="14137000" />
+      <workItem from="1669621811753" duration="7660000" />
+      <workItem from="1669648351624" duration="18439000" />
+      <workItem from="1669707764823" duration="12307000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>

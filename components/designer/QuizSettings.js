@@ -27,7 +27,6 @@ export default function QuizSettings() {
     formState: { dirtyFields },
   } = useFormContext();
   const { selectedQuizId, quizTitle, activeQuestionId } = useSelector(selectUI);
-  const [showSubmitButton, setShowSubmitButton] = useState(false);
   const { isQuizLanguageSelected } = useSelector(selectUI);
   const [updateQuiz, updateQuizResults] = useUpdateQuizMutation();
   const {

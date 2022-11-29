@@ -117,7 +117,11 @@ export default function QuestionTypeTranslation() {
               autoComplete={"off"}
               spellCheck={"false"}
               type="text"
-              {...register("inputQuestion")}
+              {...register("inputQuestion", {
+                onBlur: (e) => {
+                  saveQuizData();
+                },
+              })}
               className=" focus:ring-0 block w-full rounded-md border-dashed border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             />
           </div>
@@ -161,8 +165,14 @@ export default function QuestionTypeTranslation() {
               </label>
               <div className="mt-1 flex items-center gap-2">
                 <input
+                  autoComplete={"off"}
+                  spellCheck={"false"}
                   type="text"
-                  {...register("inputAnswer")}
+                  {...register("inputAnswer", {
+                    onBlur: (e) => {
+                      saveQuizData();
+                    },
+                  })}
                   className="focus:ring-0  block w-full rounded-md border-dashed border-2 border-gray-300 shadow-sm focus:border-blue-500  sm:text-sm"
                 />
               </div>

@@ -1,20 +1,22 @@
-import React, { useEffect } from "react";
-import QuestionTypes from "../../components/designer/QuestionTypes";
-import QuestionContentWrapper from "../../components/designer/QuestionContentWrapper";
-import { Divider } from "../../components/ui/Divider";
-import { QuizTitle } from "../../components/designer/QuizTitle";
-import { Title } from "../../components/designer/Title";
-import { SubTitle } from "../../components/designer/SubTitle";
-import { FormControlButtons } from "../../components/designer/FormControlButtons";
-import { useGetQuizByIdQuery } from "../../redux/apis/strapi";
+import { getSession, useSession } from "next-auth/react";
+import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { selectUI } from "../../redux/slices/uiSlice";
 import { CloseQuizButton } from "../../components/designer/CloseQuizButton";
-import { useForm, FormProvider } from "react-hook-form";
-import QuizSettings from "../../components/designer/QuizSettings";
+import { FormControlButtons } from "../../components/designer/FormControlButtons";
 import useSaveQuizData from "../../components/designer/hooks/useSaveQuizData";
+import QuestionContentWrapper from "../../components/designer/QuestionContentWrapper";
+import QuestionTypes from "../../components/designer/QuestionTypes";
+import QuizSettings from "../../components/designer/QuizSettings";
+import { QuizTitle } from "../../components/designer/QuizTitle";
+import { SubTitle } from "../../components/designer/SubTitle";
+import { Title } from "../../components/designer/Title";
+import { Divider } from "../../components/ui/Divider";
+import { useGetQuizByIdQuery } from "../../redux/apis/strapi";
+import { selectUI } from "../../redux/slices/uiSlice";
 
-export default function Index() {
+const Index = () => {
+  const { data: session, status } = useSession();
   const form = useForm();
   const {
     watch,
@@ -58,7 +60,7 @@ export default function Index() {
               <QuizSettings />
             </div>
           </div>
-          <div className={"bg-gray-50 h-[50vh]"}>
+          <div className={"bg-gray-50 h-[50vh] "}>
             <div className={"p-6  h-full overflow-y-scroll"}>
               <div className={"sm:flex items-center justify-between"}>
                 <SubTitle
@@ -80,4 +82,24 @@ export default function Index() {
       </FormProvider>
     </div>
   );
+};
+
+export async function getServerSideProps(context) {
+  const session = await getSession({ req: context.req });
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login?origin=create",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      content: "",
+    },
+  };
 }
+
+export default Index;
