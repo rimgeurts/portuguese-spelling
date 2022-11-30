@@ -10,6 +10,8 @@ Issues:
 - In the quizviewer a long word exceeds the limit of the input div
 - Option to add hint text to question
 - Automatically submit when clicking outside question / answer / title inputs
+- In the quizviewer and a user forgets to enter an accent, it should be counted as correct BUT a warning message should appear.
+- If you access a quiz via a direct URL i.e. http://localhost:3000/quiz/66, it does not work correct. No results are created in the database
 
 
 

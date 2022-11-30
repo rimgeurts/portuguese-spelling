@@ -27,9 +27,12 @@ export default function LinkSharingOptions() {
 
   return (
     <div>
+      <div className={"block text-sm font-medium text-gray-700 mt-6"}>
+        Who can access this quiz?
+      </div>
       <Listbox value={selected} onChange={setSelected}>
         {({ open }) => (
-          <div className={"flex items-center mt-2"}>
+          <div className={"flex items-center mt-3"}>
             <div
               className={
                 "mr-4 bg-blue-100 h-[50px] w-[50px] rounded-full flex items-center justify-center"
@@ -39,6 +42,7 @@ export default function LinkSharingOptions() {
                 className={"w-[30px] h-[30px] text-blue-500"}
               ></LinkIcon>
             </div>
+
             <div className="relative ">
               <Listbox.Button className="relative cursor-default rounded-md  bg-white  pr-10 text-left focus:outline-none sm:text-sm ">
                 <span className="block truncate font-semibold text-gray-700">
