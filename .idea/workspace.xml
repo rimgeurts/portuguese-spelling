@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Issue List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Issue List.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/LinkSharingOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/LinkSharingOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +194,7 @@
       <workItem from="1669621811753" duration="7660000" />
       <workItem from="1669648351624" duration="18439000" />
       <workItem from="1669707764823" duration="14812000" />
-      <workItem from="1669807435863" duration="3268000" />
+      <workItem from="1669807435863" duration="4997000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>

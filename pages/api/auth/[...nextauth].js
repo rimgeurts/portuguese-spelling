@@ -59,7 +59,11 @@ const options = {
           );
 
           const data = await response.json();
-          console.log("DEBUG: data", { data });
+          console.log(
+            "DEBUG: link: ",
+            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
+          );
+          console.log("DEBUG: data: ", { data });
 
           token.jwt = data.jwt;
           token.id = data.user.id;
