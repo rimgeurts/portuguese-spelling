@@ -1,38 +1,42 @@
+import {
+  MagnifyingGlassIcon,
+  PencilSquareIcon,
+} from "@heroicons/react/24/outline";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import ShareQuizModal from "../../components/dashboard/ShareQuizModal";
+import { DeleteQuizButton } from "../../components/designer/DeleteQuizButton";
+import LoadingSpinner from "../../components/ui/LoadingSpinner";
+import { generateGetAllQuizzesQuery } from "../../components/util/generateGetAllQuestionsQuery";
+import {
+  useAddResultsMutation,
+  useGetAllQuizzesQuery,
+} from "../../redux/apis/strapi";
 
 import {
   updateSelectedQuizId,
   updateUIState,
 } from "../../redux/slices/uiSlice";
-import {
-  useAddResultsMutation,
-  useGetAllQuizzesQuery,
-} from "../../redux/apis/strapi";
-import Link from "next/link";
-import {
-  MagnifyingGlassIcon,
-  PencilSquareIcon,
-} from "@heroicons/react/24/outline";
-import { DeleteQuizButton } from "../../components/designer/DeleteQuizButton";
-import { generateGetAllQuizzesQuery } from "../../components/util/generateGetAllQuestionsQuery";
-import { useSession } from "next-auth/react";
-import LoadingSpinner from "../../components/ui/LoadingSpinner";
-import ShareQuizModal from "../../components/dashboard/ShareQuizModal";
 
 function Index(props) {
   const { data: session, status } = useSession();
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState(generateGetAllQuizzesQuery(search))
+  const [query, setQuery] = useState(generateGetAllQuizzesQuery(search));
 
-  console.log({query})
-  const { data: quizList, error, isLoading } = useGetAllQuizzesQuery({ query }, { skip: !session });
+  console.log({ query });
+  const {
+    data: quizList,
+    error,
+    isLoading,
+  } = useGetAllQuizzesQuery({ query }, { skip: !session });
   const [addResultsStrapi, addResultStrapiStatus] = useAddResultsMutation();
 
   useEffect(() => {
-    setQuery(generateGetAllQuizzesQuery(search))
-  }, [search])
+    setQuery(generateGetAllQuizzesQuery(search));
+  }, [search]);
 
   const onStartQuiz = async (quizId) => {
     const payload = {
@@ -45,14 +49,14 @@ function Index(props) {
   };
 
   if (isLoading) {
-    return <LoadingSpinner minHeight={'h-[80vh]'} />;
+    return <LoadingSpinner minHeight={"h-[80vh]"} />;
   }
 
   return (
     <div className={"h-[80vh]"}>
       <div
         className={
-          "px-4 py-4 rounded-t-md mb-2 text-xl text-gray-800 flex items-center justify-start  border-gray-200"
+          "px-4 py-4 rounded-t-md mb-2 text-xl text-gray-800 flex items-center justify-start  border-gray-200 "
         }
       >
         <div className={"w-full"}>
@@ -60,10 +64,8 @@ function Index(props) {
             Search
           </label>
           <div className="relative">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <MagnifyingGlassIcon
-                className="h-6 w-6 text-gray-300 stroke-2 "
-              />
+            <div className="pointer-events-none absolute inset-y-0 left-2 flex items-center pl-3">
+              <MagnifyingGlassIcon className="h-6 w-6 text-gray-300 stroke-2" />
             </div>
             <input
               autoComplete={"off"}
@@ -73,7 +75,7 @@ function Index(props) {
               onChange={(e) => {
                 setSearch(e.target.value);
               }}
-              className=" block w-full rounded-xl border-1 border-gray-200 hover:border-gray-300/70 bg-gray-200/40 py-4 pl-10 pr-3 placeholder-gray-500 focus:border focus:border-blue-500 focus:text-gray-900 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="pl-[50px]  block placeholder-gray-400/80 w-full rounded-xl border-gray-100 hover:border-gray-300/70 py-4 pl-10 pr-3 placeholder-gray-500 focus:border focus:border-blue-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
               placeholder="Search"
               type="search"
             />
@@ -99,7 +101,7 @@ function Index(props) {
                   </Link>
                 </div>
                 <div className={"flex gap-[20px] items-center"}>
-                  <ShareQuizModal/>
+                  <ShareQuizModal />
                   <Link href={`/create/`}>
                     <button
                       onClick={() => {
@@ -108,7 +110,7 @@ function Index(props) {
                         );
                       }}
                       type="submit"
-                      className=" inline-flex items-center rounded-md border border-transparent bg-blue-600 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      className="inline-flex items-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
                       <PencilSquareIcon
                         className="block h-4 w-4 mr-1"

@@ -1,17 +1,11 @@
-import React, { Fragment, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  BellIcon,
-  PlusIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
+import React, { useState } from "react";
 import feather from "../public/feather-blue.svg";
 import { CreateQuizButton } from "./designer/CreateQuizButton";
-import Image from "next/image";
-import {signOut, useSession} from "next-auth/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import LayoutAuthentication from "./LayoutAuthentication";
 
 // const user = {
@@ -45,12 +39,11 @@ export default function Layout({ children }) {
       current: false,
     },
     {
-      name: "Public Quiz",
-      href: "/publicquizzes",
+      name: "My Students",
+      href: "/mystudents",
       current: false,
     },
   ]);
-
 
   const onClickNavigation = (selectedNavIndex) => {
     const newNavigation = [...navigation];
@@ -115,13 +108,13 @@ export default function Layout({ children }) {
                   <div className="hidden sm:ml-6 sm:flex sm:items-center">
                     <CreateQuizButton />
                     <button
-                        type="button"
-                        className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                      type="button"
+                      className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
                       <span className="sr-only">View notifications</span>
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
-                    <LayoutAuthentication/>
+                    <LayoutAuthentication />
                   </div>
                   <div className="-mr-2 flex items-center sm:hidden">
                     {/* Mobile menu button */}
@@ -150,7 +143,7 @@ export default function Layout({ children }) {
           <div className="mx-auto max-w-4xl h-full mb-12 h-full ">
             {/* Replace with your content */}
             <div className="h-full">
-              <div className="w-full h-full rounded-lg backdrop-blur-xl bg-gray-50/90  shadow-2xl border-2 border-gray-300 sm:mt-10  border-gray-200  ">
+              <div className="w-full h-full rounded-2xl bg-white shadow-2xl  sm:mt-10 py-2  ">
                 {children}
               </div>
             </div>

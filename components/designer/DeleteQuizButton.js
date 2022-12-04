@@ -1,12 +1,6 @@
-import { TrashIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
-import { updateSelectedQuizId } from "../../redux/slices/uiSlice";
 import { useDispatch } from "react-redux";
-import {
-  useDeleteQuizMutation,
-  useGetAllQuizzesQuery,
-  useUpdateQuestionMutation,
-} from "../../redux/apis/strapi";
+import { useDeleteQuizMutation } from "../../redux/apis/strapi";
 import ConfirmationModal from "../ui/ConfirmationModal";
 
 export function DeleteQuizButton({ quiz }) {
@@ -25,7 +19,7 @@ export function DeleteQuizButton({ quiz }) {
         action={onClick}
         open={open}
         setOpen={setOpen}
-        confirmationButtonName={'Delete'}
+        confirmationButtonName={"Delete"}
       >
         Are you sure you want to delete this quiz? All of your quiz data will be
         permanently removed from our servers forever. This action cannot be
@@ -34,9 +28,8 @@ export function DeleteQuizButton({ quiz }) {
       <button
         onClick={() => setOpen(true)}
         type="submit"
-        className=" inline-flex items-center rounded-md border border-transparent bg-pink-600 px-3 py-2 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+        className="inline-flex items-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
       >
-        <TrashIcon className="block h-4 w-4 mr-1" aria-hidden="true" />
         <div className={""}>Delete</div>
       </button>
     </>

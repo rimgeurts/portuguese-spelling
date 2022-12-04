@@ -1,8 +1,7 @@
-import { useForm } from "react-hook-form";
-
 import { signIn } from "next-auth/react";
-import { useState } from "react";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
   const router = useRouter();
@@ -100,7 +99,6 @@ export default function Login() {
                     </div>
                   </div>
                 </div>
-
                 <div className="relative mt-6">
                   <div
                     className="absolute inset-0 flex items-center"
@@ -174,7 +172,6 @@ export default function Login() {
                         Remember me
                       </label>
                     </div>
-
                     <div className="text-sm">
                       <a
                         href="#"
@@ -184,7 +181,6 @@ export default function Login() {
                       </a>
                     </div>
                   </div>
-
                   <div>
                     <button
                       type="submit"

@@ -1,6 +1,5 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { useSession } from "next-auth/react"
 import qs from "qs";
 
 const queryGetQuizById = qs.stringify(
@@ -29,13 +28,14 @@ export const pokemonApi = createApi({
     baseUrl: process.env.NEXT_PUBLIC_STRAPI_BASE_URL,
     prepareHeaders: (headers, { getState }) => {
       // By default, if we have a token in the store, let's use that for authenticated requests
-   const state = getState();
+      const state = getState();
       const token = getState().ui.token;
+      console.log(`Bearer ${token}`);
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
       return headers;
-    }
+    },
   }),
   tagTypes: [
     "questionCache",
@@ -43,11 +43,18 @@ export const pokemonApi = createApi({
     "AllQuestionsForQuizCache",
     "resultCache",
     "languageCache",
+    "useGroupCache",
   ],
   endpoints: (builder) => ({
     getAllQuizzes: builder.query({
       query: (payload) => {
         return `api/myquizzes?${payload?.query ? payload.query : ""}`;
+      },
+      providesTags: ["useGroupCache"],
+    }),
+    getUserGroups: builder.query({
+      query: (payload) => {
+        return `api/user-groups`;
       },
       providesTags: ["myQuizListCache"],
     }),
@@ -227,4 +234,5 @@ export const {
   useGetResultsByIdQuery,
   useUpdateResultsByIdMutation,
   useGetAllLanguagesQuery,
+  useGetUserGroupsQuery,
 } = pokemonApi;
