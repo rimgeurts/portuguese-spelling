@@ -50,14 +50,9 @@ export const pokemonApi = createApi({
       query: (payload) => {
         return `api/myquizzes?${payload?.query ? payload.query : ""}`;
       },
-      providesTags: ["useGroupCache"],
+      providesTags: ["useGroupCache", "myQuizListCache"],
     }),
-    getUserGroups: builder.query({
-      query: (payload) => {
-        return `api/user-groups`;
-      },
-      providesTags: ["myQuizListCache"],
-    }),
+
     getQuizById: builder.query({
       query: ({ selectedQuizId }) => {
         return `api/quizzes/${selectedQuizId}?${queryGetQuizById}`;
@@ -211,6 +206,28 @@ export const pokemonApi = createApi({
       },
       providesTags: ["languageCache"],
     }),
+    getUserGroups: builder.query({
+      query: (payload) => {
+        return `api/user-groups`;
+      },
+      providesTags: ["useGroupCache"],
+    }),
+    UpdateUserGroupById: builder.mutation({
+      query: (body) => ({
+        url: `api/user-groups/${body.id}`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["useGroupCache"],
+    }),
+    InviteGroupMember: builder.mutation({
+      query: (body) => ({
+        url: `api/invite/`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["useGroupCache"],
+    }),
   }),
 });
 
@@ -235,4 +252,6 @@ export const {
   useUpdateResultsByIdMutation,
   useGetAllLanguagesQuery,
   useGetUserGroupsQuery,
+  useUpdateUserGroupByIdMutation,
+  useInviteGroupMemberMutation,
 } = pokemonApi;

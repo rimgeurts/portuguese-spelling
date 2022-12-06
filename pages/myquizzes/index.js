@@ -1,7 +1,4 @@
-import {
-  MagnifyingGlassIcon,
-  PencilSquareIcon,
-} from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
@@ -48,46 +45,53 @@ function Index(props) {
     dispatch(updateUIState({ activeQuizResultsId: response?.data.data.id }));
   };
 
+  useEffect(() => {
+    console.log({ quizList });
+  }, [quizList]);
+
   if (isLoading) {
     return <LoadingSpinner minHeight={"h-[80vh]"} />;
   }
 
   return (
-    <div className={"h-[80vh]"}>
-      <div
-        className={
-          "px-4 py-4 rounded-t-md mb-2 text-xl text-gray-800 flex items-center justify-start  border-gray-200 "
-        }
-      >
-        <div className={"w-full"}>
-          <label htmlFor="search" className="sr-only">
-            Search
-          </label>
-          <div className="relative">
-            <div className="pointer-events-none absolute inset-y-0 left-2 flex items-center pl-3">
-              <MagnifyingGlassIcon className="h-6 w-6 text-gray-300 stroke-2" />
-            </div>
-            <input
-              autoComplete={"off"}
-              id="search"
-              name="search"
-              value={search}
-              onChange={(e) => {
-                setSearch(e.target.value);
-              }}
-              className="pl-[50px]  block placeholder-gray-400/80 w-full rounded-xl border-gray-100 hover:border-gray-300/70 py-4 pl-10 pr-3 placeholder-gray-500 focus:border focus:border-blue-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              placeholder="Search"
-              type="search"
-            />
+    <div className={"h-[80vh] px-6"}>
+      <div className="md:flex md:items-center md:justify-between py-6 px-4 border-b border-gray-100 ">
+        <div className="min-w-0 flex flex-col justify-center ">
+          <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+            My Quizzes
+          </h2>
+        </div>
+        <div className="relative w-full max-w-xs">
+          <div className="pointer-events-none absolute inset-y-0 left-2 flex items-center pl-2">
+            <MagnifyingGlassIcon className="h-6 w-6 text-gray-300 stroke-2" />
           </div>
+          <input
+            autoComplete={"off"}
+            id="search"
+            name="search"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+            className="pl-12  bg-gray-50 placeholder-gray-300 w-full rounded-xl border-gray-100 hover:border-gray-200 py-3 pr-3  focus:border focus:border-blue-500 focus:placeholder-gray-400 focus:outline-none  focus:ring-blue-500"
+            placeholder="Search"
+            type="search"
+          />
         </div>
       </div>
-      <div className={"h-[70vh]  overflow-y-scroll "}>
+      <div className={"h-[70vh]  overflow-y-auto "}>
+        <div
+          className={`grid grid-cols-3 items-center not-last:border-b border-gray-100 py-4 px-4 select-none font-semibold bg-gray-50 rounded-lg text-gray-900`}
+        >
+          <div>Name</div>
+          <div>Questions</div>
+          <div></div>
+        </div>
         {quizList?.data?.map((quiz) => {
           return (
             <Fragment key={quiz.id}>
               <div
-                className={`flex justify-between items-center not-last:border-b border-gray-200 py-4 px-4 select-none `}
+                className={`grid grid-cols-3 items-center not-last:border-b border-gray-100 py-4 px-4 select-none `}
               >
                 <div
                   className={
@@ -95,13 +99,14 @@ function Index(props) {
                   }
                 >
                   <Link href={`/quiz/${quiz.id}`}>
-                    <a onClick={() => onStartQuiz(quiz.id)}>
-                      {quiz.id} - {quiz.title}
-                    </a>
+                    <a onClick={() => onStartQuiz(quiz.id)}>{quiz.title}</a>
                   </Link>
                 </div>
-                <div className={"flex gap-[20px] items-center"}>
-                  <ShareQuizModal />
+                <div className={"text-sm text-gray-400  ml-8"}>
+                  {quiz.questions.length}
+                </div>
+                <div className={"flex gap-[10px] items-center"}>
+                  <ShareQuizModal quizId={quiz.id} />
                   <Link href={`/create/`}>
                     <button
                       onClick={() => {
@@ -112,10 +117,6 @@ function Index(props) {
                       type="submit"
                       className="inline-flex items-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                     >
-                      <PencilSquareIcon
-                        className="block h-4 w-4 mr-1"
-                        aria-hidden="true"
-                      />
                       <div className={""}>Edit</div>
                     </button>
                   </Link>

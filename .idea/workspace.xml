@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/components/dashboard/GroupMemberLine.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/dashboard/InviteNewGroupMember.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/mystudents/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/Notification.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Issue List.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Issue List.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/LinkSharingOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/LinkSharingOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/ManageGroupAccess.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/ManageGroupAccess.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/QuizLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/QuizLink.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/ShareQuizModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/ShareQuizModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/designer/DeleteQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/DeleteQuizButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/myquizzes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myquizzes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/mystudents/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/mystudents/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/playground/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playground/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux/apis/strapi.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/apis/strapi.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,35 +50,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.4&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rim/WebstormProjects/quiz-frontend/pages/mystudents&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.17.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.6",
+    "last_opened_file_path": "C:/Users/Rim/WebstormProjects/quiz-app-backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "rearrange.code.on.save": "true",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "settings.space",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;JavaScript&quot;,
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "JavaScript",
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\pages\mystudents" />
@@ -212,6 +214,16 @@
       <workItem from="1669886484532" duration="4635000" />
       <workItem from="1669968461993" duration="1719000" />
       <workItem from="1670064221806" duration="22956000" />
+      <workItem from="1670145690562" duration="23364000" />
+      <workItem from="1670240787437" duration="14415000" />
+      <workItem from="1670278514952" duration="60000" />
+      <workItem from="1670279208566" duration="67000" />
+      <workItem from="1670279324495" duration="2089000" />
+      <workItem from="1670311402601" duration="154000" />
+      <workItem from="1670311614086" duration="192000" />
+      <workItem from="1670311824149" duration="170000" />
+      <workItem from="1670312005390" duration="3821000" />
+      <workItem from="1670347479320" duration="10081000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>

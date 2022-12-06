@@ -12,6 +12,9 @@ Issues:
 - Automatically submit when clicking outside question / answer / title inputs
 - In the quizviewer and a user forgets to enter an accent, it should be counted as correct BUT a warning message should appear.
 - If you access a quiz via a direct URL i.e. http://localhost:3000/quiz/66, it does not work correct. No results are created in the database
+- In strapi setup bootstrap data to create the 'Everyone' and 'Administrators' groups when the application starts
+- In strapi, in the 'UserGroup' controller, prevent users from creating groups with reserved names like: 'Everyone' and 'Administrators'
+- In strapi, after a new user is created a new group will need to be created for that user. The user will also need to be listed as the group owner.
 
 
 

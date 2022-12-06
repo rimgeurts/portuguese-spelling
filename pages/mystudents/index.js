@@ -1,4 +1,5 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { UserGroupIcon } from "@heroicons/react/24/solid";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -62,15 +63,22 @@ function Index(props) {
           </div>
         </div>
       </div>
-      <div className={"h-[70vh] overflow-y-scroll w-full "}>
+      <div className={"h-[70vh] overflow-y-auto w-full "}>
         {groups?.data?.map((group) => {
           return (
             <div
               key={group.id}
-              className={"px-4 py-2 bg-gray-100 my-4 mx-4 rounded-lg mx-auto"}
+              className={
+                "px-4 py-2 bg-gray-100 my-4 mx-4 rounded-lg mx-auto shadow "
+              }
             >
               <div className={"flex flex-col"}>
-                <div className={"text-gray-700 py-4 font-semibold"}>
+                <div
+                  className={
+                    "flex items-center text-gray-700 py-4 font-semibold text-lg"
+                  }
+                >
+                  <UserGroupIcon className={"w-8 h-8 mr-3 fill-gray-300"} />
                   {group.groupName}
                 </div>
 
