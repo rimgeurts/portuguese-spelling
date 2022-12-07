@@ -45,6 +45,8 @@ function Index(props) {
     dispatch(updateUIState({ activeQuizResultsId: response?.data.data.id }));
   };
 
+  console.log("ENV VARIABLE: ", process.env.NEXT_PUBLIC_STRAPI_BASE_URL);
+
   useEffect(() => {
     console.log({ quizList });
   }, [quizList]);
@@ -55,7 +57,7 @@ function Index(props) {
 
   return (
     <div className={"h-[80vh] px-6"}>
-      <div className="md:flex md:items-center md:justify-between py-6 px-4 border-b border-gray-100 ">
+      <div className="md:flex md:items-center md:justify-between py-6 px-4 ">
         <div className="min-w-0 flex flex-col justify-center ">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
             My Quizzes
@@ -81,7 +83,7 @@ function Index(props) {
       </div>
       <div className={"h-[70vh]  overflow-y-auto "}>
         <div
-          className={`grid grid-cols-3 items-center not-last:border-b border-gray-100 py-4 px-4 select-none font-semibold bg-gray-50 rounded-lg text-gray-900`}
+          className={`grid grid-cols-3 items-center py-4 px-4 select-none  bg-gray-50 rounded-lg text-gray-900 font-semibold`}
         >
           <div>Name</div>
           <div>Questions</div>
@@ -102,7 +104,7 @@ function Index(props) {
                     <a onClick={() => onStartQuiz(quiz.id)}>{quiz.title}</a>
                   </Link>
                 </div>
-                <div className={"text-sm text-gray-400  ml-8"}>
+                <div className={"text-gray-800  ml-8"}>
                   {quiz.questions.length}
                 </div>
                 <div className={"flex gap-[10px] items-center"}>
@@ -126,6 +128,15 @@ function Index(props) {
             </Fragment>
           );
         })}
+        <div
+          className={`grid grid-cols-3 items-center py-4 px-4 select-none border-t border-gray-100 rounded-lg text-gray-900 `}
+        >
+          <div></div>
+          <div></div>
+          <div className={"w-full text-center text-gray-400 text-sm"}>
+            Pages 1 2 3 ...... 9 10 11{" "}
+          </div>
+        </div>
       </div>
     </div>
   );
