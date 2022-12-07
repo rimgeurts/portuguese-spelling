@@ -32,7 +32,7 @@ export function QuizLink({ quizId }) {
           disabled
           className="py-3 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 cursor-text  disabled:border-gray-200  disabled:text-gray-500 sm:text-sm"
           placeholder="you@example.com"
-          value={`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/quiz/${quizId}`}
+          value={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/quiz/${quizId}`}
         />
         <div className="flex gap-1 absolute inset-y-0 right-0 flex py-1.5 pr-1.5 ">
           {/*<button*/}
