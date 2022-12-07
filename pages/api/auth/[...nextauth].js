@@ -55,14 +55,14 @@ const options = {
       if (obj.account?.provider === "google") {
         if (isSignIn) {
           const response = await fetch(
-            `${process.env.NEXTAUTH_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
+            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
           );
 
-          const data = await response.json();
           console.log(
             "DEBUG: link: ",
             `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
           );
+          const data = await response.json();
           console.log("DEBUG: data: ", { data });
 
           token.jwt = data.jwt;
