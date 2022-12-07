@@ -20,7 +20,7 @@ const options = {
       async authorize(credentials) {
         try {
           const { data } = await axios.post(
-            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/local`,
+            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}888888888/api/auth/local`,
             {
               identifier: credentials.email,
               password: credentials.password,
