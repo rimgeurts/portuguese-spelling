@@ -20,7 +20,7 @@ const options = {
       async authorize(credentials) {
         try {
           const { data } = await axios.post(
-            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}888888888/api/auth/local`,
+            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/local`,
             {
               identifier: credentials.email,
               password: credentials.password,
@@ -55,13 +55,13 @@ const options = {
       if (obj.account?.provider === "google") {
         if (isSignIn) {
           const response = await fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
+            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}7489574359835479/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
           );
 
           const data = await response.json();
           console.log(
             "DEBUG: link: ",
-            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
+            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}43543545345345/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
           );
           console.log("DEBUG: data: ", { data });
 
