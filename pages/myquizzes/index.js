@@ -45,7 +45,14 @@ function Index(props) {
     dispatch(updateUIState({ activeQuizResultsId: response?.data.data.id }));
   };
 
-  console.log("ENV VARIABLE: ", process.env.NEXT_PUBLIC_STRAPI_BASE_URL);
+  console.log(
+    "NEXT_PUBLIC_STRAPI_BASE_URL: ",
+    process.env.NEXT_PUBLIC_STRAPI_BASE_URL
+  );
+  console.log(
+    "NEXT_PUBLIC_STRAPI_BASE_URL: ",
+    process.env.NEXT_PUBLIC_STRAPI_BASE_URL
+  );
 
   useEffect(() => {
     console.log({ quizList });
