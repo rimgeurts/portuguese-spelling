@@ -1,17 +1,18 @@
-import React, { Fragment, useEffect } from "react";
-import { BellIcon } from "@heroicons/react/24/outline";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-import { setCredentials } from "../redux/slices/uiSlice";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { setCredentials } from "../redux/slices/uiSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 function LayoutAuthentication(props) {
+  const router = useRouter();
   const dispatch = useDispatch();
   const { data: session, status } = useSession();
 
@@ -25,7 +26,7 @@ function LayoutAuthentication(props) {
   const onSignOut = async () => {
     if (session) {
       await signOut({
-        callbackUrl: `${window.location.origin}`,
+        callbackUrl: `/login`,
       });
     }
     return;
@@ -88,7 +89,7 @@ function LayoutAuthentication(props) {
               <Menu.Item>
                 {({ active }) => (
                   <a
-                    href="#"
+                    onClick={() => router.push("/profile")}
                     className={classNames(
                       active ? "bg-gray-100" : "",
                       "block px-4 py-2 text-sm text-gray-700"
@@ -101,20 +102,6 @@ function LayoutAuthentication(props) {
               <Menu.Item>
                 {({ active }) => (
                   <a
-                    href="#"
-                    className={classNames(
-                      active ? "bg-gray-100" : "",
-                      "block px-4 py-2 text-sm text-gray-700"
-                    )}
-                  >
-                    Settings
-                  </a>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
                     onClick={() => onSignOut()}
                     className={classNames(
                       active ? "bg-gray-100" : "",

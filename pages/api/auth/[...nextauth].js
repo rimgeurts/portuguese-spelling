@@ -63,7 +63,6 @@ const options = {
             `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
           );
           const data = await response.json();
-          console.log("DEBUG: data: ", { data });
 
           token.jwt = data.jwt;
           token.id = data.user.id;

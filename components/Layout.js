@@ -16,7 +16,8 @@ import LayoutAuthentication from "./LayoutAuthentication";
 // };
 //
 // const userNavigation = [
-//   { name: "Your Profile", href: "#" },
+//   { name: "
+//   Your Profile", href: "#" },
 //   { name: "Settings", href: "#" },
 //   {
 //     name: "Sign out",
@@ -34,13 +35,13 @@ export default function Layout({ children }) {
   const [navigation, setNavigation] = useState([
     // { name: "Quiz", href: "/quiz", current: true },
     {
-      name: "My Quiz",
-      href: "/myquizzes",
+      name: "My Learning",
+      href: "/mystudents",
       current: false,
     },
     {
-      name: "My Students",
-      href: "/mystudents",
+      name: "My Classroom",
+      href: "/classroom",
       current: false,
     },
   ]);

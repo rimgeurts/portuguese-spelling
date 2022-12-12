@@ -1,4 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
+import {UsersIcon} from '@heroicons/react/20/solid';
 import { ShareIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import React, { Fragment, useEffect, useState } from "react";
@@ -33,28 +34,26 @@ export default function ShareQuizModal({ quizId }) {
     setSelectedGroup(groups?.data[selectedGroupId]);
   }, [groups]);
 
-  useEffect(() => {
-    console.log({ selectedGroup });
-  }, [selectedGroup]);
-
   const onSelectedGroup = (value) => {
     const index = groups.data.findIndex((group) => group.id === value.id);
-    console.log({ index });
     setSelectedGroupId(index);
     setSelectedGroup(value);
   };
-
   return (
     <>
       {
         <div className={""}>
-          <button
-            onClick={() => setOpen(!open)}
-            type="button"
-            className=" inline-flex items-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          >
-            Share
-          </button>
+          <div className={'flex text-xs  text-gray-400 items-center'}>
+              <UsersIcon className={'w-4 h-4 mr-1 text-gray-400 '}/>
+            Shared with:
+            <button
+                onClick={() => setOpen(!open)}
+                type="button"
+                className=" inline-flex  rounded-md border border-transparent  pl-1 py-2 text-xs  text-gray-400 underline hover:font-semibold hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              {selectedGroup?.groupName || 'everyone'}
+            </button>
+          </div>
           <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={setOpen}>
               <Transition.Child

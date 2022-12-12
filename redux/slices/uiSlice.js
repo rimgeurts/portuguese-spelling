@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: "",
@@ -10,6 +10,9 @@ const initialState = {
   activeAnswerIndex: 0,
   activeQuizResultsId: "",
   isQuizLanguageSelected: true,
+  myQuizzesSearch: "",
+  myQuizzesCurrentPage: 1,
+  myQuizzesSearchQuery: "",
 };
 
 export const uiSlice = createSlice({

@@ -21,8 +21,6 @@ function Index(props) {
     isLoading,
   } = useGetUserGroupsQuery({ skip: !session });
 
-  console.log({ groups });
-
   useEffect(() => {
     setQuery(generateGetAllQuizzesQuery(search));
   }, [search]);

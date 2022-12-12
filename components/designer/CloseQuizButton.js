@@ -1,9 +1,4 @@
-import {
-  ArrowDownTrayIcon,
-  BackwardIcon,
-  XCircleIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -14,10 +9,8 @@ import {
 import {
   resetUIState,
   selectUI,
-  updateHasActiveQuestionChanged, updateUIState,
+  updateUIState,
 } from "../../redux/slices/uiSlice";
-import Link from "next/link";
-import { useRouter } from "next/router";
 
 export function CloseQuizButton() {
   const router = useRouter();
@@ -44,12 +37,12 @@ export function CloseQuizButton() {
   const question = quiz?.attributes.questions.data[activeQuestionIndex];
 
   const onCloseQuiz = async () => {
-    if(quiz?.attributes.translate_to.data.id === 'xxxx') {
-      dispatch(updateUIState({isQuizLanguageSelected: false}))
+    if (quiz?.attributes.translate_to.data.id === "xxxx") {
+      dispatch(updateUIState({ isQuizLanguageSelected: false }));
       return;
     }
     dispatch(resetUIState());
-    await router.push("/myquizzes");
+    await router.push("/classroom");
   };
 
   return (

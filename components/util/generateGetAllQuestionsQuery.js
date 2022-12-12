@@ -48,12 +48,13 @@ export function generateGetAllQuizzesQuery(title, pageNumber) {
         },
       },
       pagination: {
-        page: pageNumber | 1,
-        pageSize: 50,
+        page: pageNumber,
+        pageSize: 7,
       },
     },
     {
       encodeValuesOnly: true, // prettify URL
     }
   );
+  console.log("page number: ", pageNumber);
 }

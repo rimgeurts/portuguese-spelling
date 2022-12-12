@@ -1,8 +1,8 @@
-import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import * as PropTypes from "prop-types";
 import Link from "next/link";
+import * as PropTypes from "prop-types";
+import { Fragment } from "react";
 
 function KPI({ title, value }) {
   return (
@@ -90,7 +90,7 @@ export default function ViewerFinishScreen({
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6">
-                  <Link href={"/myquizzes"}>
+                  <Link href={"/classroom"}>
                     <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:text-2xl"

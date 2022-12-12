@@ -28,12 +28,9 @@ export default function ManageGroupAccess({ selectedGroup }) {
         groupId: selectedGroup.id,
       },
     });
-    console.log({ response });
   };
 
   const onRemoveUserFromGroup = (userIndex) => {
-    console.log({ selectedGroup, userIndex });
-
     const newMembers = [];
 
     selectedGroup.members.map((member, index) => {
@@ -41,8 +38,6 @@ export default function ManageGroupAccess({ selectedGroup }) {
         newMembers.push(member.id);
       }
     });
-
-    console.log({ newMembers });
 
     const payload = {
       id: selectedGroup.id,

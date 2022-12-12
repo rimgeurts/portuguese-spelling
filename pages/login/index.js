@@ -31,7 +31,7 @@ export default function Login() {
     e.preventDefault();
     const result = await signIn("google", {
       redirect: false,
-      callbackUrl: "/myquizzes",
+      callbackUrl: "/classroom",
     });
     if (result?.ok) {
       await router.push(`/${router.query.origin}`);

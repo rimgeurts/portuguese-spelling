@@ -1,24 +1,23 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import {
   useGetAllQuestionsForQuizQuery,
   useGetResultsByIdQuery,
   useUpdateResultsByIdMutation,
 } from "../../redux/apis/strapi";
-import { useRouter } from "next/router";
-import { generateGetAllQuestionsQuery } from "../util/generateGetAllQuestionsQuery";
-import { getSpecialCharacters } from "../util/getSpecialCharacters";
-import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
 import { selectUI } from "../../redux/slices/uiSlice";
-import { ViewerHeader } from "./ViewerHeader";
-import { ViewerResults } from "./ViewerResults";
-import { ViewerInput } from "./ViewerInput";
-import ViewerControlButtons from "./ViewerControlButtons";
-import ViewerFinishScreen from "./ViewerFinishScreen";
-import { ViewerCloseButton } from "./ViewerCloseButton";
 import useOnClickOutside from "../hooks/useClickOutside";
 import ConfirmationModal from "../ui/ConfirmationModal";
+import { generateGetAllQuestionsQuery } from "../util/generateGetAllQuestionsQuery";
 import AccentKeyboard from "./AccentKeyboard";
+import { ViewerCloseButton } from "./ViewerCloseButton";
+import ViewerControlButtons from "./ViewerControlButtons";
+import ViewerFinishScreen from "./ViewerFinishScreen";
+import { ViewerHeader } from "./ViewerHeader";
+import { ViewerInput } from "./ViewerInput";
+import { ViewerResults } from "./ViewerResults";
 
 function SpellingTest() {
   const [audio, setAudio] = useState(null);
@@ -94,19 +93,18 @@ function SpellingTest() {
     //   setAudio(new Audio('https://protected-plateau-64458.herokuapp.com/uploads/correct_Answer_b037db8b71.mp3'));
   }, []);
 
-  const test = useState(true)
+  const test = useState(true);
   useEffect(() => {
     const alertUser = (e) => {
       e.preventDefault();
       e.stopPropagation();
-      e.returnValue = 'ddddd';
+      e.returnValue = "ddddd";
     };
     window.addEventListener("beforeunload", alertUser);
     return () => {
       window.removeEventListener("beforeunload", alertUser);
     };
   }, [test]);
-
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -133,7 +131,7 @@ function SpellingTest() {
     <div ref={quizViewerRef} className={"relative bg-white/80 border"}>
       <ConfirmationModal
         title={"Leave Quiz?"}
-        action={() => router.push("/myquizzes")}
+        action={() => router.push("/classroom")}
         open={openLeaveQuizDialog}
         setOpen={setOpenLeaveQuizDialog}
         confirmationButtonName={"Leave"}
