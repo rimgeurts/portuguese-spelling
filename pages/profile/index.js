@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
-import { countryList } from "../../components/util/countryList";
 
 import {
   useAddResultsMutation,
+  useGetAllLanguagesQuery,
   useGetAllQuizzesQuery,
 } from "../../redux/apis/strapi";
 
@@ -17,6 +17,14 @@ function Index(props) {
   const { myQuizzesSearch, myQuizzesCurrentPage, myQuizzesSearchQuery } =
     useSelector(selectUI);
   const { data: session, status } = useSession();
+
+  const {
+    data: languages,
+    error: languageError,
+    isLoading: languageIsLoading,
+  } = useGetAllLanguagesQuery();
+
+  console.log({ languages });
 
   const [selectedTab, setSelectedTab] = useState();
   const {
@@ -69,11 +77,41 @@ function Index(props) {
               <h3 className="text-lg font-medium leading-6 text-gray-900">
                 Personal Information
               </h3>
-              <p className="mt-1 text-sm text-gray-500">
-                Use a permanent address where you can receive mail.
+              <p className="mt-1 text-sm font-normal text-gray-500">
+                Please enter your account details and select a language you
+                would like to learn.
               </p>
             </div>
             <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+              <div className="sm:col-span-4">
+                <label
+                  htmlFor="country"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  What language do you want to learn?
+                </label>
+                <div className="mt-1">
+                  <select
+                    id="country"
+                    name="country"
+                    autoComplete="country-name"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                  >
+                    {languages?.length > 0 &&
+                      languages?.map((language) => {
+                        return (
+                          <option
+                            className={"flex items-center"}
+                            key={language.id}
+                            value={language.name}
+                          >
+                            {language.name}
+                          </option>
+                        );
+                      })}
+                  </select>
+                </div>
+              </div>
               <div className="sm:col-span-3">
                 <label
                   htmlFor="first-name"
@@ -91,7 +129,6 @@ function Index(props) {
                   />
                 </div>
               </div>
-
               <div className="sm:col-span-3">
                 <label
                   htmlFor="last-name"
@@ -109,7 +146,6 @@ function Index(props) {
                   />
                 </div>
               </div>
-
               <div className="sm:col-span-4">
                 <label
                   htmlFor="email"
@@ -127,95 +163,36 @@ function Index(props) {
                   />
                 </div>
               </div>
-
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="country"
+                  htmlFor="password"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Country
-                </label>
-                <div className="mt-1">
-                  <select
-                    id="country"
-                    name="country"
-                    autoComplete="country-name"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  >
-                    {countryList.map((country) => {
-                      return <option key={country.code}>{country.name}</option>;
-                    })}
-                  </select>
-                </div>
-              </div>
-
-              <div className="sm:col-span-6">
-                <label
-                  htmlFor="street-address"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Street address
+                  Password
                 </label>
                 <div className="mt-1">
                   <input
-                    type="text"
-                    name="street-address"
-                    id="street-address"
-                    autoComplete="street-address"
+                    id="email"
+                    name="email"
+                    type="password"
+                    autoComplete="email"
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   />
                 </div>
               </div>
-
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-3">
                 <label
-                  htmlFor="city"
+                  htmlFor="email"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  City
+                  Password confirmation
                 </label>
                 <div className="mt-1">
                   <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    autoComplete="address-level2"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="region"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  State / Province
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="region"
-                    id="region"
-                    autoComplete="address-level1"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="postal-code"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  ZIP / Postal code
-                </label>
-                <div className="mt-1">
-                  <input
-                    type="text"
-                    name="postal-code"
-                    id="postal-code"
-                    autoComplete="postal-code"
+                    id="email"
+                    name="email"
+                    type="password"
+                    autoComplete="email"
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   />
                 </div>

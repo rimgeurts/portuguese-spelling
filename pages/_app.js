@@ -1,10 +1,8 @@
-import "../styles/globals.css";
-import Layout from "../components/Layout";
-import { ApiProvider } from "@reduxjs/toolkit/query/react";
-import { strapiApi } from "../redux/apis/strapi";
-import { Provider } from "react-redux";
-import { store } from "../redux/store";
 import { SessionProvider } from "next-auth/react";
+import { Provider } from "react-redux";
+import Layout from "../components/Layout";
+import { store } from "../redux/store";
+import "../styles/globals.css";
 
 export default function MyApp({
   Component,
