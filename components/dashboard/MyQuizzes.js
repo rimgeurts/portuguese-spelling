@@ -54,6 +54,7 @@ export default function MyQuizzes() {
       <div className={"overflow-y-auto h-full"}>
         {quizList?.data?.map((quiz) => {
           const isOwner = quiz?.attributes.isOwner;
+
           return (
             <Fragment key={quiz.id}>
               <div
@@ -71,7 +72,7 @@ export default function MyQuizzes() {
                     </a>
                   </Link>
                   <div className={"text-base font-normal"}>
-                    {isOwner && <ShareQuizModal quizId={quiz.id} />}
+                    {isOwner && <ShareQuizModal quizId={quiz.id} quiz={quiz} />}
                   </div>
                 </div>
                 <div

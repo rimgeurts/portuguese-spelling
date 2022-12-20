@@ -36,7 +36,7 @@ export default function Layout({ children }) {
     // { name: "Quiz", href: "/quiz", current: true },
     {
       name: "My Learning",
-      href: "/mystudents",
+      href: "/students",
       current: false,
     },
     {

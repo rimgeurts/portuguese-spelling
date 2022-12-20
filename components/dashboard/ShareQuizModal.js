@@ -1,16 +1,19 @@
 import { Dialog, Transition } from "@headlessui/react";
-import {UsersIcon} from '@heroicons/react/20/solid';
+import { UsersIcon } from "@heroicons/react/20/solid";
 import { ShareIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useGetUserGroupsQuery } from "../../redux/apis/strapi";
+import {
+  useGetUserGroupsQuery,
+  useUpdateQuizMutation,
+} from "../../redux/apis/strapi";
 import { generateGetAllQuizzesQuery } from "../util/generateGetAllQuestionsQuery";
 import LinkSharingOptions from "./LinkSharingOptions";
 import ManageGroupAccess from "./ManageGroupAccess";
 import { QuizLink } from "./QuizLink";
 
-export default function ShareQuizModal({ quizId }) {
+export default function ShareQuizModal({ quizId, quiz }) {
   const [open, setOpen] = useState(false);
   const [showNotification, setShowNotification] = useState(true);
   const { data: session, status } = useSession();
@@ -21,37 +24,61 @@ export default function ShareQuizModal({ quizId }) {
     data: groups,
     error,
     isLoading,
-  } = useGetUserGroupsQuery({ skip: !session });
-  const [selectedGroupId, setSelectedGroupId] = useState(0);
-  const [selectedGroup, setSelectedGroup] = useState(
-    groups?.data[selectedGroupId]
-  );
+  } = useGetUserGroupsQuery(undefined, { skip: !session });
+  const [selectedGroup, setSelectedGroup] = useState(null);
+  const [updateQuiz, updateQuizResults] = useUpdateQuizMutation();
 
   useEffect(() => {
     if (!groups?.data) {
       return;
     }
-    setSelectedGroup(groups?.data[selectedGroupId]);
+    //  setSelectedGroup(groups?.data[selectedGroupId]);
   }, [groups]);
 
+  useEffect(() => {
+    const quizUserGroup = quiz.attributes.userGroups.data.filter(
+      (group) => group.attributes.groupName !== "Administrators"
+    );
+
+    const initialSelectedGroup = groups?.data.find(
+      (group) => group.id === quizUserGroup[0]?.id
+    );
+    setSelectedGroup(initialSelectedGroup);
+    console.log({ initialSelectedGroup });
+  }, [quiz, groups]);
+
+  useEffect(() => {
+    console.log({ groups });
+    console.log({ selectedGroup });
+  }, [selectedGroup]);
+
   const onSelectedGroup = (value) => {
+    console.log("setting selected group to: ", value);
+    const payload = {
+      id: quizId,
+      data: {
+        userGroups: [value.id],
+      },
+    };
+    updateQuiz(payload);
     const index = groups.data.findIndex((group) => group.id === value.id);
-    setSelectedGroupId(index);
     setSelectedGroup(value);
   };
+
+  console.log({ quiz });
   return (
     <>
-      {
+      {selectedGroup && (
         <div className={""}>
-          <div className={'flex text-xs  text-gray-400 items-center'}>
-              <UsersIcon className={'w-4 h-4 mr-1 text-gray-400 '}/>
+          <div className={"flex text-xs  text-gray-400 items-center"}>
+            <UsersIcon className={"w-4 h-4 mr-1 text-gray-400 "} />
             Shared with:
             <button
-                onClick={() => setOpen(!open)}
-                type="button"
-                className=" inline-flex  rounded-md border border-transparent  pl-1 py-2 text-xs  text-gray-400 underline hover:font-semibold hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              onClick={() => setOpen(!open)}
+              type="button"
+              className=" inline-flex  rounded-md border border-transparent  pl-1 py-2 text-xs  text-gray-600 underline hover:font-semibold hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-              {selectedGroup?.groupName || 'everyone'}
+              {selectedGroup?.groupName || "None"}
             </button>
           </div>
           <Transition.Root show={open} as={Fragment}>
@@ -135,7 +162,7 @@ export default function ShareQuizModal({ quizId }) {
             </Dialog>
           </Transition.Root>
         </div>
-      }
+      )}
     </>
   );
 }

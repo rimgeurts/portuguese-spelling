@@ -1,22 +1,40 @@
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import LoadingSpinner from "../../components/ui/LoadingSpinner";
+import { FormErrorMessage } from "../../components/ui/FormErrorMessage";
 
 import {
-  useAddResultsMutation,
   useGetAllLanguagesQuery,
-  useGetAllQuizzesQuery,
+  useGetUserProfileQuery,
+  useUpdateUserProfileMutation,
 } from "../../redux/apis/strapi";
 
 import { selectUI } from "../../redux/slices/uiSlice";
 
 function Index(props) {
   const router = useRouter();
+  const query = router.query;
+  const token = query?.token;
   const { myQuizzesSearch, myQuizzesCurrentPage, myQuizzesSearchQuery } =
     useSelector(selectUI);
   const { data: session, status } = useSession();
+  console.log(status);
+  const { data: profile, profileLoadingStatus } = useGetUserProfileQuery(
+    undefined,
+    {
+      skip: !session,
+    }
+  );
+  console.log({ profile });
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const {
     data: languages,
@@ -24,27 +42,63 @@ function Index(props) {
     isLoading: languageIsLoading,
   } = useGetAllLanguagesQuery();
 
-  const [selectedTab, setSelectedTab] = useState();
-  const {
-    data: quizList,
-    error,
-    isLoading,
-  } = useGetAllQuizzesQuery(
-    { query: myQuizzesSearchQuery },
-    { skip: !session }
-  );
-  const [addResultsStrapi, addResultStrapiStatus] = useAddResultsMutation();
+  const [updateUserProfile, updateUserProfileStatus] =
+    useUpdateUserProfileMutation();
 
-  if (isLoading) {
-    return <LoadingSpinner minHeight={"h-[80vh]"} />;
-  }
+  useEffect(() => {
+    // attempt to sign-in using the token supplied in the url query
+    (async () => {
+      if (!token) {
+        return;
+      }
+      const { ok } = await signIn("credentials", {
+        redirect: false,
+        token,
+      });
+    })();
+  }, [token]);
+
+  // load the user profile data from strapi
+  useEffect(() => {
+    if (!profile) {
+      return;
+    }
+    setValue("firstname", profile.firstname);
+    setValue("lastname", profile.lastname);
+    setValue("language", profile.learningLanguage.id);
+  }, [profile]);
+
+  useEffect(() => {
+    if (!session) {
+      return;
+    }
+    setValue("email", session.user.email);
+  }, [session]);
+
+  const onSubmit = async (
+    { email, firstname, lastname, password, language },
+    event
+  ) => {
+    event.preventDefault();
+    console.log({ language });
+    const result = await updateUserProfile({
+      email,
+      firstname,
+      lastname,
+      password,
+      learningLanguage: {
+        id: language,
+      },
+      confirmedWithBearerToken: !!token,
+    });
+  };
 
   return (
-    <div className={"h-[80vh] px-6"}>
+    <form className={"h-[80vh] px-6"} onSubmit={handleSubmit(onSubmit)}>
       <div className="md:flex md:items-center md:justify-between py-4 ">
         <div className="min-w-0 flex flex-col justify-center ">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
-            My Profile
+            Create a new account
           </h2>
         </div>
         <div className="">
@@ -68,6 +122,7 @@ function Index(props) {
           </div>
         </div>
       </div>
+
       <div className={"  mt-2"}>
         <div className={` rounded-lg text-gray-400 font-semibold `}>
           <div className="pt-8">
@@ -80,6 +135,7 @@ function Index(props) {
                 would like to learn.
               </p>
             </div>
+
             <div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
               <div className="sm:col-span-4">
                 <label
@@ -90,24 +146,32 @@ function Index(props) {
                 </label>
                 <div className="mt-1">
                   <select
-                    id="country"
-                    name="country"
-                    autoComplete="country-name"
+                    id="language"
+                    name="language"
+                    {...register("language", { required: true })}
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   >
+                    <option value="">Please select language</option>
                     {languages?.length > 0 &&
                       languages?.map((language) => {
                         return (
                           <option
                             className={"flex items-center"}
                             key={language.id}
-                            value={language.name}
+                            value={language.id}
                           >
                             {language.name}
                           </option>
                         );
                       })}
                   </select>
+                  {errors.language && (
+                    <FormErrorMessage
+                      message={
+                        "Please select a language you would like to learn"
+                      }
+                    />
+                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -119,12 +183,14 @@ function Index(props) {
                 </label>
                 <div className="mt-1">
                   <input
+                    {...register("firstname", { required: true })}
                     type="text"
-                    name="first-name"
-                    id="first-name"
                     autoComplete="given-name"
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   />
+                  {errors.firstname && (
+                    <FormErrorMessage message={"required field"} />
+                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -137,11 +203,13 @@ function Index(props) {
                 <div className="mt-1">
                   <input
                     type="text"
-                    name="last-name"
-                    id="last-name"
+                    {...register("lastname", { required: true })}
                     autoComplete="family-name"
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   />
+                  {errors.lastname && (
+                    <FormErrorMessage message={"required field"} />
+                  )}
                 </div>
               </div>
               <div className="sm:col-span-4">
@@ -153,12 +221,20 @@ function Index(props) {
                 </label>
                 <div className="mt-1">
                   <input
-                    id="email"
-                    name="email"
+                    {...register("email", {
+                      required: true,
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        message: "Enter a valid e-mail address",
+                      },
+                    })}
                     type="email"
                     autoComplete="email"
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   />
+                  {errors.email && (
+                    <FormErrorMessage message={errors.email.message} />
+                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -170,12 +246,13 @@ function Index(props) {
                 </label>
                 <div className="mt-1">
                   <input
-                    id="email"
-                    name="email"
+                    {...register("password", { required: true })}
                     type="password"
-                    autoComplete="email"
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   />
+                  {errors.password && (
+                    <FormErrorMessage message={"required field"} />
+                  )}
                 </div>
               </div>
               <div className="sm:col-span-3">
@@ -187,19 +264,31 @@ function Index(props) {
                 </label>
                 <div className="mt-1">
                   <input
-                    id="email"
-                    name="email"
+                    {...register("confirm_password", {
+                      required: true,
+                      validate: (val) => {
+                        if (watch("password") !== val) {
+                          return "Your passwords do not match";
+                        }
+                      },
+                    })}
                     type="password"
-                    autoComplete="email"
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                   />
+                  {errors.confirm_password && (
+                    <FormErrorMessage
+                      message={
+                        errors.confirm_password.message || "required field"
+                      }
+                    />
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 

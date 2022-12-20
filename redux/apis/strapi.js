@@ -92,6 +92,9 @@ export const pokemonApi = createApi({
         "questionCache",
         "myQuizListCache",
         "AllQuestionsForQuizCache",
+        "resultCache",
+        "languageCache",
+        "useGroupCache",
       ],
     }),
     DeleteQuiz: builder.mutation({
@@ -228,6 +231,18 @@ export const pokemonApi = createApi({
       }),
       invalidatesTags: ["useGroupCache"],
     }),
+    UpdateUserProfile: builder.mutation({
+      query: (body) => ({
+        url: `api/users-permissions/users/me`,
+        method: "PUT",
+        body,
+      }),
+    }),
+    GetUserProfile: builder.query({
+      query: (payload) => {
+        return `api/users/me`;
+      },
+    }),
   }),
 });
 
@@ -254,4 +269,6 @@ export const {
   useGetUserGroupsQuery,
   useUpdateUserGroupByIdMutation,
   useInviteGroupMemberMutation,
+  useUpdateUserProfileMutation,
+  useGetUserProfileQuery,
 } = pokemonApi;

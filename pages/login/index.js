@@ -1,4 +1,5 @@
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -15,16 +16,18 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async ({ email, password, remember }) => {
+  const onSubmit = async ({ email, password, remember }, event) => {
+    event.preventDefault();
+    console.log("test");
     const loginResults = await signIn("credentials", {
       redirect: false,
       email,
       password,
     });
-    setAuthResult(loginResults);
-    if (loginResults.ok) {
-      await router.push(`/${router.query.origin}`);
-    }
+    // setAuthResult(loginResults);
+    // if (loginResults.ok) {
+    //   await router.push(`/${router.query.origin}`);
+    // }
   };
 
   const onSignInWithGoogle = async (e) => {
@@ -49,12 +52,11 @@ export default function Login() {
               </h2>
               <p className="mt-2 text-sm text-gray-600">
                 Or{" "}
-                <a
-                  href="#"
-                  className="font-medium text-blue-600 hover:text-blue-500"
-                >
-                  start your 14-day free trial
-                </a>
+                <Link href="/register">
+                  <a className="font-medium text-blue-600 hover:text-blue-500">
+                    create a new account
+                  </a>
+                </Link>
               </p>
             </div>
             <div className="mt-8">

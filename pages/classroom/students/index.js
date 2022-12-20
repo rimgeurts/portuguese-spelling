@@ -2,15 +2,15 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MyQuizTabs from "../../components/dashboard/MyQuizTabs";
-import LoadingSpinner from "../../components/ui/LoadingSpinner";
-import { generateGetAllQuizzesQuery } from "../../components/util/generateGetAllQuestionsQuery";
+import MyQuizTabs from "../../../components/dashboard/MyQuizTabs";
+import MyStudentsGroupAccordion from "../../../components/dashboard/myStudents/MyStudentsGroupAccordion";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner";
+import { generateGetAllQuizzesQuery } from "../../../components/util/generateGetAllQuestionsQuery";
 import {
   useAddResultsMutation,
   useGetAllQuizzesQuery,
-} from "../../redux/apis/strapi";
-
-import { selectUI, updateUIState } from "../../redux/slices/uiSlice";
+} from "../../../redux/apis/strapi";
+import { selectUI, updateUIState } from "../../../redux/slices/uiSlice";
 
 function Index(props) {
   const { myQuizzesSearch, myQuizzesCurrentPage, myQuizzesSearchQuery } =
@@ -75,7 +75,9 @@ function Index(props) {
       </div>
       <div className={"  mt-2"}>
         <div className={` rounded-lg text-gray-400 font-semibold `}>
-          <MyQuizTabs />
+          <MyQuizTabs>
+            <MyStudentsGroupAccordion />
+          </MyQuizTabs>
         </div>
       </div>
     </div>

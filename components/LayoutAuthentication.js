@@ -1,5 +1,6 @@
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { UserIcon } from "@heroicons/react/24/solid";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -37,15 +38,21 @@ function LayoutAuthentication(props) {
       {/* Profile dropdown */}
       <Menu as="div" className="relative ml-3">
         <div>
-          <Menu.Button className="hover:bg-white flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 lg:rounded-md lg:p-2 lg:hover:bg-gray-50">
+          <Menu.Button className="hover:bg-white flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 lg:rounded-md lg:p-1 lg:hover:bg-gray-50">
             {session && (
               <div className={"flex items-center"}>
-                <img
-                  className="h-8 w-8 rounded-full"
-                  src={session?.user?.image}
-                  alt=""
-                />
-                <span className="ml-3 text-sm font-medium text-gray-400 hover:text-gray-800 lg:block">
+                {session?.user?.image ? (
+                  <img
+                    className="h-8 w-8 rounded-full"
+                    src={session?.user?.image}
+                  />
+                ) : (
+                  <div className="h-10 w-10 rounded-full bg-gray-200 text-white flex items-center justify-center">
+                    <UserIcon className={"p-1 text-gray-50"} />
+                  </div>
+                )}
+
+                <span className="ml-2 text-sm font-medium text-gray-400 hover:text-gray-800 lg:block">
                   <span className="sr-only">Open user menu for </span>
                   {session?.user?.name}
                 </span>

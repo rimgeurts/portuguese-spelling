@@ -1,5 +1,5 @@
 import { EnvelopeIcon, UserIcon } from "@heroicons/react/24/solid";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
   useInviteGroupMemberMutation,
@@ -14,6 +14,7 @@ export default function ManageGroupAccess({ selectedGroup }) {
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm();
@@ -28,6 +29,7 @@ export default function ManageGroupAccess({ selectedGroup }) {
         groupId: selectedGroup.id,
       },
     });
+    //reset();
   };
 
   const onRemoveUserFromGroup = (userIndex) => {
@@ -49,6 +51,10 @@ export default function ManageGroupAccess({ selectedGroup }) {
     updateUserGroup(payload);
   };
 
+  useEffect(() => {
+    console.log({ selectedGroup });
+  }, []);
+
   return (
     selectedGroup?.groupName !== "Everyone" && (
       <>
@@ -57,7 +63,7 @@ export default function ManageGroupAccess({ selectedGroup }) {
             htmlFor="email"
             className="block text-sm font-medium text-gray-700"
           >
-            Invite group members
+            Invite new group member
           </label>
 
           <div className="relative mt-1 rounded-lg shadow-sm">

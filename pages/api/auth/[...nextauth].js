@@ -14,27 +14,56 @@ const options = {
     CredentialsProvider({
       name: "credentials",
       credentials: {
+        token: { label: "Token", type: "text", placeholder: "dsadsadsa" },
         email: { label: "Email", type: "text", placeholder: "test@test.com" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize({ email, password, token }) {
         try {
-          const { data } = await axios.post(
-            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/local`,
-            {
-              identifier: credentials.email,
-              password: credentials.password,
+          // if a token is present, it means that a user is attempting to register using the "Bearer" token provided in the signup email
+          if (token) {
+            const config = {
+              method: "get",
+              url: `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/users/me`,
+              headers: {
+                Authorization: "Bearer " + token,
+              },
+            };
+
+            const { data: user } = await axios(config);
+
+            const data = {
+              jwt: token,
+              user,
+            };
+
+            console.dir({ data });
+
+            if (data) {
+              return data;
+            } else {
+              return null;
             }
-          );
-          if (data) {
-            return data;
-          } else {
-            return null;
+          }
+
+          if (!token) {
+            const { data } = await axios.post(
+              `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/local`,
+              {
+                identifier: email,
+                password: password,
+              }
+            );
+            if (data) {
+              return data;
+            } else {
+              return null;
+            }
           }
         } catch (e) {
-          // const errorMessage = e.response.data.message
+          const errorMessage = e.response.data.message;
           // Redirecting to the login page with error message          in the URL
-          // throw new Error(errorMessage + '&email=' + credentials.email)
+          throw new Error(errorMessage + "&email=" + email);
           return null;
         }
       },
@@ -49,6 +78,7 @@ const options = {
   callbacks: {
     // The JWT callback is executed after a sign-in attempt or when a session is used
     jwt: async (obj) => {
+      console.log({ obj });
       const { user, token, account } = obj;
       const isSignIn = user ? true : false;
 
@@ -58,10 +88,6 @@ const options = {
             `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
           );
 
-          console.log(
-            "DEBUG: link: ",
-            `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
-          );
           const data = await response.json();
 
           token.jwt = data.jwt;
