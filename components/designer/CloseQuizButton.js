@@ -33,7 +33,10 @@ export function CloseQuizButton() {
     data: quiz,
     error,
     isLoading,
-  } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
+  } = useGetQuizByIdQuery(
+    { selectedQuizId: router.query.id },
+    { skip: !router.query.id }
+  );
   const question = quiz?.attributes.questions.data[activeQuestionIndex];
 
   const onCloseQuiz = async () => {
@@ -42,7 +45,7 @@ export function CloseQuizButton() {
       return;
     }
     dispatch(resetUIState());
-    await router.push("/classroom");
+    await router.push("/student/quizzes");
   };
 
   return (

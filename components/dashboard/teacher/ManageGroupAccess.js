@@ -1,10 +1,10 @@
 import { EnvelopeIcon, UserIcon } from "@heroicons/react/24/solid";
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import {
   useInviteGroupMemberMutation,
   useUpdateUserGroupByIdMutation,
-} from "../../redux/apis/strapi";
+} from "../../../redux/apis/strapi";
 
 export default function ManageGroupAccess({ selectedGroup }) {
   const [updateUserGroup, updateUserGroupStatus] =
@@ -50,10 +50,6 @@ export default function ManageGroupAccess({ selectedGroup }) {
 
     updateUserGroup(payload);
   };
-
-  useEffect(() => {
-    console.log({ selectedGroup });
-  }, []);
 
   return (
     selectedGroup?.groupName !== "Everyone" && (

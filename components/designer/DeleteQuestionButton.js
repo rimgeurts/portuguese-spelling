@@ -1,3 +1,4 @@
+import {useRouter} from 'next/router';
 import React, { useEffect, useState } from "react";
 import { PlayCircleIcon } from "@heroicons/react/20/solid";
 import {
@@ -15,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUI, updateUIState } from "../../redux/slices/uiSlice";
 
 function AddNewQuestionButton(props) {
+  const router = useRouter();
   const dispatch = useDispatch();
   const [addNewQuiz, setAddNewQuiz] = useState(false);
   const [isQuestionDeleted, setIsQuestionDeleted] = useState(false);
@@ -32,8 +34,8 @@ function AddNewQuestionButton(props) {
   } = useSelector(selectUI);
 
   const { data: quiz } = useGetQuizByIdQuery(
-    { selectedQuizId },
-    { skip: !selectedQuizId }
+    { selectedQuizId: router.query.id },
+    { skip: !router.query.id }
   );
 
   const getActiveQuestionIndex = () => {
@@ -81,10 +83,9 @@ function AddNewQuestionButton(props) {
     <button
       onClick={handleClick}
       type="button"
-      className={`bg-white hover:bg-gray-50 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 relative -ml-px inline-flex items-center border border-gray-300 px-4 py-4 text-sm font-medium text-gray-500`}
+      className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
     >
-      <span className="sr-only">Delete Question</span>
-      <TrashIcon className="h-5 w-5" aria-hidden="true" />
+      <span className="">Delete Question</span>
     </button>
   );
 }

@@ -12,7 +12,7 @@ export default function ToggleButton({ title, subTitle, action, enabled, setEnab
     <Switch.Group as="div" className="flex items-center">
       <Switch.Label as="span" className="mr-4">
         <div className="text-sm font-medium text-gray-900">{title}</div>
-        <div className="text-sm text-gray-500">{subTitle}</div>
+        <div className="text-xs text-gray-500">{subTitle}</div>
       </Switch.Label>
       <Switch
         checked={enabled}

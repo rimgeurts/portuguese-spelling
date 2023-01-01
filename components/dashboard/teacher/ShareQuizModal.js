@@ -7,8 +7,8 @@ import { useDispatch } from "react-redux";
 import {
   useGetUserGroupsQuery,
   useUpdateQuizMutation,
-} from "../../redux/apis/strapi";
-import { generateGetAllQuizzesQuery } from "../util/generateGetAllQuestionsQuery";
+} from "../../../redux/apis/strapi";
+import { generateGetAllQuizzesQuery } from "../../util/generateGetAllQuestionsQuery";
 import LinkSharingOptions from "./LinkSharingOptions";
 import ManageGroupAccess from "./ManageGroupAccess";
 import { QuizLink } from "./QuizLink";
@@ -44,16 +44,9 @@ export default function ShareQuizModal({ quizId, quiz }) {
       (group) => group.id === quizUserGroup[0]?.id
     );
     setSelectedGroup(initialSelectedGroup);
-    console.log({ initialSelectedGroup });
   }, [quiz, groups]);
 
-  useEffect(() => {
-    console.log({ groups });
-    console.log({ selectedGroup });
-  }, [selectedGroup]);
-
   const onSelectedGroup = (value) => {
-    console.log("setting selected group to: ", value);
     const payload = {
       id: quizId,
       data: {
@@ -65,7 +58,6 @@ export default function ShareQuizModal({ quizId, quiz }) {
     setSelectedGroup(value);
   };
 
-  console.log({ quiz });
   return (
     <>
       {selectedGroup && (

@@ -20,14 +20,12 @@ function Index(props) {
   const { myQuizzesSearch, myQuizzesCurrentPage, myQuizzesSearchQuery } =
     useSelector(selectUI);
   const { data: session, status } = useSession();
-  console.log(status);
   const { data: profile, profileLoadingStatus } = useGetUserProfileQuery(
     undefined,
     {
       skip: !session,
     }
   );
-  console.log({ profile });
   const {
     register,
     handleSubmit,
@@ -65,7 +63,7 @@ function Index(props) {
     }
     setValue("firstname", profile.firstname);
     setValue("lastname", profile.lastname);
-    setValue("language", profile.learningLanguage.id);
+    setValue("language", profile.learningLanguage?.id);
   }, [profile]);
 
   useEffect(() => {
@@ -80,7 +78,7 @@ function Index(props) {
     event
   ) => {
     event.preventDefault();
-    console.log({ language });
+
     const result = await updateUserProfile({
       email,
       firstname,

@@ -6,7 +6,11 @@ const queryGetQuizById = qs.stringify(
   {
     populate: {
       questions: {
-        populate: ["answers"],
+        populate: {
+          answers: {
+            populate: { answerAudio: true },
+          },
+        },
       },
       translate_from: {
         populate: "*",
@@ -215,6 +219,20 @@ export const pokemonApi = createApi({
       },
       providesTags: ["useGroupCache"],
     }),
+    AddUserGroup: builder.mutation({
+      query: (body) => ({
+        url: `api/user-groups`,
+        method: "POST",
+      }),
+      invalidatesTags: ["useGroupCache"],
+    }),
+    DeleteUserGroup: builder.mutation({
+      query: (body) => ({
+        url: `api/user-groups/${body.id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["useGroupCache"],
+    }),
     UpdateUserGroupById: builder.mutation({
       query: (body) => ({
         url: `api/user-groups/${body.id}`,
@@ -271,4 +289,6 @@ export const {
   useInviteGroupMemberMutation,
   useUpdateUserProfileMutation,
   useGetUserProfileQuery,
+  useAddUserGroupMutation,
+  useDeleteUserGroupMutation,
 } = pokemonApi;

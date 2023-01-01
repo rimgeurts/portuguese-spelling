@@ -1,4 +1,5 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
+import {useRouter} from 'next/router';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -17,6 +18,7 @@ import Link from "next/link";
 import {useSession} from "next-auth/react";
 
 export function CreateQuizButton() {
+  const router = useRouter();
   const { data: session, status } = useSession();
   const { selectedQuizId, quizTitle } = useSelector(selectUI);
   const [addNewQuiz, addNewQuizStatus] = useAddQuizMutation();
@@ -28,8 +30,8 @@ export function CreateQuizButton() {
   const dispatch = useDispatch();
 
   const { data: quiz } = useGetQuizByIdQuery(
-      { selectedQuizId },
-      { skip: !selectedQuizId }
+      { selectedQuizId: router.query.id },
+      { skip: !router.query.id }
   );
 
   useEffect(() => {
@@ -52,18 +54,6 @@ export function CreateQuizButton() {
       return;
     }
     const addQuizResponse = await addNewQuiz({ data: {} });
-    // const addQuestionResponse = await addNewQuestion({
-    //   data: {
-    //     quiz: [addQuizResponse.data.data.id],
-    //   },
-    // });
-    // await addNewAnswer({
-    //   data: {
-    //     quiz: [addQuizResponse.data.data.id],
-    //     question: [addQuestionResponse.data.data.id],
-    //   },
-    // });
-
 
     const payloadQuestion = {
       data: {
@@ -76,19 +66,19 @@ export function CreateQuizButton() {
     dispatch(
         updateSelectedQuizId({selectedQuizId: addQuizResponse.data.id})
     );
-    // dispatch(updateQuestionId({questionId: addQuestionResponse.data.data.id}))
+    await router.push(`/create/${addQuizResponse.data.id}`);
   };
 
   return (
-    <Link href={"/create"}>
+  //  <Link href={"/create"}>
       <button
         onClick={handleCreateNewQuiz}
         type="submit"
-        className="sm:mr-4 inline-flex items-center sm:px-4 px-3 sm:py-2 py-2 my-2 sm:text-lg sm:font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        className="whitespace-nowrap inline-flex items-center rounded-md border border-transparent bg-blue-600 px-3 py-3 text-sm font-medium leading-4 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       >
-        <PlusIcon className="block h-6 w-6 mr-2" aria-hidden="true" />
-        Create
+
+        Create New Quiz
       </button>
-    </Link>
+   // </Link>
   );
 }

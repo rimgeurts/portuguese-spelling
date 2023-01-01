@@ -1,3 +1,4 @@
+import {useRouter} from 'next/router';
 import React, { useEffect, useState } from "react";
 import ToggleButton from "../ui/ToggleButton";
 import {
@@ -8,6 +9,7 @@ import { useSelector } from "react-redux";
 import { selectUI } from "../../redux/slices/uiSlice";
 
 function IgnoreSpecialCharactersButton(props) {
+  const router = useRouter();
   const [enabled, setEnabled] = useState(false);
   const [updateQuiz, updateQuizResults] = useUpdateQuizMutation();
   const { selectedQuizId } = useSelector(selectUI);
@@ -15,7 +17,7 @@ function IgnoreSpecialCharactersButton(props) {
     data: quiz,
     error,
     isLoading,
-  } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
+  } = useGetQuizByIdQuery({ selectedQuizId: router.query.id }, { skip: !router.query.id });
   const ignoreSpecialCharacterEnabled =
     quiz?.attributes.ignoreSpecialCharacters;
 
@@ -25,7 +27,7 @@ function IgnoreSpecialCharactersButton(props) {
 
   useEffect(() => {
     const payload = {
-      id: selectedQuizId,
+      id: router?.query?.id,
       data: {
         ignoreSpecialCharacters: enabled,
       },
@@ -36,7 +38,7 @@ function IgnoreSpecialCharactersButton(props) {
   return (
     <ToggleButton
       title={"Ignore special characters"}
-      subTitle={"This includes capital letters and language specific accents"}
+      subTitle={"If enabled, language specific accents (i.e. è, ç, ô)  will be ignored when taking the quiz"}
       enabled={enabled}
       setEnabled={setEnabled}
     />

@@ -1,12 +1,14 @@
 import { getSession, useSession } from "next-auth/react";
+import {useRouter} from 'next/router';
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
+import AddNewQuestionButton from "../../components/designer/AddNewQuestionButton";
 import { CloseQuizButton } from "../../components/designer/CloseQuizButton";
+import DeleteQuestionButton from "../../components/designer/DeleteQuestionButton";
 import { FormControlButtons } from "../../components/designer/FormControlButtons";
 import useSaveQuizData from "../../components/designer/hooks/useSaveQuizData";
 import QuestionContentWrapper from "../../components/designer/QuestionContentWrapper";
-import QuestionTypes from "../../components/designer/QuestionTypes";
 import QuizSettings from "../../components/designer/QuizSettings";
 import { QuizTitle } from "../../components/designer/QuizTitle";
 import { SubTitle } from "../../components/designer/SubTitle";
@@ -15,7 +17,8 @@ import { Divider } from "../../components/ui/Divider";
 import { useGetQuizByIdQuery } from "../../redux/apis/strapi";
 import { selectUI } from "../../redux/slices/uiSlice";
 
-const Index = () => {
+const Id = () => {
+  const router = useRouter();
   const { data: session, status } = useSession();
   const form = useForm();
   const {
@@ -24,6 +27,8 @@ const Index = () => {
   } = form;
   const watchAllInputFields = watch();
   const { saveQuizData } = useSaveQuizData({ form });
+
+  console.log({ watchAllInputFields });
 
   const {
     selectedQuizId,
@@ -35,7 +40,7 @@ const Index = () => {
     data: quiz,
     error,
     isLoading,
-  } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
+  } = useGetQuizByIdQuery({ selectedQuizId: router.query.id }, { skip: !router.query.id });
 
   return (
     <div className={"h-full"}>
@@ -60,7 +65,7 @@ const Index = () => {
               <QuizSettings />
             </div>
           </div>
-          <div className={"bg-gray-50 h-[50vh] "}>
+          <div className={"h-[50vh] "}>
             <div className={"p-6  h-full overflow-y-scroll"}>
               <div className={"sm:flex items-center justify-between"}>
                 <SubTitle
@@ -69,12 +74,14 @@ const Index = () => {
                   }`}
                 />
                 <div className={"flex justify-between items-center gap-2 py-1"}>
+                  <AddNewQuestionButton />
+                  <DeleteQuestionButton />
                   <FormControlButtons />
                 </div>
               </div>
-              <Divider title={"Question Type"} backgroundColor={"bg-gray-50"} />
-              <QuestionTypes />
-              <Divider backgroundColor={"bg-gray-50"} />
+              {/*<Divider title={"Question Type"} backgroundColor={"bg-gray-50"} />*/}
+              {/*<QuestionTypes />*/}
+              <Divider />
               <QuestionContentWrapper />
             </div>
           </div>
@@ -102,4 +109,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default Index;
+export default Id;

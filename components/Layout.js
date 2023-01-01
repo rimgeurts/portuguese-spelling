@@ -1,10 +1,12 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import feather from "../public/feather-blue.svg";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import logo from "../public/logo.svg";
 import { CreateQuizButton } from "./designer/CreateQuizButton";
 import LayoutAuthentication from "./LayoutAuthentication";
 
@@ -30,21 +32,32 @@ function classNames(...classes) {
 }
 
 export default function Layout({ children }) {
+  const router = useRouter();
+  console.log("params", router.pathname);
+
   const { data: session, status } = useSession();
 
   const [navigation, setNavigation] = useState([
     // { name: "Quiz", href: "/quiz", current: true },
     {
-      name: "My Learning",
-      href: "/students",
+      name: "Student",
+      href: "/student/quizzes",
       current: false,
     },
     {
-      name: "My Classroom",
-      href: "/classroom",
+      name: "Teacher",
+      href: "/teacher/quizzes",
       current: false,
     },
   ]);
+
+  useEffect(() => {
+    console.log("params", router.pathname);
+    const index = navigation.findIndex((item) => item.href === router.pathname);
+
+    console.log("index", index);
+    onClickNavigation(index);
+  }, []);
 
   const onClickNavigation = (selectedNavIndex) => {
     const newNavigation = [...navigation];
@@ -72,20 +85,39 @@ export default function Layout({ children }) {
                 <div className="flex h-16 justify-between">
                   <div className="flex">
                     <div className="flex flex-shrink-0 items-center">
-                      <div className={`block h-3 w-auto lg:hidden`}>
-                        <Image
-                          className=""
-                          width={40}
-                          height={40}
-                          src={feather}
-                          alt=""
-                        />
-                      </div>
-                      <div className={"hidden h-10 w-auto lg:block"}>
-                        <Image src={feather} width={40} height={40} alt="" />
-                      </div>
+                      <div className={`block h-3 w-auto lg:hidden`}></div>
+                      <Link
+                        className={"hidden w-auto lg:block "}
+                        href="/student/quizzes"
+                      >
+                        <div
+                          className={
+                            "bg-blue-500 flex items-center rounded-3xl justify-center border-blue-300 border-4 cursor-pointer"
+                          }
+                        >
+                          <Cog6ToothIcon
+                            className={
+                              "h-6 w-6 mx-1 text-white animate-spin fill-blue-300"
+                            }
+                          />
+
+                          <Image
+                            src={logo}
+                            width={100}
+                            height={30}
+                            alt=""
+                            className={""}
+                          />
+
+                          <Cog6ToothIcon
+                            className={
+                              "h-6 w-6 mx-1 text-white animate-spin ease-in-out fill-blue-300"
+                            }
+                          />
+                        </div>
+                      </Link>
                     </div>
-                    <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                    <div className="hidden sm:-my-px sm:ml-16 sm:flex  sm:space-x-8">
                       {navigation.map((item, navIndex) => {
                         return (
                           <Link href={item.href} key={item.name}>
@@ -107,7 +139,9 @@ export default function Layout({ children }) {
                     </div>
                   </div>
                   <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                    <CreateQuizButton />
+                    <div className={"mx-4"}>
+                      <CreateQuizButton />
+                    </div>
                     <button
                       type="button"
                       className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"

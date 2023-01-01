@@ -1,33 +1,29 @@
+import {useRouter} from 'next/router';
 import React, { Fragment, useEffect, useRef, useState } from "react";
+import { useFormContext } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { useForm, useFormContext } from "react-hook-form";
-import {
-  selectUI,
-  addQuestions,
-  updateQuestion,
-  updateAnswer,
-  updateActiveAnswerId,
-  updateActiveQuestionIndex,
-  updateActiveAnswerIndex,
-  updateHasActiveQuestionChanged,
-  updateUIState,
-} from "../../redux/slices/uiSlice";
 import {
   useGetQuizByIdQuery,
   useUpdateAnswerMutation,
   useUpdateQuestionMutation,
-  useUpdateQuizMutation,
 } from "../../redux/apis/strapi";
-import useOnClickOutside from "../hooks/useClickOutside";
-import AddNewQuestionButton from "./AddNewQuestionButton";
+import {
+  selectUI,
+  updateActiveAnswerId,
+  updateActiveAnswerIndex,
+} from "../../redux/slices/uiSlice";
 import AccentKeyboard from "../viewer/AccentKeyboard";
+import AnswerAudio from "./AnswerAudio";
 import useSaveQuizData from "./hooks/useSaveQuizData";
 
 export default function QuestionTypeTranslation() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const questionRef = useRef();
   const answerRef = useRef();
   const form = useFormContext();
+  const [showQuestionKeyboard, setShowQuestionKeyboard] = useState(false);
+  const [showAnswerKeyboard, setShowAnswerKeyboard] = useState(false);
   const { saveQuizData } = useSaveQuizData({ form });
   const {
     register,
@@ -52,11 +48,11 @@ export default function QuestionTypeTranslation() {
     useUpdateQuestionMutation();
   const [updateAnswerStrapi, updateAnswerStrapiStatus] =
     useUpdateAnswerMutation();
-  const {
-    data: quiz,
-    error,
-    isLoading,
-  } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
+  const { data: quiz, isLoading: quizLoading } = useGetQuizByIdQuery(
+    { selectedQuizId: router.query.id },
+    { skip: !router.query.id }
+  );
+
   const question = quiz?.attributes.questions.data[activeQuestionIndex];
   const answers = question?.attributes.answers.data;
   const accentCodes =
@@ -95,9 +91,6 @@ export default function QuestionTypeTranslation() {
 
   return (
     <div className={"flex flex-col gap-1"}>
-      <div className={"flex items-center justify-end"}>
-        <AddNewQuestionButton />
-      </div>
       <Fragment key={question?.id}>
         <form
           ref={questionRef}
@@ -112,7 +105,7 @@ export default function QuestionTypeTranslation() {
           >
             Question id: {question?.id}
           </label>
-          <div className="mt-1">
+          <div className="mt-1 relative mb-4">
             <input
               autoComplete={"off"}
               spellCheck={"false"}
@@ -124,12 +117,21 @@ export default function QuestionTypeTranslation() {
               })}
               className=" focus:ring-0 block w-full rounded-md border-dashed border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             />
-          </div>
-          <div className={" flex gap-1 w-full justify-center p-2"}>
+            <div
+              onClick={() => {
+                setShowAnswerKeyboard(false);
+                setShowQuestionKeyboard(!showQuestionKeyboard);
+              }}
+              className={
+                "absolute top-0 right-3 text-gray-400 hover:text-gray-500 text-4xl cursor-pointer"
+              }
+            >
+              ⌨
+            </div>
             <AccentKeyboard
+              show={showQuestionKeyboard}
+              setShow={setShowQuestionKeyboard}
               showSubmitButton={true}
-              ref={questionRef}
-              triggerElementName={"inputQuestion"}
               accentList={accentCodes}
               action={handleAddAccentToInputQuestion}
             />
@@ -163,7 +165,16 @@ export default function QuestionTypeTranslation() {
               >
                 Answer id: {answer.id}
               </label>
-              <div className="mt-1 flex items-center gap-2">
+              <div className={"p-2"}>
+                <AnswerAudio
+                  loading={quizLoading}
+                  word={answer.attributes.title}
+                  audioUrl={
+                    answer?.attributes.answerAudio?.data?.attributes.url
+                  }
+                />
+              </div>
+              <div className="relative mt-1 ">
                 <input
                   autoComplete={"off"}
                   spellCheck={"false"}
@@ -175,14 +186,23 @@ export default function QuestionTypeTranslation() {
                   })}
                   className="focus:ring-0  block w-full rounded-md border-dashed border-2 border-gray-300 shadow-sm focus:border-blue-500  sm:text-sm"
                 />
-              </div>
-              <div className={"flex gap-1 w-full justify-center p-2"}>
+                <div
+                  onClick={() => {
+                    setShowQuestionKeyboard(false);
+                    setShowAnswerKeyboard(!showAnswerKeyboard);
+                  }}
+                  className={
+                    "absolute top-0 right-3 text-gray-400 hover:text-gray-500 text-4xl cursor-pointer"
+                  }
+                >
+                  ⌨
+                </div>
                 <AccentKeyboard
+                  show={showAnswerKeyboard}
+                  setShow={setShowAnswerKeyboard}
                   showSubmitButton={true}
-                  ref={answerRef}
-                  triggerElementName={"inputAnswer"}
                   accentList={accentCodes}
-                  action={handleAddAccentToAnswerQuestion}
+                  action={handleAddAccentToInputQuestion}
                 />
               </div>
             </form>

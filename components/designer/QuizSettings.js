@@ -1,87 +1,57 @@
-import React, { useEffect, useState } from "react";
+import {useRouter} from 'next/router';
+import React, { useEffect } from "react";
+import { Controller, useFormContext } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectUI,
-  updateQuizTitle,
-  updateUIState,
-} from "../../redux/slices/uiSlice";
 import {
   useGetAllLanguagesQuery,
   useGetQuizByIdQuery,
   useUpdateQuizMutation,
 } from "../../redux/apis/strapi";
-import { useFormContext } from "react-hook-form";
-import ComboBox from "../ui/ComboBox";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import ToggleButton from "../ui/ToggleButton";
+import { selectUI } from "../../redux/slices/uiSlice";
+import LanguageComboBox from "./LanguageComboBox";
+import { FormErrorMessage } from "../ui/FormErrorMessage";
 import IgnoreSpecialCharactersButton from "./IgnoreSpecialCharactersButton";
 
 export default function QuizSettings() {
+  const router = useRouter();
+  const selectedQuizId = router.query?.id;
   const dispatch = useDispatch();
   const {
     register,
     setValue,
     control,
+    getValues,
+    watch,
     resetField,
     setFocus,
-    formState: { dirtyFields },
+    formState: { dirtyFields, errors },
   } = useFormContext();
-  const { selectedQuizId, quizTitle, activeQuestionId } = useSelector(selectUI);
+  const { quizTitle, activeQuestionId } = useSelector(selectUI);
   const { isQuizLanguageSelected } = useSelector(selectUI);
   const [updateQuiz, updateQuizResults] = useUpdateQuizMutation();
   const {
     data: quiz,
     error,
     isLoading,
-  } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
-  const selectedTranslateFromValue =
-    quiz?.attributes?.translate_from.data?.attributes.title;
-  const selectedTranslateToValue =
-    quiz?.attributes?.translate_to.data?.attributes.title;
+  } = useGetQuizByIdQuery({ selectedQuizId:router.query.id }, { skip: !router.query.id });
+  const selectedTranslateToValue = quiz?.attributes?.translate_to?.data;
   const {
     data: languages,
     error: languageError,
     isLoading: languageIsLoading,
   } = useGetAllLanguagesQuery();
 
-  useEffect(() => {
-    if (!quiz) {
-      return;
-    }
-  }, [quiz]);
-
-  const onChangeToLanguage = (selectedLanguage) => {
-    setFocus("inputQuestion")
-    if (selectedLanguage.id === "xxxx") {
-      return;
-    }
-    dispatch(updateUIState({ isQuizLanguageSelected: true }));
-    const payload = {
-      id: selectedQuizId,
-      data: {
-        translate_to: { id: selectedLanguage.id },
-      },
-    };
-    updateQuiz(payload);
-
-  };
 
   return (
     selectedTranslateToValue && (
       <div className={"grid grid-cols-2 gap-4 items-center"}>
         <div className={"flex flex-col justify-center items-start"}>
-          <div className={"block text-sm font-medium text-gray-700"}>
-            Translate to:
-          </div>
-          <div className={"flex items-center gap-1"}>
-            <ComboBox
-              label={""}
-              defaultValue={selectedTranslateToValue}
-              data={languages}
-              onChangeAction={onChangeToLanguage}
-              isError={!isQuizLanguageSelected}
-            />
-          </div>
+          <LanguageComboBox
+            label={""}
+            selectedQuizId={selectedQuizId}
+            data={languages}
+            selectedLanguage={selectedTranslateToValue}
+          />
         </div>
         <div>
           <IgnoreSpecialCharactersButton />

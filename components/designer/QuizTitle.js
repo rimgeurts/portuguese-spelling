@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUI, updateQuizTitle } from "../../redux/slices/uiSlice";
@@ -7,29 +8,34 @@ import {
 } from "../../redux/apis/strapi";
 import { useFormContext } from "react-hook-form";
 import useSaveQuizData from "./hooks/useSaveQuizData";
-import {loadGetInitialProps} from "next/dist/shared/lib/utils";
+import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 
 export function QuizTitle() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const {
     register,
     setValue,
     handleSubmit,
+    reset,
     watch,
     control,
     resetField,
     formState: { dirtyFields },
   } = useFormContext();
   const form = useFormContext();
-
+  const [updateQuiz, updateQuizResults] = useUpdateQuizMutation();
   const { saveQuizData } = useSaveQuizData({ form });
-  const { selectedQuizId, quizTitle, activeQuestionId } = useSelector(selectUI);
+  const { quizTitle, activeQuestionId } = useSelector(selectUI);
 
   const {
     data: quiz,
     error,
     isLoading,
-  } = useGetQuizByIdQuery({ selectedQuizId }, { skip: !selectedQuizId });
+  } = useGetQuizByIdQuery(
+    { selectedQuizId: router.query.id },
+    { skip: !router.query.id }
+  );
 
   useEffect(() => {
     if (!quiz) {
@@ -38,13 +44,22 @@ export function QuizTitle() {
     setValue("inputTitle", quiz.attributes.title);
   }, [quiz]);
 
+  const onSubmit = (data) => {
+    console.log('title', data);
+    const payload = {
+      id: router.query.id,
+      data: {
+        title: data.inputTitle,
+      },
+    };
+    updateQuiz(payload);
+    reset({}, { keepValues: true });
+  };
 
   return (
     <form
       className={"mb-1"}
-      onSubmit={handleSubmit(() => {
-        saveQuizData();
-      })}
+      onSubmit={handleSubmit(onSubmit)}
     >
       <label
         htmlFor="email"
@@ -54,18 +69,16 @@ export function QuizTitle() {
       </label>
       <div className="mt-1 flex gap-2">
         <input
-          onBlur={() => {
-          }}
+          onBlur={() => {}}
           autoComplete="off"
           type="text"
           {...register("inputTitle", {
             onBlur: (e) => {
-                saveQuizData();
-            }
+              handleSubmit(onSubmit)(e);
+            },
           })}
           className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
         />
-
       </div>
     </form>
   );

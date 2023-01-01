@@ -1,5 +1,5 @@
-import React from "react";
 import * as PropTypes from "prop-types";
+import React from "react";
 
 export function ViewerInput(props) {
   return (
@@ -15,7 +15,7 @@ export function ViewerInput(props) {
             autoComplete="off"
             type="text"
             {...props.register}
-            className="leading-10 block w-full  focus:ring-0 text-gray-900 text-center border-2 border-gray-200 border-dashed rounded-md shadow-sm focus:border-dashed focus:border-blue-500 sm:text-6xl"
+            className="leading-10 block w-full  focus:ring-0 text-gray-900 text-center border-2 border-gray-200 border-dashed rounded-md shadow-sm focus:border-dashed focus:border-blue-500 sm:text-3xl"
           />
         )}
         {props.updateResultStatus.data?.result === "incorrect" && (
@@ -39,10 +39,9 @@ export function ViewerInput(props) {
   );
 }
 
-
 ViewerInput.propTypes = {
-    onSubmit: PropTypes.func,
-    updateResultStatus: PropTypes.any,
-    register: PropTypes.any,
-    submittedAnswer: PropTypes.string,
+  onSubmit: PropTypes.func,
+  updateResultStatus: PropTypes.any,
+  register: PropTypes.any,
+  submittedAnswer: PropTypes.string,
 };

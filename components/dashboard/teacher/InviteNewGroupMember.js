@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import {
   useInviteGroupMemberMutation,
   useUpdateUserGroupByIdMutation,
-} from "../../redux/apis/strapi";
+} from "../../../redux/apis/strapi";
 
 export default function InviteNewGroupMember({ group, refetchGroups }) {
   const [updateUserGroup, updateUserGroupStatus] =
@@ -29,7 +29,7 @@ export default function InviteNewGroupMember({ group, refetchGroups }) {
         groupId: group.id,
       },
     });
-    console.log(await response);
+
     //reset();
   };
 

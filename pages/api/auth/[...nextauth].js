@@ -37,8 +37,6 @@ const options = {
               user,
             };
 
-            console.dir({ data });
-
             if (data) {
               return data;
             } else {
@@ -78,7 +76,6 @@ const options = {
   callbacks: {
     // The JWT callback is executed after a sign-in attempt or when a session is used
     jwt: async (obj) => {
-      console.log({ obj });
       const { user, token, account } = obj;
       const isSignIn = user ? true : false;
 

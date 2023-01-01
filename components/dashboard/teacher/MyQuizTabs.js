@@ -13,11 +13,11 @@ export default function MyQuizTabs({ children }) {
   const [tabs, setTabs] = useState([
     {
       name: "My Quizzes",
-      href: "/classroom/quizzes",
+      href: "/teacher/quizzes",
     },
     {
       name: "My Students",
-      href: "/classroom/students",
+      href: "/teacher/students",
     },
   ]);
 

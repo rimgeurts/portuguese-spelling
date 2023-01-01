@@ -15,7 +15,7 @@ export function ViewerCloseButton() {
     <>
       <ConfirmationModal
         title={"Leave Quiz?"}
-        action={() => router.push("/classroom")}
+        action={() => router.push("/student/quizzes")}
         open={open}
         setOpen={setOpen}
         confirmationButtonName={"Leave"}

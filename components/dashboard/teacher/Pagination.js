@@ -4,7 +4,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUI, updateUIState } from "../../redux/slices/uiSlice";
+import { selectUI, updateUIState } from "../../../redux/slices/uiSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -34,10 +34,6 @@ export default function Pagination({ pagination }) {
     return setPages(pageArray);
   }, [pagination]);
 
-  useEffect(() => {
-    console.log({ isLastPage });
-  }, [isLastPage]);
-
   const onClickPage = (selectedPage) => {
     dispatch(updateUIState({ myQuizzesCurrentPage: selectedPage.id }));
   };
@@ -54,7 +50,7 @@ export default function Pagination({ pagination }) {
                 })
               );
           }}
-          href="#"
+          href="components/dashboard#"
           className={classNames(
             isFirstPage
               ? "text-gray-200"
@@ -182,7 +178,7 @@ export default function Pagination({ pagination }) {
                 })
               );
           }}
-          href="#"
+          href="components/dashboard#"
           className={classNames(
             isLastPage
               ? "text-gray-200"

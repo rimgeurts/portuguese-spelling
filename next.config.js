@@ -1,10 +1,16 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   async redirects() {
     return [
       {
         source: "/",
-        destination: "/classroom",
+        destination: "/student/quizzes",
+        permanent: true,
+      },
+      {
+        source: "/teacher",
+        destination: "/teacher/quizzes",
         permanent: true,
       },
     ];

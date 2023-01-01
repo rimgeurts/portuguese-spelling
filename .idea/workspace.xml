@@ -5,28 +5,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14d2a6fb-9768-4a0b-acc8-ec12080e7871" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/components/dashboard/myStudents/MyStudentsGroupAccordion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/FormErrorMessage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/classroom/quizzes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/classroom/students/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/register/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/XX_myStudents_OLD/GroupAccordionTitle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/XX_myStudents_OLD/MyStudentsGroupAccordion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/student/StudentQuizzes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/student/StudentTabs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/dashboard/teacher/GroupMemberLine.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/designer/AnswerAudio.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/designer/LanguageComboBox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/EmptyState.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/FormInfoMessage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/util/searchUserEmailInGroupArray.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/util/sortArray.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/viewer/AccentKeyboard_BAK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/create/[id].js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/teacher/quizzes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/teacher/students/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/xx_logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/LayoutAuthentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/LayoutAuthentication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/GroupMemberLine.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/GroupMemberLine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/InviteNewGroupMember.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/InviteNewGroupMember.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/LinkSharingOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/LinkSharingOptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/ManageGroupAccess.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/ManageGroupAccess.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/MyQuizTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/MyQuizTabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/MyQuizzes.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/MyQuizzes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/ShareQuizModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/ShareQuizModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/myStudents/GroupList.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dashboard/myStudents/MyStudents.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/myStudents/MyStudents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/GroupMemberLine.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/InviteNewGroupMember.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/teacher/InviteNewGroupMember.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/LinkSharingOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/teacher/LinkSharingOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/ManageGroupAccess.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/teacher/ManageGroupAccess.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/MyQuizTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/teacher/MyQuizTabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/MyQuizzes.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/teacher/MyQuizzes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/teacher/Pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/QuizLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/teacher/QuizLink.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/ShareQuizModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/teacher/ShareQuizModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/myStudents/MyStudents.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dashboard/XX_myStudents_OLD/MyStudents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/dashboard/myStudents/MyStudentsGroupAccordion.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/AddNewQuestionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/AddNewQuestionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/CloseQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CloseQuizButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/CreateQuizButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/CreateQuizButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/DeleteQuestionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/DeleteQuestionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/FormControlButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/FormControlButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/IgnoreSpecialCharactersButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/IgnoreSpecialCharactersButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/QuestionTypeTranslation.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuestionTypeTranslation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/QuizSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuizSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/QuizTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/QuizTitle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/designer/Title.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/designer/Title.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/ComboBox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/ConfirmationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/ConfirmationModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/LoadingSpinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/LoadingSpinner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/ToggleButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/ToggleButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/util/generateGetAllQuestionsQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/util/generateGetAllQuestionsQuery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/AccentKeyboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/AccentKeyboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/SpellingTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/SpellingTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerCloseButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerFinishScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/viewer/ViewerResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/viewer/ViewerResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/auth/[...nextauth].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/classroom/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/classroom/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/classroom/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/classroom/quizzes/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/classroom/students/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/student/quizzes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/create/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/XX_create_OLD/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/dictionary/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/XX_dictionary_OLD/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/mystudents/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/mystudents/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/mystudents/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/XX_mystudents_OLD/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/register/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/register/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/redux/apis/strapi.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/apis/strapi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
     </list>
@@ -55,55 +95,57 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2GhzitLH5cinhcn9ozhQ6C4NIp2" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "16.17.0",
-    "javascript.nodejs.core.library.typings.version": "16.18.6",
-    "last_opened_file_path": "C:/Users/Rim/WebstormProjects/quiz-frontend/pages/classroom/mystudents",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "rearrange.code.on.save": "true",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.2.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.6&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Rim/WebstormProjects/quiz-frontend/components/dashboard/myLearning&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Rim\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.2.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JavaScript",
-      "PLAIN_TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JavaScript&quot;,
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\pages\classroom\mystudents" />
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\pages\classroom\quizzes" />
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\dashboard\myLearning" />
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\public" />
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\pages\learning" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\pages" />
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\dashboard\myStudents" />
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\pages\mystudents" />
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\ui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\dashboard\myStudents" />
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\dashboard" />
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\dashboard\teacher" />
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\pages\learning\courses" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\public" />
-      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\pages\api\auth" />
+      <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components" />
       <recent name="C:\Users\Rim\WebstormProjects\quiz-frontend\components\designer" />
     </key>
     <key name="es6.move.members.recent.items">
@@ -121,7 +163,7 @@
     <configuration name="scratch_1.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="scratch_33.es6" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_33.es6" working-dir="$PROJECT_DIR$">
+    <configuration name="scratch_23.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_23.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="scratch_6.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/scratch_6.js" working-dir="$PROJECT_DIR$">
@@ -146,19 +188,19 @@
     <list>
       <item itemvalue="JavaScript Debug.Debug" />
       <item itemvalue="Node.js.scratch_1.js" />
+      <item itemvalue="Node.js.scratch_23.js" />
       <item itemvalue="Node.js.scratch_7.js" />
       <item itemvalue="Node.js.scratch_8.js" />
       <item itemvalue="Node.js.scratch_6.js" />
-      <item itemvalue="Node.js.scratch_33.es6" />
       <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
-        <item itemvalue="Node.js.scratch_7.js" />
+        <item itemvalue="Node.js.scratch_23.js" />
         <item itemvalue="Node.js.scratch_8.js" />
+        <item itemvalue="Node.js.scratch_7.js" />
         <item itemvalue="Node.js.scratch_6.js" />
-        <item itemvalue="Node.js.scratch_33.es6" />
       </list>
     </recent_temporary>
   </component>
@@ -256,7 +298,28 @@
       <workItem from="1671291062558" duration="15759000" />
       <workItem from="1671357666893" duration="15449000" />
       <workItem from="1671441006866" duration="12624000" />
-      <workItem from="1671535281063" duration="19342000" />
+      <workItem from="1671535281063" duration="21133000" />
+      <workItem from="1671618398843" duration="218000" />
+      <workItem from="1671618634647" duration="269000" />
+      <workItem from="1671618915979" duration="37000" />
+      <workItem from="1671618963362" duration="21000" />
+      <workItem from="1671618996192" duration="21460000" />
+      <workItem from="1671701398698" duration="25225000" />
+      <workItem from="1671792907169" duration="1120000" />
+      <workItem from="1671798764580" duration="11640000" />
+      <workItem from="1671880748919" duration="590000" />
+      <workItem from="1671884194153" duration="365000" />
+      <workItem from="1671884575213" duration="2761000" />
+      <workItem from="1671995850707" duration="3964000" />
+      <workItem from="1672050516254" duration="11808000" />
+      <workItem from="1672137316626" duration="24316000" />
+      <workItem from="1672222164980" duration="14805000" />
+      <workItem from="1672295095423" duration="3807000" />
+      <workItem from="1672327469727" duration="5825000" />
+      <workItem from="1672387306302" duration="11724000" />
+      <workItem from="1672482038995" duration="7234000" />
+      <workItem from="1672568885588" duration="2351000" />
+      <workItem from="1672571408251" duration="2952000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1666870475451</created>
@@ -307,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670452406341</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary=".">
+      <created>1671569874880</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1671569874880</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

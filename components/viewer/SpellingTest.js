@@ -128,10 +128,10 @@ function SpellingTest() {
     setFocus("answerInput");
   };
   return (
-    <div ref={quizViewerRef} className={"relative bg-white/80 border"}>
+    <div ref={quizViewerRef} className={"relative bg-white/80 "}>
       <ConfirmationModal
         title={"Leave Quiz?"}
-        action={() => router.push("/classroom")}
+        action={() => router.push("/student/quizzes")}
         open={openLeaveQuizDialog}
         setOpen={setOpenLeaveQuizDialog}
         confirmationButtonName={"Leave"}
@@ -163,11 +163,7 @@ function SpellingTest() {
             register={register("answerInput")}
             submittedAnswer={answerInput}
           />
-          <div
-            className={
-              "sm:text-4xl text-2xl flex sm:gap-2 gap-1 justify-center mt-4 flex-wrap"
-            }
-          >
+          <div className={"flex sm:gap-2 gap-1 justify-center mt-4 flex-wrap"}>
             {specialCharacters && (
               // specialCharacters.map(
               //   (specialCharacter, specialCharacterIndex) => {

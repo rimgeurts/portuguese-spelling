@@ -1,22 +1,24 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   useAddResultsMutation,
   useGetAllQuizzesQuery,
-} from "../../redux/apis/strapi";
+} from "../../../redux/apis/strapi";
 import {
   selectUI,
   updateSelectedQuizId,
   updateUIState,
-} from "../../redux/slices/uiSlice";
-import { DeleteQuizButton } from "../designer/DeleteQuizButton";
-import { generateGetAllQuizzesQuery } from "../util/generateGetAllQuestionsQuery";
+} from "../../../redux/slices/uiSlice";
+import { DeleteQuizButton } from "../../designer/DeleteQuizButton";
+import { generateGetAllQuizzesQuery } from "../../util/generateGetAllQuestionsQuery";
 import Pagination from "./Pagination";
 import ShareQuizModal from "./ShareQuizModal";
 
 export default function MyQuizzes() {
+  const router = useRouter();
   const { data: session, status } = useSession();
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
@@ -44,11 +46,7 @@ export default function MyQuizzes() {
     const response = await addResultsStrapi(payload);
     dispatch(updateUIState({ activeQuizResultsId: response?.data.data.id }));
   };
-
-  useEffect(() => {
-    console.log({ quizList });
-  }, [quizList]);
-
+  console.log({ quizList });
   return (
     <>
       <div className={"overflow-y-auto h-full"}>
@@ -88,7 +86,7 @@ export default function MyQuizzes() {
                 <div
                   className={"col-span-3 flex gap-2 items-center justify-end"}
                 >
-                  <Link href={`/create/`}>
+                  <Link href={`/create/${quiz.id}`}>
                     <button
                       onClick={() => {
                         dispatch(
@@ -108,7 +106,7 @@ export default function MyQuizzes() {
           );
         })}
       </div>
-      <div className={`w-full mt-2 px-4`}>
+      <div className={`w-full mt-8 px-4`}>
         <Pagination pagination={quizList?.meta?.pagination} />
       </div>
     </>

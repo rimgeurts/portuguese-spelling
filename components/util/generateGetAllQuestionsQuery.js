@@ -56,5 +56,4 @@ export function generateGetAllQuizzesQuery(title, pageNumber) {
       encodeValuesOnly: true, // prettify URL
     }
   );
-  console.log("page number: ", pageNumber);
 }

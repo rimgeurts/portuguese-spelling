@@ -18,7 +18,6 @@ export default function Login() {
 
   const onSubmit = async ({ email, password, remember }, event) => {
     event.preventDefault();
-    console.log("test");
     const loginResults = await signIn("credentials", {
       redirect: false,
       email,
@@ -34,7 +33,7 @@ export default function Login() {
     e.preventDefault();
     const result = await signIn("google", {
       redirect: false,
-      callbackUrl: "/classroom",
+      callbackUrl: "/student/quizzes",
     });
     if (result?.ok) {
       await router.push(`/${router.query.origin}`);

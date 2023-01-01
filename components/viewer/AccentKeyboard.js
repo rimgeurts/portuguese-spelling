@@ -1,9 +1,7 @@
-import React, { forwardRef, useEffect, useState } from "react";
-import useOnClickOutside from "../hooks/useClickOutside";
-import { set } from "react-hook-form";
-import { act } from "react-dom/test-utils";
+import { EyeIcon } from "@heroicons/react/24/outline";
+import React, { forwardRef } from "react";
 
-const AccentKeys = ({ show, accentList, action }) => {
+const AccentKeys = ({ accentList, action }) => {
   return (
     <>
       {accentList.map((accentCode, accentCodeIndex) => {
@@ -12,7 +10,7 @@ const AccentKeys = ({ show, accentList, action }) => {
             onClick={() => {
               action(accentCode);
             }}
-            className={`shadow-md sm:w-[50px] sm:p-2 p-1 w-[30px] border-2 border-blue-500 rounded-md bg-blue-100 text-blue-500 text-center hover:bg-blue-200 cursor-pointer select-none`}
+            className={` sm:w-[50px] sm:p-2 p-1 w-[30px] border border-gray-300 rounded-md bg-gray-50 text-gray-700 text-center hover:bg-gray-200 cursor-pointer select-none`}
             key={accentCode}
           >
             {accentCode}
@@ -24,79 +22,26 @@ const AccentKeys = ({ show, accentList, action }) => {
 };
 
 const AccentKeyboard = forwardRef(
-  (
-    {
-      accentList,
-      action,
-      triggerElementName,
-      showSubmitButton,
-      alwaysShow = false,
-    },
-    ref
-  ) => {
-    const [show, setShow] = useState(false);
-
-    useOnClickOutside(ref, () => {
-      if(alwaysShow) {
-        return;
-      }
-      setShow(false);
-    });
-
-    useEffect(() => {
-      if(alwaysShow) {
-        return;
-      }
-
-      const handleClick = (event) => {
-        setShow(true);
-      };
-
-      const element = ref?.current;
-      element.addEventListener("click", handleClick);
-
-      return () => {
-        element.removeEventListener("click", handleClick);
-      };
-    }, []);
-
-    useEffect(() => {
-      if(alwaysShow) {
-        setShow(true);
-        return;
-      }
-      const handleFocus = () => {
-        const focussedElement = document.activeElement.name;
-        if (focussedElement === triggerElementName) {
-          setShow(true);
-          return;
-        }
-        if (!!focussedElement && focussedElement !== triggerElementName) {
-          setShow(false);
-        }
-      };
-
-      document.addEventListener("focus", handleFocus, true);
-
-      return () => {
-        document.removeEventListener("focus", handleFocus);
-      };
-    }, []);
-
+  ({ show, setShow, accentList, action, alwaysShow = false }, ref) => {
     return (
       accentList && (
-        <div className={`${show ? "visible" : "invisible"} flex gap-3`}>
+        <div
+          className={`${
+            show ? "visible" : "invisible"
+          } flex gap-3 absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2 h-14 w-full  z-10 bg-gray-400/40 backdrop-blur-md items-center justify-center shadow-lg rounded-lg`}
+        >
           <div className={"flex flex-wrap gap-1 items-center justify-center"}>
             <AccentKeys accentList={accentList} show={show} action={action} />
           </div>
-          {showSubmitButton && (
-            <button
-              type="submit"
-              className="max-h-11 shadow-md inline-flex items-center rounded border border-transparent bg-blue-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            >
-              Submit
-            </button>
-          )}
+          <button
+            className={
+              "ml-2 text-sm font-semibold text-gray-400 bg-white hover:text-gray-500 cursor-pointer border border-gray-300 py-2 px-3 rounded-lg flex items-center justify-center"
+            }
+            onClick={() => setShow(false)}
+          >
+            <EyeIcon className={"h-5 w-5 mr-1"} />
+            Hide
+          </button>
         </div>
       )
     );
