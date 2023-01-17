@@ -98,14 +98,14 @@ export default function ShareQuizModal({ quizId, quiz }) {
                     leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                     leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                   >
-                    <Dialog.Panel className="relative transform overflow-hidden rounded-2xl bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6 h-[80vh]">
+                    <Dialog.Panel className=" relative transform  rounded-2xl bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6 h-[85vh]">
                       <div className={"flex flex-col h-full"}>
                         <div className={"flex items-start justify-between"}>
                           <div className="flex items-start text-start pr-2">
                             <Dialog.Title as="h3" className="text-left">
                               <div
                                 className={
-                                  "text-2xl font-medium text-gray-900 "
+                                  "text-2xl font-semibold text-gray-900 "
                                 }
                               >
                                 Share your Quiz
@@ -115,9 +115,9 @@ export default function ShareQuizModal({ quizId, quiz }) {
                               </p>
                             </Dialog.Title>
                           </div>
-                          <div className="bg-blue-50 h-[100px] w-[100px] rounded-full flex items-center justify-center">
+                          <div className="bg-blue-50 h-[80px] w-[80px] rounded-full flex items-center justify-center">
                             <ShareIcon
-                              className="h-12 w-12 text-blue-400 stroke-[2px]"
+                              className="h-10 w-10 text-blue-400 stroke-[2px]"
                               aria-hidden="true"
                             />
                           </div>

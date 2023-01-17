@@ -48,6 +48,7 @@ export const pokemonApi = createApi({
     "resultCache",
     "languageCache",
     "useGroupCache",
+    "myLearningCache",
   ],
   endpoints: (builder) => ({
     getAllQuizzes: builder.query({
@@ -55,6 +56,12 @@ export const pokemonApi = createApi({
         return `api/myquizzes?${payload?.query ? payload.query : ""}`;
       },
       providesTags: ["useGroupCache", "myQuizListCache"],
+    }),
+    getMyLearning: builder.query({
+      query: (payload) => {
+        return `api/mylearning?${payload?.query ? payload.query : ""}`;
+      },
+      providesTags: ["myLearningCache"],
     }),
 
     getQuizById: builder.query({
@@ -268,6 +275,7 @@ export const pokemonApi = createApi({
 // auto-generated based on the defined endpoints
 export const {
   useGetAllQuizzesQuery,
+  useGetMyLearningQuery,
   useGetQuizByIdQuery,
   useAddQuizMutation,
   useUpdateQuizMutation,

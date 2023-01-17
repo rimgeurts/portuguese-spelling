@@ -53,6 +53,7 @@ export function QuizTitle() {
       },
     };
     updateQuiz(payload);
+    console.log('subbmitting and resetting values');
     reset({}, { keepValues: true });
   };
 
@@ -61,6 +62,7 @@ export function QuizTitle() {
       className={"mb-1"}
       onSubmit={handleSubmit(onSubmit)}
     >
+      <button className={'bg-blue-500 text-white font-semibold p-2 rounded-lg'}>Submit</button>
       <label
         htmlFor="email"
         className="block text-sm font-medium text-gray-700"

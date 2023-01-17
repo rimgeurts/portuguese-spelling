@@ -21,6 +21,7 @@ export default function LanguageComboBox({
     setValue,
     control,
     getValues,
+    reset,
     handleSubmit,
     watch,
     resetField,
@@ -38,8 +39,9 @@ export default function LanguageComboBox({
       },
     };
     updateQuiz(payload);
+    reset({}, { keepValues: true });
   };
-  console.log({ errors });
+
   useEffect(() => {
     if (!selectedLanguage) {
       return;
@@ -72,8 +74,10 @@ export default function LanguageComboBox({
         name="translateToLanguage"
         control={control}
         rules={{
-          validate: () => {
+          validate: (e) => {
+              console.log('validate: ', e);
             const value = getValues("translateToLanguage");
+              console.log('value', value);
             if (value.id === "xxxx") {
               return false;
             }
@@ -95,8 +99,7 @@ export default function LanguageComboBox({
                         ? "border border-gray-300"
                         : "border-2 border-pink-600 "
                     } w-full rounded-md bg-white py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm`}
-                    onChange={(event) => setQuery(event.target.value)}
-                    displayValue={(person) => person?.name}
+                    displayValue={(language) => language?.name}
                   />
                   <Combobox.Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
                     <ChevronUpDownIcon

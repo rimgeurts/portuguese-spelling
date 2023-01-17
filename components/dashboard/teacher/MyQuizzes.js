@@ -51,6 +51,7 @@ export default function MyQuizzes() {
     <>
       <div className={"overflow-y-auto h-full"}>
         {quizList?.data?.map((quiz) => {
+          console.log('quiz ID: ', quiz.id);
           const isOwner = quiz?.attributes.isOwner;
 
           return (

@@ -3,8 +3,9 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import MyStudentsGroupAccordion from "../../../components/dashboard/student/MyStudentsGroupAccordion";
 import MyQuizTabs from "../../../components/dashboard/teacher/MyQuizTabs";
-import MyStudentsGroupAccordion from "../../../components/dashboard/XX_myStudents_OLD/MyStudentsGroupAccordion";
+import IconTeacher from "../../../components/ui/icons/IconTeacher";
 import LoadingSpinner from "../../../components/ui/LoadingSpinner";
 import { generateGetAllQuizzesQuery } from "../../../components/util/generateGetAllQuestionsQuery";
 import searchUserEmailInGroupArray from "../../../components/util/searchUserEmailInGroupArray";
@@ -77,9 +78,16 @@ function Index(props) {
 
   return (
     <div className={"h-[80vh] px-6"}>
-      <div className="md:flex md:items-center md:justify-between py-4">
-        <div className="min-w-0 flex flex-col justify-center ">
-          <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight ">
+      <div className="md:flex md:items-center md:justify-between mt-2">
+        <div className="min-w-0 flex items-center justify-center gap-3">
+          <div className={"p-4 bg-blue-50 rounded-full"}>
+            <div className={" fill-blue-500 flex items-center justify-center"}>
+              <div className={"w-10 h-10"}>
+                <IconTeacher />
+              </div>
+            </div>
+          </div>
+          <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
             My Classroom
           </h2>
         </div>

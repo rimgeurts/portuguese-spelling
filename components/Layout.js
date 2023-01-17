@@ -1,6 +1,10 @@
 import { Disclosure } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Cog6ToothIcon } from "@heroicons/react/24/solid";
+import {
+  Bars3Icon,
+  BellIcon,
+  Cog6ToothIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,23 +13,8 @@ import React, { useEffect, useState } from "react";
 import logo from "../public/logo.svg";
 import { CreateQuizButton } from "./designer/CreateQuizButton";
 import LayoutAuthentication from "./LayoutAuthentication";
-
-// const user = {
-//   name: "Tom Cook",
-//   email: "tom@example.com",
-//   imageUrl:
-//     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-// };
-//
-// const userNavigation = [
-//   { name: "
-//   Your Profile", href: "#" },
-//   { name: "Settings", href: "#" },
-//   {
-//     name: "Sign out",
-//     href: "#",
-//   },
-// ];
+import IconStudent from "./ui/icons/IconStudent";
+import IconTeacher from "./ui/icons/IconTeacher";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -43,11 +32,13 @@ export default function Layout({ children }) {
       name: "Student",
       href: "/student/quizzes",
       current: false,
+      icon: <IconStudent />,
     },
     {
       name: "Teacher",
       href: "/teacher/quizzes",
       current: false,
+      icon: <IconTeacher />,
     },
   ]);
 
@@ -92,12 +83,12 @@ export default function Layout({ children }) {
                       >
                         <div
                           className={
-                            "bg-blue-500 flex items-center rounded-3xl justify-center border-blue-300 border-4 cursor-pointer"
+                            "pr-2 bg-blue-500 flex items-center rounded-3xl justify-center border-blue-300 border-4 cursor-pointer"
                           }
                         >
                           <Cog6ToothIcon
                             className={
-                              "h-6 w-6 mx-1 text-white animate-spin fill-blue-300"
+                              "h-6 w-6 mx-1 text-white animate-spin fill-blue-500 stroke-blue-300"
                             }
                           />
 
@@ -107,12 +98,6 @@ export default function Layout({ children }) {
                             height={30}
                             alt=""
                             className={""}
-                          />
-
-                          <Cog6ToothIcon
-                            className={
-                              "h-6 w-6 mx-1 text-white animate-spin ease-in-out fill-blue-300"
-                            }
                           />
                         </div>
                       </Link>
@@ -127,10 +112,19 @@ export default function Layout({ children }) {
                                 item.current
                                   ? "border-blue-500 text-gray-900"
                                   : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                                "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium cursor-pointer"
+                                "inline-flex items-center px-1 pt-1 border-b-2 text-lg font-medium cursor-pointer gap-2"
                               )}
                               aria-current={item.current ? "page" : undefined}
                             >
+                              <div
+                                className={`w-10 h-10 p-2 rounded-full ${
+                                  item.current
+                                    ? "bg-blue-100 fill-blue-500"
+                                    : "bg-gray-100 fill-gray-300"
+                                }`}
+                              >
+                                {item.icon}
+                              </div>
                               {item.name}
                             </a>
                           </Link>
